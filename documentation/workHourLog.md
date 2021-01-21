@@ -3,6 +3,8 @@
 | date  | time | work done  |
 | :----:|:-----| :-----|
 | 20.1. | 6    | designing application |
-| total | 6    | | 
+| 21.1. | 2    | requirements |
+|       | 4    | reading up on data modeling |
+| total | 12   | | 
 
 
