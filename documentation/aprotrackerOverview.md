@@ -20,11 +20,11 @@ exercise (all exercises available)(new exercises)
 online only
 graphql
 
-/r/bodyweightfitness app only or general?
+/r/bodyweightfitness app mainly
 
-data model 
 
-requirements
+#requirements
+
 - when starting a workout routine if exercise have been done before show the latest stats (kg/reps/set) for all sets available. (not based on routines but exercise type, if another routine have the same exercise in it, latest stats (kg/reps/set) is shown there aswell)
 
 - enter routine starts a timer, any set not done will not be recorded. 
@@ -49,30 +49,42 @@ requirements
 each exercise  have (type(weighted/reps/timed), name,)
 (setnr, kg, reps)weight or (setnr, reps) reps only or timebased (set time))
 
-- default exercise are only /r/bodyweightfitness types
+- default exercise are only /r/bodyweightfitness RR types
 
 
-exercise 
-category
-rep only
-weighted
-timed
+#data model
 
-exercise 
-user:id
+-user
+userID: 
+username: 
+password: 
+
+-exercise 
+exerciseID:
 name:
-createAt:
-sets[{
-setnumber? 
-kg 
-reps
-}]
+description:
+type: (weighted (kg,reps), repsOnly(reps), timed(time))
+createdAt: 
+sets[{setNumber, kg, reps} {setNumber, reps} {setNumber, time}]
+routineID:
+userID:ID
 
-getLatestEx(name, id) 
+-routine
+routineID:
+name:
+description:
+createdAt:
+duration:
+userID: 
 
-User: id
-username:
-password:
+----
+used to make ui 
+bodyweightfitness RR only
+premade exercises (type, input placeholder data for reps)
+premade routines (exercises and number of set for each)
 
+locally
+usermade exercises
+usermade routines
 
 
