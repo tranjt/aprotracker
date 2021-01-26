@@ -10,6 +10,8 @@
 | 25.1  | 3    | getting to know react native better |
 |       | 5    | getting to know expo better |
 | 26.1  | 2    | getting to know expo better |
-| total | 28   | | 
+|       | 1    | setting up frontend init |
+|       | 3    | react navigation |
+| total | 32   | | 
 
 
