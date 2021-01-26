@@ -9,6 +9,7 @@
 |       | 3    | data modeling |
 | 25.1  | 3    | getting to know react native better |
 |       | 5    | getting to know expo better |
-| total | 26   | | 
+| 26.1  | 2    | getting to know expo better |
+| total | 28   | | 
 
 
