@@ -11,7 +11,8 @@
 |       | 5    | getting to know expo better |
 | 26.1  | 2    | getting to know expo better |
 |       | 1    | setting up frontend init |
-|       | 3    | react navigation |
-| total | 32   | | 
+|       | 3    | app navigation planning |
+| 27.1  | 3    | learning react navigation |
+| total | 35   | | 
 
 
