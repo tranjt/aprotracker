@@ -13,6 +13,9 @@
 |       | 1    | setting up frontend init |
 |       | 3    | app navigation planning |
 | 27.1  | 3    | learning react navigation |
-| total | 35   | | 
+| 28.1  | 1    | inital app navigation overview |
+|       | 3    | reading more on navigation auth, tab, state etc |
+|       | 2    | dynamic form research for routine workout page |
+| total | 41   | | 
 
 
