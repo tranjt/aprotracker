@@ -3,6 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import WorkoutScreen from './workout/WorkoutScreen';
 
 function ProfileScreen() {
   return (
@@ -17,18 +18,6 @@ function HistoryScreen({ route }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 30 }}>This is the History screen!</Text>
       <Text>{route.params?.someParam}</Text>
-    </View>
-  );
-}
-
-function WorkoutScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Workout Screen</Text>
-      <Button
-        onPress={() => navigation.navigate('RoutineOverview')}
-        title="Open routine overview screen (select a routine)"
-      />
     </View>
   );
 }
@@ -54,8 +43,8 @@ function DoRoutineScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Do Routine Screen!</Text>
-      <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' } )} title="goTo History" />      
-    
+      <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
+
     </View>
   );
 }
