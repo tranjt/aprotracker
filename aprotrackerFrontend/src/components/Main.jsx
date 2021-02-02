@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WorkoutScreen from './workout/WorkoutScreen';
+import DoRoutineScreen from './workout/DoRoutineScreen';
 
 function ProfileScreen() {
   return (
@@ -39,15 +40,15 @@ function RoutineOverviewScreen({ navigation }) {
   );
 }
 
-function DoRoutineScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Do Routine Screen!</Text>
-      <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
+// function DoRoutineScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Do Routine Screen!</Text>
+//       <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
 
-    </View>
-  );
-}
+//     </View>
+//   );
+// }
 
 
 const RootStack = createStackNavigator();
