@@ -17,6 +17,7 @@
 |       | 3    | reading more on navigation auth, tab, state etc |
 |       | 2    | dynamic form research for routine workout page |
 | 29.1  | 3    | dynamic object generation for routine |
-| total | 44   | | 
+|  2.2  | 3    | initial exercisecard for reps only type input |
+| total | 47   | | 
 
 
