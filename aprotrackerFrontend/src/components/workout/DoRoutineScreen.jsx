@@ -1,39 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import routines from '../../data/routines';
-import RepsInput from './RepsInput';
 import ExerciseCard from './ExerciseCard';
 
 
 const generateRoutineComponentObject = (routine) => {
-
   const buildTrainingSets = ({ type, sets }) => {
     switch (type) {
       case 'repsOnly':
         return Array.from(Array(sets.setCount),
-          (x, index) => {
+          () => {
             return {
-              setNumber: index + 1,
-              reps: 0,
-              repsPlaceholder: sets.repsPlaceholder
+              reps: "",
+              repsPlaceholder: sets.repsPlaceholder,
+              valid: false,
+              done: false
             };
           });
       case 'weighted':
         return Array.from(Array(sets.setCount),
-          (x, index) => {
+          () => {
             return {
-              setNumber: index + 1,
+              reps: "",
               kg: 0,
-              reps: 0,
-              repsPlaceholder: sets.repsPlaceholder
+              repsPlaceholder: sets.repsPlaceholder,
+              valid: false,
+              done: false
             };
           });
       case 'timed':
         return Array.from(Array(sets.setCount),
-          (x, index) => {
+          () => {
             return {
-              setNumber: index + 1,
-              time: 0
+              time: 0,
+              valid: false,
+              done: false
             };
           });
       default:
@@ -77,7 +78,9 @@ const generateRoutineComponentObject = (routine) => {
 //         { setNumber: 2, reps: 0, repsPlaceholder: 5 },
 //         { setNumber: 3, reps: 0, repsPlaceholder: 5 } 
 
-//         { reps: 0, repsPlaceholder: 5, valid: false, done: false  } 
+//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
+//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
+//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
 //       ]
 //     }
 //   ]
@@ -114,7 +117,7 @@ const DoRoutineScreen = ({ navigation }) => {
   //   // just save everything even node ids
   //   // then use target on server side
   // };
-  
+
   const handleChange = (value, exerciseIndex, setId) => {
     //const updatedExercises = [...exercises];
 
@@ -137,14 +140,13 @@ const DoRoutineScreen = ({ navigation }) => {
             exercise={exercise}
             exerciseIndex={exerciseIndex}
             handleChange={handleChange}
-            // addSet={addSet}
+          // addSet={addSet}
           />
-          
         ))
       }
 
       <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
-      <RepsInput />
+
 
     </View>
   );
