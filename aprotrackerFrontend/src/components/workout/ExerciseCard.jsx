@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
 import RepsInput from './RepsInput';
+import RepsInputHeader from './RepsInputHeader';
 
 
 const ExerciseCard = ({ exercise, exerciseIndex, handleChange }) => {
 
   return (
-    <View style={styles.container}>
-      <Text>{exercise.name} </Text>
+    <View>
+      <Text style={styles.exerciseName}>{exercise.name} </Text>
+      <RepsInputHeader />
       {
         exercise.sets.map((set, setIndex) => (
           <RepsInput
@@ -20,7 +22,6 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange }) => {
           />
         ))
       }
-      
     </View>
     // add set
   );
@@ -28,10 +29,14 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {        
+  container: {
     marginVertical: 5,
-    
-    },
+  },
+  exerciseName: {
+    marginLeft: 20,
+    fontWeight: 'bold',
+    fontSize: 16
+  }
 });
 
 export default ExerciseCard;

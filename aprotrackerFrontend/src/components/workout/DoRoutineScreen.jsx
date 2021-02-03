@@ -1,61 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
-import routines from '../../data/routines';
+import { ScrollView, Text, Button, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+
 import ExerciseCard from './ExerciseCard';
-
-
-const generateRoutineComponentObject = (routine) => {
-  const buildTrainingSets = ({ type, sets }) => {
-    switch (type) {
-      case 'repsOnly':
-        return Array.from(Array(sets.setCount),
-          () => {
-            return {
-              reps: "",
-              repsPlaceholder: sets.repsPlaceholder,
-              valid: false,
-              done: false
-            };
-          });
-      case 'weighted':
-        return Array.from(Array(sets.setCount),
-          () => {
-            return {
-              reps: "",
-              kg: 0,
-              repsPlaceholder: sets.repsPlaceholder,
-              valid: false,
-              done: false
-            };
-          });
-      case 'timed':
-        return Array.from(Array(sets.setCount),
-          () => {
-            return {
-              time: 0,
-              valid: false,
-              done: false
-            };
-          });
-      default:
-        console.log('traning type not supported');
-    }
-  };
-
-  return {
-    name: routine.name,
-    exercises:
-      routine.exercises.map(exercise => {
-        console.log("exercise " + JSON.stringify(exercise));
-        console.log();
-        return {
-          name: exercise.name,
-          type: exercise.type,
-          sets: buildTrainingSets(exercise)
-        };
-      })
-  };
-};
+import routines from '../../data/routines';
+import workoutService from '../../service/workout';
 
 // const testgeneration = {
 //   name: 'recommended routine',
@@ -92,10 +41,10 @@ const DoRoutineScreen = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const routine = generateRoutineComponentObject(routines[0]);
+    const routine = workoutService.generateRoutineComponentObject(routines[1]);
     console.log("routine " + JSON.stringify(routine));
-    setRoutineName(routine.name);
 
+    setRoutineName(routine.name);
     setExercises([...routine.exercises]);
   }, []);
 
@@ -118,39 +67,44 @@ const DoRoutineScreen = ({ navigation }) => {
   //   // then use target on server side
   // };
 
-  const handleChange = (value, exerciseIndex, setId) => {
-    //const updatedExercises = [...exercises];
-
+  const handleChange = ({ value, setIndex, exerciseIndex }) => {
+    const updatedExercises = [...exercises];
+    
     console.log(`exerciseIndex ${exerciseIndex}`);
-    console.log(`setId ${setId}`);
+    console.log(`setIndex ${setIndex}`);
     console.log(`value ${value}`);
-    //updatedExercises[exerciseIndex].set[setId] =value;
-    //setExercises(updatedExercises);
+    
+    updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+    setExercises(updatedExercises);
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.container}>
       <Text>Do Routine Screen!</Text>
       <Text>{routineName}</Text>
-
-      {
-        exercises.map((exercise, exerciseIndex) => (
-          <ExerciseCard
-            key={`exercise-${exerciseIndex}`}
-            exercise={exercise}
-            exerciseIndex={exerciseIndex}
-            handleChange={handleChange}
-          // addSet={addSet}
-          />
-        ))
-      }
-
-      <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
-
-
+      <ScrollView >
+        {
+          exercises.map((exercise, exerciseIndex) => (
+            <ExerciseCard
+              key={`exercise-${exerciseIndex}`}
+              exercise={exercise}
+              exerciseIndex={exerciseIndex}
+              handleChange={handleChange}
+            // addSet={addSet}
+            />
+          ))
+        }
+        <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
+      </ScrollView>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Constants.statusBarHeight,
+    flex: 1,
+  },
+});
 
 export default DoRoutineScreen;

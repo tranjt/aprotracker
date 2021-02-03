@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
+
 const RepsInput = ({ set, setIndex, exerciseIndex, handleChange }) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
-  console.log(set.reps);
   return (
     <View style={styles.container}>
       <Text style={styles.setNumber}>{setIndex + 1}</Text>
-      <Text style={styles.previous}>no</Text>
+      <Text style={styles.previous}>-</Text>
       <TextInput
         placeholder='5'
         style={styles.repsInput}
-        onChangeText={value => handleChange(value, setIndex, exerciseIndex)}
+        onChangeText={value => handleChange({ value, setIndex, exerciseIndex })}
+        value={set.reps}
+        keyboardType="number-pad"
       />
       <CheckBox
         disabled={false}
@@ -34,13 +36,16 @@ const styles = StyleSheet.create({
   setNumber: {
     marginLeft: 10,
     flexGrow: 0,
-    alignSelf: 'center'
-
+    alignSelf: 'center',
+    width: 25,
+    textAlign: "center",
   },
   previous: {
     marginLeft: 10,
     flexGrow: 0,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    width: 65,
+    textAlign: "center",
   },
   repsInput: {
     backgroundColor: "#d3d3d3",
