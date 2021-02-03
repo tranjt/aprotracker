@@ -18,6 +18,8 @@
 |       | 2    | dynamic form research for routine workout page |
 | 29.1  | 3    | dynamic object generation for routine |
 |  2.2  | 3    | initial exercisecard for reps only type input |
-| total | 47   | | 
+|  3.2  | 4    | added functionality checkbox, add new set and some css for exercise card |
+|       | 2    | reading some more about hook and setTimeout |
+| total | 53   | | 
 
 
