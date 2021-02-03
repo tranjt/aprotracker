@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, Button, ActivityIndicator } from 'react-native';
+import { Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 
+import Button from '../Button';
 import RepsInput from './RepsInput';
 import RepsInputHeader from './RepsInputHeader';
 
