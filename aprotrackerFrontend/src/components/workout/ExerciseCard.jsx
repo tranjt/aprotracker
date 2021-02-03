@@ -5,7 +5,7 @@ import RepsInput from './RepsInput';
 import RepsInputHeader from './RepsInputHeader';
 
 
-const ExerciseCard = ({ exercise, exerciseIndex, handleChange }) => {
+const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone }) => {
 
   return (
     <View>
@@ -19,6 +19,7 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange }) => {
             setIndex={setIndex}
             exerciseIndex={exerciseIndex}
             handleChange={handleChange}
+            handleExerciseSetDone={handleExerciseSetDone}
           />
         ))
       }

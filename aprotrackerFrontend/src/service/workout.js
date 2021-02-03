@@ -8,7 +8,7 @@ const generateRoutineComponentObject = (routine) => {
             return {
               reps: "",
               repsPlaceholder: sets.repsPlaceholder,
-              valid: false,
+              validInput: false,
               done: false
             };
           });
@@ -19,7 +19,7 @@ const generateRoutineComponentObject = (routine) => {
               reps: "",
               kg: 0,
               repsPlaceholder: sets.repsPlaceholder,
-              valid: false,
+              validInput: false,
               done: false
             };
           });
@@ -28,7 +28,7 @@ const generateRoutineComponentObject = (routine) => {
           () => {
             return {
               time: 0,
-              valid: false,
+              validInput: false,
               done: false
             };
           });

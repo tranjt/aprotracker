@@ -69,14 +69,29 @@ const DoRoutineScreen = ({ navigation }) => {
 
   const handleChange = ({ value, setIndex, exerciseIndex }) => {
     const updatedExercises = [...exercises];
-    
+
     console.log(`exerciseIndex ${exerciseIndex}`);
     console.log(`setIndex ${setIndex}`);
     console.log(`value ${value}`);
-    
+
+    if (Number(value) > 0) {
+      updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+    } else {
+      updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+      updatedExercises[exerciseIndex].sets[setIndex].done = false;
+    }
+
     updatedExercises[exerciseIndex].sets[setIndex].reps = value;
     setExercises(updatedExercises);
+
   };
+
+  const handleExerciseSetDone = ({ checkboxValue, setIndex, exerciseIndex }) => {
+    const updatedExercises = [...exercises];
+    updatedExercises[exerciseIndex].sets[setIndex].done = checkboxValue;
+    setExercises(updatedExercises);
+  };
+
 
   return (
     <View style={styles.container}>
@@ -90,6 +105,7 @@ const DoRoutineScreen = ({ navigation }) => {
               exercise={exercise}
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
+              handleExerciseSetDone={handleExerciseSetDone}
             // addSet={addSet}
             />
           ))
