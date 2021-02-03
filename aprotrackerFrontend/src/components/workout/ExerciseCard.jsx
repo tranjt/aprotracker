@@ -13,38 +13,62 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSet
   }
 
   return (
-    <View>
-      <Text style={styles.exerciseName}>{exercise.name} </Text>
-      <RepsInputHeader />
-      {
-        exercise.sets.map((set, setIndex) => (
-          <RepsInput
-            key={`set-${setIndex}`}
-            set={set}
-            setIndex={setIndex}
-            exerciseIndex={exerciseIndex}
-            handleChange={handleChange}
-            handleExerciseSetDone={handleExerciseSetDone}
-          />
-        ))
-      }
-      <Button
-        title="Add new set"
-        onPress={() => addSet({ exerciseIndex, exerciseType: exercise.type })}
-      />
+    <View style={styles.card}>
+      <View style={styles.container}>
+        <Text style={styles.exerciseName}>{exercise.name} </Text>
+        <RepsInputHeader />
+        {
+          exercise.sets.map((set, setIndex) => (
+            <RepsInput
+              key={`set-${setIndex}`}
+              set={set}
+              setIndex={setIndex}
+              exerciseIndex={exerciseIndex}
+              handleChange={handleChange}
+              handleExerciseSetDone={handleExerciseSetDone}
+            />
+          ))
+        }
+        <Button
+          title="ADD SET"
+          onPress={() => addSet({ exerciseIndex, exerciseType: exercise.type })}
+          style={styles.button}
+          titleStyle={styles.titleStyle}
+        />
+      </View>
     </View>
   );
 
 };
 
 const styles = StyleSheet.create({
+  card: {
+    borderRadius: 6,
+    elevation: 3,
+    backgroundColor: "#fff",
+    shadowOffset: { width: 1, height: 1 },
+    shadowColor: "#333",
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    marginHorizontal: 4,
+    marginVertical: 6
+  },
   container: {
-    marginVertical: 5,
+    padding: 10
   },
   exerciseName: {
     marginLeft: 20,
     fontWeight: 'bold',
     fontSize: 16
+  },
+  button: {
+    alignSelf: "flex-start",
+    backgroundColor: "#ececec",
+  },
+  titleStyle: {
+    fontWeight: "bold",
+    fontSize: 12,
+    color: "#7e7e7e"
   }
 });
 
