@@ -35,31 +35,40 @@ import workoutService from '../../service/workout';
 //   ]
 // };
 
+// {
+//   "name":"Pull-up",
+//   "type":"repsOnly",
+//   "sets":[
+//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
+//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
+//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
+//     {"reps":"1111","repsPlaceholder":5,"valid":false,"done":false}
+//   ]
+// }
+
 
 const DoRoutineScreen = ({ navigation }) => {
   const [routineName, setRoutineName] = useState('');
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const routine = workoutService.generateRoutineComponentObject(routines[1]);
-    console.log("routine " + JSON.stringify(routine));
+    const routine = workoutService.generateRoutineComponentObject(routines[2]);
+    //console.log("routine " + JSON.stringify(routine));
 
     setRoutineName(routine.name);
     setExercises([...routine.exercises]);
+    console.log(`exercises ${JSON.stringify(routine.exercises)}`);
   }, []);
 
+  const addSet = ({ exerciseIndex, exerciseType }) => {       
+    const newSet = workoutService.getNewExerciseSet(exerciseType);    
+    const updatedExercises = [
+      ...exercises,
+      exercises[exerciseIndex].sets.push(newSet)
+    ];    
 
-  // const addSet = (set, exerciseIndex) => {
-  //   setExercises(
-  //     [
-  //       ...exercises,
-  //       exercises[exerciseIndex].set.push(set)
-  //     ]
-  //   );
-  // };
-
-  // update value
-  //exerciseIndex, setId, inputname  (  exercises[exerciseIndex].set[setId][inputname] = 2)
+    setExercises([...updatedExercises]);    
+  };
 
 
   // const handleSubmit = ()=> {
@@ -106,7 +115,7 @@ const DoRoutineScreen = ({ navigation }) => {
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
               handleExerciseSetDone={handleExerciseSetDone}
-            // addSet={addSet}
+              addSet={addSet}
             />
           ))
         }

@@ -1,5 +1,15 @@
 const routines = [
   {
+    name: 'one recommended routine',
+    exercises: [
+      {
+        name: 'Pull-up',
+        type: 'repsOnly',
+        sets: { setCount: 3, repsPlaceholder: 5 }
+      }      
+    ]
+  },
+  {
     name: 'Mini recommended routine',
     exercises: [
       {

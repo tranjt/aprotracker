@@ -52,6 +52,34 @@ const generateRoutineComponentObject = (routine) => {
   };
 };
 
+const getNewExerciseSet = (exerciseType) => {
+  switch (exerciseType) {
+    case "repsOnly":
+      return {
+        reps: "",
+        repsPlaceholder: 5,
+        valid: false,
+        done: false
+      };
+    case "weighted":
+      return {
+        kg: 0,
+        reps: "",
+        repsPlaceholder: 5,
+        valid: false,
+        done: false
+      };
+    default:
+      return {
+        time: 0,
+        validInput: false,
+        done: false
+      };
+  }
+};
+
+
 export default {
-  generateRoutineComponentObject
+  generateRoutineComponentObject,
+  getNewExerciseSet
 };

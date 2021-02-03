@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Button, ActivityIndicator } from 'react-native';
 
 import RepsInput from './RepsInput';
 import RepsInputHeader from './RepsInputHeader';
 
 
-const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone }) => {
+const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone, addSet }) => {
+
+  if (!exercise.sets) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <View>
@@ -23,8 +27,11 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSet
           />
         ))
       }
+      <Button
+        title="Add new set"
+        onPress={() => addSet({ exerciseIndex, exerciseType: exercise.type })}
+      />
     </View>
-    // add set
   );
 
 };
