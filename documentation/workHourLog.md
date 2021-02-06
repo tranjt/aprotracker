@@ -20,6 +20,10 @@
 |  2.2  | 3    | initial exercisecard for reps only type input |
 |  3.2  | 4    | added functionality checkbox, add new set and some css for exercise card |
 |       | 2    | reading some more about hook and setTimeout |
-| total | 53   | | 
+|  6.2  | 1    | reading some more about hook |
+|       | 1    | add duration timer |
+|       | 2    | add parsing of done exercises and buttons |
+|       | 1    | add notification |
+| total | 58   | | 
 
 
