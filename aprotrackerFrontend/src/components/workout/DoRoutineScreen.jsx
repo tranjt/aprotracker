@@ -6,6 +6,8 @@ import ExerciseCard from './ExerciseCard';
 import routines from '../../data/routines';
 import workoutService from '../../service/workout';
 import useInterval from '../../hooks/useInterval';
+import Notification from '../Notification';
+import useNotifiction from '../../hooks/useNotification';
 
 // const testgeneration = {
 //   name: 'recommended routine',
@@ -52,6 +54,7 @@ const DoRoutineScreen = ({ navigation }) => {
   const [routineName, setRoutineName] = useState('');
   const [exercises, setExercises] = useState([]);
   const [count, setCount] = useState(0);
+  const [notifcation, setNotifiction] = useNotifiction();
 
   useEffect(() => {
     const routine = workoutService.generateRoutineComponentObject(routines[2]);
@@ -74,7 +77,7 @@ const DoRoutineScreen = ({ navigation }) => {
     const parsedExercises = workoutService.parseDoneExercises(doneExercises);    
 
     if (parsedExercises.length === 0) {
-      //show notification
+      setNotifiction("Some sets must be completed to finish routine!");
     }
     else {
       Alert.alert(
@@ -136,6 +139,7 @@ const DoRoutineScreen = ({ navigation }) => {
       </View>
       <Text>Do Routine Screen!</Text>
       <Text>{routineName}</Text>
+      <Notification notification={notifcation} />
       <ScrollView >
         {
           exercises.map((exercise, exerciseIndex) => (
