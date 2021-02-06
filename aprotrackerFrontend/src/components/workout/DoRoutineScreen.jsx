@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, Button, View, StyleSheet } from 'react-native';
+import { ScrollView, Text, Button, View, StyleSheet, Alert } from 'react-native';
 import Constants from 'expo-constants';
 
 import ExerciseCard from './ExerciseCard';
 import routines from '../../data/routines';
 import workoutService from '../../service/workout';
-import useInterval from '../hooks/useInterval';
+import useInterval from '../../hooks/useInterval';
 
 // const testgeneration = {
 //   name: 'recommended routine',
@@ -58,12 +58,41 @@ const DoRoutineScreen = ({ navigation }) => {
     //console.log("routine " + JSON.stringify(routine));
     setRoutineName(routine.name);
     setExercises([...routine.exercises]);
-    console.log(`exercises ${JSON.stringify(routine.exercises)}`);
+    //console.log(`exercises ${JSON.stringify(routine.exercises)}`);
   }, []);
 
   useInterval(() => {
     setCount(count + 1);
   }, 1000);
+
+  const handleSubmit = (finishedExercises) => {
+    console.log("finishedExercises " + JSON.stringify(finishedExercises));
+
+  };
+
+  const routineFinished = (doneExercises) => {
+    const parsedExercises = workoutService.parseDoneExercises(doneExercises);    
+
+    if (parsedExercises.length === 0) {
+      //show notification
+    }
+    else {
+      Alert.alert(
+        "Are you finished?",
+        "All empty or none checked sets will be discarded!",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "Finish workout", onPress: () => handleSubmit(parsedExercises) }
+        ],
+        { cancelable: false }
+      );
+    }
+
+  };
 
   const addSet = ({ exerciseIndex, exerciseType }) => {
     const newSet = workoutService.getNewExerciseSet(exerciseType);
@@ -75,17 +104,11 @@ const DoRoutineScreen = ({ navigation }) => {
     setExercises([...updatedExercises]);
   };
 
-  // const handleSubmit = ()=> {
-  //   // just save everything even node ids
-  //   // then use target on server side
-  // };
-
   const handleChange = ({ value, setIndex, exerciseIndex }) => {
     const updatedExercises = [...exercises];
-
-    console.log(`exerciseIndex ${exerciseIndex}`);
-    console.log(`setIndex ${setIndex}`);
-    console.log(`value ${value}`);
+    // console.log(`exerciseIndex ${exerciseIndex}`);
+    // console.log(`setIndex ${setIndex}`);
+    // console.log(`value ${value}`);
 
     if (Number(value) > 0) {
       updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
@@ -109,6 +132,7 @@ const DoRoutineScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View>
         <Text>Duration: {workoutService.secondsToHms(count)}</Text>
+        <Button onPress={() => routineFinished(exercises)} title="Finished" />
       </View>
       <Text>Do Routine Screen!</Text>
       <Text>{routineName}</Text>

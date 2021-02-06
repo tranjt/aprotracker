@@ -41,8 +41,8 @@ const generateRoutineComponentObject = (routine) => {
     name: routine.name,
     exercises:
       routine.exercises.map(exercise => {
-        console.log("exercise " + JSON.stringify(exercise));
-        console.log();
+        // console.log("exercise " + JSON.stringify(exercise));
+        // console.log();
         return {
           name: exercise.name,
           type: exercise.type,
@@ -63,7 +63,7 @@ const getNewExerciseSet = (exerciseType) => {
       };
     case "weighted":
       return {
-        kg: 0,
+        kg: "",
         reps: "",
         repsPlaceholder: 5,
         validInput: false,
@@ -71,7 +71,7 @@ const getNewExerciseSet = (exerciseType) => {
       };
     default:
       return {
-        time: 0,
+        time: "",
         validInput: false,
         done: false
       };
@@ -90,9 +90,45 @@ const secondsToHms = (d) => {
   return hDisplay + mDisplay + sDisplay;
 };
 
+const parseDoneSet = (exercise) => {
+  return exercise.sets.map(set => {
+    if (set.done) {
+      switch (exercise.type) {
+        case "repsOnly":
+          return {
+            reps: Number(set.reps)
+          };
+        case "weighted":
+          return {
+            reps: Number(set.reps),
+            kg: Number(set.kg)
+          };
+        default:
+          return {
+            time: Number(set.time)
+          };
+      }
+    }
+  });
+};
+
+const parseDoneExercises = (exercises) => {
+  const parsedExercises = exercises.map(exercise => {
+    return {
+      name: exercise.name,
+      type: exercise.type,
+      //remove non done sets then remove null, undefined set
+      sets: parseDoneSet(exercise).filter(ex => ex) 
+    };
+  });  
+  //remove exercise with empty sets
+  return parsedExercises.filter(exercise => exercise.sets.length !== 0); 
+};
+
 
 export default {
   generateRoutineComponentObject,
   getNewExerciseSet,
-  secondsToHms
+  secondsToHms,
+  parseDoneExercises
 };
