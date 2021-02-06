@@ -58,7 +58,7 @@ const getNewExerciseSet = (exerciseType) => {
       return {
         reps: "",
         repsPlaceholder: 5,
-        valid: false,
+        validInput: false,
         done: false
       };
     case "weighted":
@@ -66,7 +66,7 @@ const getNewExerciseSet = (exerciseType) => {
         kg: 0,
         reps: "",
         repsPlaceholder: 5,
-        valid: false,
+        validInput: false,
         done: false
       };
     default:
@@ -78,8 +78,21 @@ const getNewExerciseSet = (exerciseType) => {
   }
 };
 
+const secondsToHms = (d) => {
+  d = Number(d);
+  const h = Math.floor(d / 3600);
+  const m = Math.floor(d % 3600 / 60);
+  const s = Math.floor(d % 3600 % 60);
+
+  const hDisplay = h > 0 ? (h < 10 ? "0" : "") + h + ":" : "";
+  const mDisplay = m > 0 ? (m < 10 ? "0" : "") + m + ":" : "";
+  const sDisplay = s > 0 ? (s < 10 ? "0" : "") + s : "";
+  return hDisplay + mDisplay + sDisplay;
+};
+
 
 export default {
   generateRoutineComponentObject,
-  getNewExerciseSet
+  getNewExerciseSet,
+  secondsToHms
 };
