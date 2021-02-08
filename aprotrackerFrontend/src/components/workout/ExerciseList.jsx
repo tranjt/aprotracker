@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 
-const ExerciseList = ({ execises }) => {
-  console.log(JSON.stringify(execises));
+const ExerciseList = ({ execises }) => {  
 
   return (
     <View>
