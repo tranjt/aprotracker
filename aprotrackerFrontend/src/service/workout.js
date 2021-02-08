@@ -1,3 +1,5 @@
+import routines from '../data/routines';
+
 
 const generateRoutineComponentObject = (routine) => {
   const buildTrainingSets = ({ type, sets }) => {
@@ -86,7 +88,8 @@ const secondsToHms = (d) => {
 
   const hDisplay = h > 0 ? (h < 10 ? "0" : "") + h + ":" : "";
   const mDisplay = m > 0 ? (m < 10 ? "0" : "") + m + ":" : "";
-  const sDisplay = s > 0 ? (s < 10 ? "0" : "") + s : "";
+  const sDisplay = s > 0 ? (s < 10 ? "0" : "") + s : "00";
+
   return hDisplay + mDisplay + sDisplay;
 };
 
@@ -118,11 +121,15 @@ const parseDoneExercises = (exercises) => {
       name: exercise.name,
       type: exercise.type,
       //remove non done sets then remove null, undefined set
-      sets: parseDoneSet(exercise).filter(ex => ex) 
+      sets: parseDoneSet(exercise).filter(ex => ex)
     };
-  });  
+  });
   //remove exercise with empty sets
-  return parsedExercises.filter(exercise => exercise.sets.length !== 0); 
+  return parsedExercises.filter(exercise => exercise.sets.length !== 0);
+};
+
+const getRoutines = () => {
+  return routines;
 };
 
 
@@ -130,5 +137,6 @@ export default {
   generateRoutineComponentObject,
   getNewExerciseSet,
   secondsToHms,
-  parseDoneExercises
+  parseDoneExercises,
+  getRoutines
 };

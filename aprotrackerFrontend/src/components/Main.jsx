@@ -40,16 +40,6 @@ function RoutineOverviewScreen({ navigation }) {
   );
 }
 
-// function DoRoutineScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Do Routine Screen!</Text>
-//       <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
-
-//     </View>
-//   );
-// }
-
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();

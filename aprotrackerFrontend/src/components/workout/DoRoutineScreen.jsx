@@ -74,7 +74,7 @@ const DoRoutineScreen = ({ navigation }) => {
   };
 
   const routineFinished = (doneExercises) => {
-    const parsedExercises = workoutService.parseDoneExercises(doneExercises);    
+    const parsedExercises = workoutService.parseDoneExercises(doneExercises);
 
     if (parsedExercises.length === 0) {
       setNotifiction("Some sets must be completed to finish routine!");
@@ -137,10 +137,9 @@ const DoRoutineScreen = ({ navigation }) => {
         <Text>Duration: {workoutService.secondsToHms(count)}</Text>
         <Button onPress={() => routineFinished(exercises)} title="Finished" />
       </View>
-      <Text>Do Routine Screen!</Text>
-      <Text>{routineName}</Text>
       <Notification notification={notifcation} />
       <ScrollView >
+        <Text>{routineName}</Text>
         {
           exercises.map((exercise, exerciseIndex) => (
             <ExerciseCard

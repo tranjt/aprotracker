@@ -1,6 +1,6 @@
 const routines = [
   {
-    name: 'one recommended routine',
+    name: 'One recommended routine',
     exercises: [
       {
         name: 'Pull-up',
@@ -60,7 +60,7 @@ const routines = [
     ],
   },
   {
-    name: 'recommended routine beginner',
+    name: 'Recommended routine beginner',
     exercises: [
 
       {
@@ -76,7 +76,7 @@ const routines = [
       {
         name: 'Parallel Bar Support Hold',
         type: 'repsOnly',
-        sets: [{ setCount: 3, repsPlaceholder: 5 }]
+        sets: { setCount: 3, repsPlaceholder: 5 }
       },
       {
         name: 'Romanian Deadlift Hinge',
