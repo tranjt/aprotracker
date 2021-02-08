@@ -1,7 +1,9 @@
 import routines from '../data/routines';
 
 
-const generateRoutineComponentObject = (routine) => {
+const generateRoutineComponentObject = (routineIndex) => {
+  const routine = routines[routineIndex];
+
   const buildTrainingSets = ({ type, sets }) => {
     switch (type) {
       case 'repsOnly':
@@ -132,11 +134,16 @@ const getRoutines = () => {
   return routines;
 };
 
+const getRoutine = (routineIndex) => {
+  return routines[routineIndex];
+};
+
 
 export default {
   generateRoutineComponentObject,
   getNewExerciseSet,
   secondsToHms,
   parseDoneExercises,
-  getRoutines
+  getRoutines,
+  getRoutine
 };

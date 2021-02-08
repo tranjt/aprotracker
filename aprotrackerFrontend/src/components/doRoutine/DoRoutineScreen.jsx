@@ -3,7 +3,6 @@ import { ScrollView, Text, Button, View, StyleSheet, Alert } from 'react-native'
 import Constants from 'expo-constants';
 
 import ExerciseCard from './ExerciseCard';
-import routines from '../../data/routines';
 import workoutService from '../../service/workout';
 import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
@@ -50,19 +49,20 @@ import useNotifiction from '../../hooks/useNotification';
 // }
 
 
-const DoRoutineScreen = ({ navigation }) => {
+const DoRoutineScreen = ({ navigation, route }) => {
   const [routineName, setRoutineName] = useState('');
   const [exercises, setExercises] = useState([]);
   const [count, setCount] = useState(0);
   const [notifcation, setNotifiction] = useNotifiction();
+  const { routineIndex } = route.params;
 
   useEffect(() => {
-    const routine = workoutService.generateRoutineComponentObject(routines[2]);
+    const routine = workoutService.generateRoutineComponentObject(routineIndex);
     //console.log("routine " + JSON.stringify(routine));
     setRoutineName(routine.name);
     setExercises([...routine.exercises]);
     //console.log(`exercises ${JSON.stringify(routine.exercises)}`);
-  }, []);
+  }, [routineIndex]);
 
   useInterval(() => {
     setCount(count + 1);

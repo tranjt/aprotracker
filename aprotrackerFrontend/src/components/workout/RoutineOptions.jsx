@@ -8,25 +8,27 @@ import ExerciseList from './ExerciseList';
 
 
 const RoutineOptions = ({ navigation }) => {
-  const routines = workoutService.getRoutines();  
+  const routines = workoutService.getRoutines();
 
   return (
     <ScrollView >
       {
-        routines.map((routine, key) => {
+        routines.map((routine, routineIndex) => {
           return (
-            <View key={`routine-${key}`} style={styles.card}>
+            <View key={`routine-${routineIndex}`} style={styles.card}>
               <Pressable
-               onPress={() => navigation.navigate('RoutineOverview', {
-                 routineName: routine.name
-               })}
+                onPress={() => navigation.navigate('RoutineOverview', {
+                  routineName: routine.name,
+                  routineIndex
+                })}
               >
                 <Text
                   fontWeight="bold"
                   fontSize="subheading"
                   style={styles.subheadingStyle}
-
-                >{routine.name}</Text>
+                >
+                  {routine.name}
+                </Text>
                 <ExerciseList execises={routine.exercises} />
               </Pressable>
             </View>
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
     marginVertical: 5,
     padding: 10,
-  }, 
+  },
   subheadingStyle: {
     color: "#0e1111",
     paddingBottom: 4,

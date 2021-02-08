@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import WorkoutScreen from './workout/WorkoutScreen';
 import DoRoutineScreen from './doRoutine/DoRoutineScreen';
+import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 
 function ProfileScreen() {
   return (
@@ -30,16 +32,6 @@ function ExerciseScreen() {
     </View>
   );
 }
-
-function RoutineOverviewScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is a routine overview screen!</Text>
-      <Button onPress={() => navigation.navigate('DoRoutine')} title="Do Routine" />
-    </View>
-  );
-}
-
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
