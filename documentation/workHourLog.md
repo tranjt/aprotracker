@@ -27,6 +27,7 @@
 |  8.2  | 2    | add workoutscreen for selection of routine  |
 |       | 1    | add routineOverviewScreen |
 |       | 5    | reading up more on graphql |
-| total | 66   | | 
+| 10.2  | 3    | reading up more on graphql |
+| total | 69   | | 
 
 
