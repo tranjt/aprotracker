@@ -28,6 +28,7 @@
 |       | 1    | add routineOverviewScreen |
 |       | 5    | reading up more on graphql |
 | 10.2  | 3    | reading up more on graphql |
-| total | 69   | | 
+| 13.2  | 3    | starting initial backend with graphql |
+| total | 72   | | 
 
 
