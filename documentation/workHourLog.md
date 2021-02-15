@@ -29,6 +29,7 @@
 |       | 5    | reading up more on graphql |
 | 10.2  | 3    | reading up more on graphql |
 | 13.2  | 3    | starting initial backend with graphql |
-| total | 72   | | 
+| 15.2  | 5    | added experimental queries and mutations backend |
+| total | 77   | | 
 
 
