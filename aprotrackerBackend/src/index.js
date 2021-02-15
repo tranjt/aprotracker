@@ -1,5 +1,73 @@
 const { ApolloServer, gql } = require('apollo-server')
 
+const routines = [
+  {
+    name: 'Mini recommended routine',
+    createdAt: "1979-01-30",
+    duration: 200,    
+    id: "rout-1"
+  },
+  {
+    name: 'Mini recommended routine',
+    createdAt: "1979-01-29",
+    duration: 200,    
+    id: "rout-2"
+  },
+  {
+    name: 'Mini recommended routine',
+    createdAt: "1979-01-29",
+    duration: 200,    
+    id: "rout-3"
+  }
+]
+
+const exercises = [
+  {
+    name: 'Pull-up',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-30",
+    id: "pull-1"
+  },
+  {
+    name: 'Squats',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-30",
+    id: "squa-1"
+  },
+  {
+    name: 'Pull-up',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-39",
+    id: "pull-2"
+  },
+  {
+    name: 'Squats',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-29",
+    id: "squa-2"
+  },
+  {
+    name: 'Pull-up',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-28",
+    id: "pull-3"
+  }, 
+  {
+    name: 'Squats',
+    type: 'repsOnly',
+    sets: [{ reps: 5 },{ reps: 5 },{ reps: 5 },],
+    createdAt: "1979-01-28",
+    id: "squa-3"
+  },
+]
+
+
+
 const typeDefs = gql`
   type User {    
     username: String!
@@ -12,6 +80,7 @@ const typeDefs = gql`
     type: String!
     createdAt: String
     sets: [ExerciseSet]
+    id: ID!
   }
 
   type ExerciseSet {
@@ -25,6 +94,7 @@ const typeDefs = gql`
     description: String
     createdAt: String
     duration: Int
+    id: ID!
   }   
 
   type Query {
