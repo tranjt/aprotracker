@@ -16,7 +16,13 @@ const schema = new mongoose.Schema({
   routine : {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Routine'
-  }
+  },
+  sets: [{
+    kg: Number,
+    reps: Number,
+    time: Number
+  }]
+
   
 })
 
