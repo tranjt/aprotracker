@@ -30,6 +30,7 @@
 | 10.2  | 3    | reading up more on graphql |
 | 13.2  | 3    | starting initial backend with graphql |
 | 15.2  | 5    | added experimental queries and mutations backend |
-| total | 77   | | 
+| 17.2  | 6    | queries and mutations backend connected to Mongoose |
+| total | 83   | | 
 
 
