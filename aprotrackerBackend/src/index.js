@@ -1,5 +1,18 @@
 const { ApolloServer, gql } = require('apollo-server')
-const { v1: uuid } = require('uuid')
+const config = require('./utils/config.js')
+const mongoose = require('mongoose')
+const Exercise = require('./models/exercise')
+const Routine = require('./models/routine')
+
+
+console.log('connecting to', config.MONGODB_URI)
+mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+  .then(() => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connection to MongoDB:', error.message)
+  })
 
 const routines = [
   {
@@ -126,9 +139,17 @@ const typeDefs = gql`
       ): Routine
   }
 `
-const createExercise = (args, routineId) => {
-  const newExercise = { ...args, id: uuid(), createdAt: Date(), routineId }
-  exercises.push(newExercise)
+
+
+const createExercise = async (exerciseInput, newRoutine) => {
+  const newExercise = new Exercise({
+    ...exerciseInput,
+    routine: newRoutine._id
+  })
+  await newExercise.save()
+  // every exercise must belong to a routine
+  newRoutine.exercises.push(newExercise._id)
+  await newRoutine.save()
 }
 
 
@@ -139,14 +160,15 @@ const resolvers = {
   },
 
   Mutation: {
-    addRoutine: (root, args) => {
+    addRoutine: async (root, args) => {
       const { name, duration, exercises } = args
-      const newRoutine = { name, duration, id: uuid(), createdAt: Date() }
-      exercises.forEach(exercise => {
-        createExercise(exercise, newRoutine.id)
+      const newRoutine = new Routine({ name, duration })
+      await newRoutine.save()
+
+      exercises.forEach(exerciseInput => {
+        createExercise(exerciseInput, newRoutine)
       });
 
-      routines.push(newRoutine)
       return newRoutine
     }
   }
