@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WorkoutScreen from './workout/WorkoutScreen';
 import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
+import HistoryScreen from './history/HistoryScreen';
 
 function ProfileScreen() {
   return (
@@ -16,14 +17,6 @@ function ProfileScreen() {
   );
 }
 
-function HistoryScreen({ route }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is the History screen!</Text>
-      <Text>{route.params?.someParam}</Text>
-    </View>
-  );
-}
 
 function ExerciseScreen() {
   return (

@@ -1,6 +1,7 @@
 import 'dotenv/config';
 
-export default  {
+export default {
+  expo: {
     name: "aprotrackerFrontend",
     slug: "aprotrackerFrontend",
     version: "1.0.0",
@@ -33,5 +34,6 @@ export default  {
       env: process.env.ENV,
       apolloURI: process.env.APOLLO_URI,
     },
-  };
+  }
+};
 
