@@ -31,6 +31,8 @@
 | 13.2  | 3    | starting initial backend with graphql |
 | 15.2  | 5    | added experimental queries and mutations backend |
 | 17.2  | 6    | queries and mutations backend connected to Mongoose |
-| total | 83   | | 
+| 18.2  | 3    | setting up graphql for frontend and queries |
+|       | 3    | bug fix form, addSet changed, working out data to use for mutations from frontend |
+| total | 89   | | 
 
 
