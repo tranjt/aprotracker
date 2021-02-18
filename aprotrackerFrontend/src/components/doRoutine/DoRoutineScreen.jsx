@@ -48,6 +48,18 @@ import useNotifiction from '../../hooks/useNotification';
 //   ]
 // }
 
+//finishedExercises 
+// [
+//   {"name":"Pull-up","type":"repsOnly","sets":[{"reps":2}]},
+//   {"name":"Squats","type":"repsOnly","sets":[{"reps":2}]},
+//   {"name":"Dips","type":"repsOnly","sets":[{"reps":2}]}
+// ]
+//time 11
+//finishedExercises [{"name":"Pull-up","type":"repsOnly","sets":[{"reps":2}]}]
+//time 7
+// finishedExercises [{"name":"Pull-up","type":"repsOnly","sets":[{"reps":2},{"reps":2}]}]
+// time 21
+
 
 const DoRoutineScreen = ({ navigation, route }) => {
   const [routineName, setRoutineName] = useState('');
@@ -70,6 +82,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   const handleSubmit = (finishedExercises) => {
     console.log("finishedExercises " + JSON.stringify(finishedExercises));
+    console.log(`time ${count}`);
 
   };
 
@@ -94,17 +107,15 @@ const DoRoutineScreen = ({ navigation, route }) => {
         { cancelable: false }
       );
     }
-
   };
 
   const addSet = ({ exerciseIndex, exerciseType }) => {
     const newSet = workoutService.getNewExerciseSet(exerciseType);
-    const updatedExercises = [
-      ...exercises,
-      exercises[exerciseIndex].sets.push(newSet)
-    ];
+    const updatedExercises = [...exercises];
 
-    setExercises([...updatedExercises]);
+    updatedExercises[exerciseIndex].sets.push(newSet);
+    setExercises(updatedExercises);
+
   };
 
   const handleChange = ({ value, setIndex, exerciseIndex }) => {
