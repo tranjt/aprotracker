@@ -20,7 +20,7 @@ const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseS
       <Text style={styles.setNumber}>{setIndex + 1}</Text>
       <Text style={styles.previous}>-</Text>
       <TextInput
-        placeholder="5"
+        placeholder={set.repsPlaceholder.toString()}
         style={repsTextInputStyle}
         onChangeText={value => handleChange({ value, setIndex, exerciseIndex })}
         value={set.reps}

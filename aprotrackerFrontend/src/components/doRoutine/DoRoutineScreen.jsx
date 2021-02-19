@@ -7,6 +7,7 @@ import workoutService from '../../service/workout';
 import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
+import useAddRoutine from '../../hooks/useAddRoutine';
 
 // const testgeneration = {
 //   name: 'recommended routine',
@@ -67,22 +68,36 @@ const DoRoutineScreen = ({ navigation, route }) => {
   const [count, setCount] = useState(0);
   const [notifcation, setNotifiction] = useNotifiction();
   const { routineIndex } = route.params;
+  const [addRoutine] = useAddRoutine();
 
   useEffect(() => {
     const routine = workoutService.generateRoutineComponentObject(routineIndex);
-    //console.log("routine " + JSON.stringify(routine));
     setRoutineName(routine.name);
     setExercises([...routine.exercises]);
-    //console.log(`exercises ${JSON.stringify(routine.exercises)}`);
+
   }, [routineIndex]);
 
   useInterval(() => {
     setCount(count + 1);
   }, 1000);
 
-  const handleSubmit = (finishedExercises) => {
-    console.log("finishedExercises " + JSON.stringify(finishedExercises));
-    console.log(`time ${count}`);
+  const handleSubmit = async (finishedExercises) => {
+    const testRoutine = {
+      name: routineName,
+      duration: count,
+      exercises: finishedExercises
+    };
+    console.log("testRoutine" + JSON.stringify(testRoutine));
+
+    try {
+      await addRoutine({
+        name: routineName,
+        duration: count,
+        exercises: finishedExercises
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
   };
 
@@ -120,9 +135,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   const handleChange = ({ value, setIndex, exerciseIndex }) => {
     const updatedExercises = [...exercises];
-    // console.log(`exerciseIndex ${exerciseIndex}`);
-    // console.log(`setIndex ${setIndex}`);
-    // console.log(`value ${value}`);
 
     if (Number(value) > 0) {
       updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
