@@ -33,6 +33,8 @@
 | 17.2  | 6    | queries and mutations backend connected to Mongoose |
 | 18.2  | 3    | setting up graphql for frontend and queries |
 |       | 3    | bug fix form, addSet changed, working out data to use for mutations from frontend |
-| total | 89   | | 
+| 19.2  | 3    | added mutations for done routine |
+|       | 3    | reading up on apollo and cache |
+| total | 95   | | 
 
 
