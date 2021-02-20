@@ -35,6 +35,7 @@
 |       | 3    | bug fix form, addSet changed, working out data to use for mutations from frontend |
 | 19.2  | 3    | added mutations for done routine |
 |       | 3    | reading up on apollo and cache |
-| total | 95   | | 
+| 20.2  | 3    | reading up on apollo cache and state management  |
+| total | 98   | | 
 
 

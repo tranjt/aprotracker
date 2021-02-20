@@ -7,8 +7,20 @@ mutation routineDone($name: String!, $duration: Int!, $exercises: [ExerciseInput
     duration: $duration, 
     exercises: $exercises
   ) {
-    name 
-    duration   
+    name
+    createdAt
+    id
+    exercises {
+      name            
+      createdAt
+      routine
+      type
+      sets {
+        reps
+        kg
+        time
+      }
+    }   
   }
 }
 `;
