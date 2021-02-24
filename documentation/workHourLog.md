@@ -36,6 +36,8 @@
 | 19.2  | 3    | added mutations for done routine |
 |       | 3    | reading up on apollo and cache |
 | 20.2  | 3    | reading up on apollo cache and state management  |
-| total | 98   | | 
+| 24.2  | 2    | improve history page functionalies |
+|       | 4    | bug fix server ParallelSaveError |
+| total | 104  | | 
 
 
