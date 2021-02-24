@@ -107,14 +107,16 @@ const resolvers = {
           let newExercise = await createExercise(exerciseInput, newRoutine)
           newRoutine.exercises.push(newExercise._id)
           await newRoutine.save()
+          
         } catch (error) {
           console.log('error' + error);
         }
       }
 
-      return newRoutine
+      return newRoutine.populate("exercises").execPopulate()
     }
   }
+
 }
 
 const server = new ApolloServer({
