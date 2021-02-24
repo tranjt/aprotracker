@@ -95,6 +95,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
         duration: count,
         exercises: finishedExercises
       });
+      navigation.navigate("History");
     } catch (error) {
       console.log(error);
     }
