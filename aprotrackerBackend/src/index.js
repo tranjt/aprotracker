@@ -80,10 +80,13 @@ const createExercise = async (exerciseInput, newRoutine) => {
     ...exerciseInput,
     routine: newRoutine._id
   })
-  await newExercise.save()
-  // every exercise must belong to a routine
-  newRoutine.exercises.push(newExercise._id)
-  await newRoutine.save()
+  try {
+    await newExercise.save()
+    return newExercise
+
+  } catch (error) {
+    console.log('error' + error);
+  }
 }
 
 
@@ -99,9 +102,15 @@ const resolvers = {
       const newRoutine = new Routine({ name, duration })
       await newRoutine.save()
 
-      exercises.forEach(exerciseInput => {
-        createExercise(exerciseInput, newRoutine)
-      });
+      for (let exerciseInput of exercises) {
+        try {
+          let newExercise = await createExercise(exerciseInput, newRoutine)
+          newRoutine.exercises.push(newExercise._id)
+          await newRoutine.save()
+        } catch (error) {
+          console.log('error' + error);
+        }
+      }
 
       return newRoutine
     }
