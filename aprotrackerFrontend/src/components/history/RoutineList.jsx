@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Text from '../Text';
 import ExerciseList from './ExerciseList';
+import { dateFormat } from '../../utils/timedate';
 
 
 const RoutineList = ({ routines }) => {
@@ -9,8 +10,7 @@ const RoutineList = ({ routines }) => {
   return (
     <ScrollView >
       {
-        routines.map((routine, routineIndex) => {
-          const date = new Date(Number(routine.createdAt));
+        routines.map((routine, routineIndex) => {          
           return (
             <View key={`routine-${routineIndex}`} style={styles.card}>
               <Text
@@ -19,11 +19,11 @@ const RoutineList = ({ routines }) => {
                 style={styles.title}
               >
                 {routine.name}
-              </Text>             
+              </Text>
               <Text
                 style={styles.date}
-              >
-                {`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}  `}
+              > completed               
+                {dateFormat(routine.createdAt)}
               </Text>
               <ExerciseList execises={routine.exercises} />
 

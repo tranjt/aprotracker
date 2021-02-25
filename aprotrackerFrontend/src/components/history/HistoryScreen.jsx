@@ -6,9 +6,7 @@ import RoutineList from './RoutineList';
 
 
 function HistoryScreen() {
-  const { routines, loading } = useRoutines();
-
-  console.log(JSON.stringify(routines));
+  const { routines, loading } = useRoutines(); 
   
   return (
     <View style={styles.container}>

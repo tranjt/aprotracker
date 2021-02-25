@@ -8,6 +8,7 @@ import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import useAddRoutine from '../../hooks/useAddRoutine';
+import { secondsToHms } from '../../utils/timedate';
 
 // const testgeneration = {
 //   name: 'recommended routine',
@@ -158,7 +159,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Duration: {workoutService.secondsToHms(count)}</Text>
+        <Text>Duration: {secondsToHms(count)}</Text>
         <Button onPress={() => routineFinished(exercises)} title="Finished" />
       </View>
       <Notification notification={notifcation} />
