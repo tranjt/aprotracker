@@ -3,7 +3,8 @@ import { TextInput, Text, View, StyleSheet } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 
 
-const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exerciseType }) => {
+const TimedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exerciseType }) => {
+
 
   const repsInputContainerStyle = [
     styles.container,
@@ -74,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RepsInput;
+export default TimedInput;

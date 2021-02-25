@@ -26,6 +26,7 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSet
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
               handleExerciseSetDone={handleExerciseSetDone}
+              exerciseType={exercise.type}
             />
           ))
         }

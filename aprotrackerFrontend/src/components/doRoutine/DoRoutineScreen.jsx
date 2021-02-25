@@ -135,17 +135,37 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   };
 
-  const handleChange = ({ value, setIndex, exerciseIndex }) => {
+  const handleChange = ({ value, setIndex, exerciseIndex, exerciseType }) => {
     const updatedExercises = [...exercises];
+    //swith exerciseIndex to get exersize type
+    //  reps
+    // timed
+    // weigted
+    // addd kg to handleChange
 
-    if (Number(value) > 0) {
-      updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-    } else {
-      updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-      updatedExercises[exerciseIndex].sets[setIndex].done = false;
+    switch (exerciseType) {
+      case "repsOnly": 
+        if (Number(value) > 0) {
+          updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+        } else {
+          updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+          updatedExercises[exerciseIndex].sets[setIndex].done = false;
+        }
+        updatedExercises[exerciseIndex].sets[setIndex].reps = value;      
+        break;
+
+      default:
+        break;
     }
 
-    updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+    // if (Number(value) > 0) {
+    //   updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+    // } else {
+    //   updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+    //   updatedExercises[exerciseIndex].sets[setIndex].done = false;
+    // }
+
+    // updatedExercises[exerciseIndex].sets[setIndex].reps = value;
     setExercises(updatedExercises);
   };
 
@@ -167,6 +187,8 @@ const DoRoutineScreen = ({ navigation, route }) => {
         <Text>{routineName}</Text>
         {
           exercises.map((exercise, exerciseIndex) => (
+            // check type repsExercrisdeCard timed exersize card  wieghted card
+            // switch
             <ExerciseCard
               key={`exercise-${exerciseIndex}`}
               exercise={exercise}
