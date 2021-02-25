@@ -4,21 +4,38 @@ import Text from '../Text';
 
 import workoutService from '../../service/workout';
 import ExerciseList from './ExerciseList';
-//import theme from '../../theme';
+import useRoutines from '../../hooks/useRoutines';
+import { dateFormat } from '../../utils/timedate';
+
 
 
 const RoutineOptions = ({ navigation }) => {
-  const routines = workoutService.getRoutines();
+  const routinesTemplates = workoutService.getRoutines();
+  const { routines } = useRoutines();
+
+  const renderLatestCompletedRoutine = (name) => {
+    const routine = routines?.find(routine => routine.name === name);
+    if (routine) {
+      return (
+        <Text style={styles.date}>
+          Last completed:
+          {dateFormat(routine.createdAt)}
+        </Text>
+      );
+    }
+    return null;
+  };
+
 
   return (
     <ScrollView >
       {
-        routines.map((routine, routineIndex) => {
+        routinesTemplates.map((routineTemplate, routineIndex) => {
           return (
             <View key={`routine-${routineIndex}`} style={styles.card}>
               <Pressable
                 onPress={() => navigation.navigate('RoutineOverview', {
-                  routineName: routine.name,
+                  routineName: routineTemplate.name,
                   routineIndex
                 })}
               >
@@ -27,9 +44,10 @@ const RoutineOptions = ({ navigation }) => {
                   fontSize="subheading"
                   style={styles.subheadingStyle}
                 >
-                  {routine.name}
+                  {routineTemplate.name}
                 </Text>
-                <ExerciseList execises={routine.exercises} />
+                {renderLatestCompletedRoutine(routineTemplate.name)}
+                <ExerciseList execises={routineTemplate.exercises} />
               </Pressable>
             </View>
           );
@@ -56,6 +74,10 @@ const styles = StyleSheet.create({
   subheadingStyle: {
     color: "#0e1111",
     paddingBottom: 4,
+  },
+  date: {
+    color: "#7e7e7e",
+    marginBottom: 10
   }
 });
 

@@ -22,7 +22,7 @@ const RoutineList = ({ routines }) => {
               </Text>
               <Text
                 style={styles.date}
-              > completed               
+              > completed:             
                 {dateFormat(routine.createdAt)}
               </Text>
               <ExerciseList execises={routine.exercises} />

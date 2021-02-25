@@ -7,7 +7,7 @@ const userRoutines = () => {
   });
 
   return {
-    routines: data ? data.allRoutines : undefined,
+    routines: data ? data.allRoutines.slice(0).reverse() : undefined,
     loading
   };
 };
