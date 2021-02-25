@@ -38,6 +38,8 @@
 | 20.2  | 3    | reading up on apollo cache and state management  |
 | 24.2  | 2    | improve history page functionalies |
 |       | 4    | bug fix server ParallelSaveError |
-| total | 104  | | 
+| 25.2  | 2    | bug fix server response app breaking when render |
+|       | 4    | refactor time service and started on implementation of TimedInput |
+| total | 110  | | 
 
 
