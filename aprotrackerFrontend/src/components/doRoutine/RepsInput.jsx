@@ -25,6 +25,7 @@ const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseS
         onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType })}
         value={set.reps}
         keyboardType="number-pad"
+        selectTextOnFocus
       />
       <CheckBox
         disabled={!set.validInput}

@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 
 import Button from '../Button';
-import RepsInput from './RepsInput';
-import RepsInputHeader from './RepsInputHeader';
+import TimedInput from './TimedInput';
+import TimedInputHeader from './TimedInputHeader';
 
 
-const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone, addSet }) => {
+const TimedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone, addSet }) => {
 
   if (!exercise.sets) {
     return <ActivityIndicator />;
@@ -16,10 +16,10 @@ const ExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSet
     <View style={styles.card}>
       <View style={styles.container}>
         <Text style={styles.exerciseName}>{exercise.name} </Text>
-        <RepsInputHeader />
+        <TimedInputHeader />
         {
           exercise.sets.map((set, setIndex) => (
-            <RepsInput
+            <TimedInput
               key={`set-${setIndex}`}
               set={set}
               setIndex={setIndex}
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ExerciseCard;
+export default TimedExerciseCard;

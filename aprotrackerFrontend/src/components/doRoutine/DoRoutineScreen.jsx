@@ -2,65 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, Text, Button, View, StyleSheet, Alert } from 'react-native';
 import Constants from 'expo-constants';
 
-import ExerciseCard from './ExerciseCard';
+import RepsExerciseCard from './RepsExerciseCard';
+import TimedExerciseCard from './TimedExerciseCard';
 import workoutService from '../../service/workout';
 import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import useAddRoutine from '../../hooks/useAddRoutine';
 import { secondsToHms } from '../../utils/timedate';
-
-// const testgeneration = {
-//   name: 'recommended routine',
-//   componentType: 'routine',
-//   exercises: [
-//     {
-//       name: 'Pull-up',
-//       type: 'repsOnly',
-//       sets: [
-//         { setNumber: 1, reps: 0, repsPlaceholder: 5 },
-//         { setNumber: 2, reps: 0, repsPlaceholder: 5 },
-//         { setNumber: 3, reps: 0, repsPlaceholder: 5 }
-//       ]
-//     },
-//     {
-//       name: 'Squats',
-//       type: 'repsOnly',
-//       sets: [
-//         { setNumber: 1, reps: 0, repsPlaceholder: 5 },
-//         { setNumber: 2, reps: 0, repsPlaceholder: 5 },
-//         { setNumber: 3, reps: 0, repsPlaceholder: 5 } 
-
-//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
-//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
-//         { reps: "", repsPlaceholder: 5, valid: false, done: false  } 
-//       ]
-//     }
-//   ]
-// };
-
-// {
-//   "name":"Pull-up",
-//   "type":"repsOnly",
-//   "sets":[
-//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
-//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
-//     {"reps":"","repsPlaceholder":5,"validInput":false,"done":false},
-//     {"reps":"1111","repsPlaceholder":5,"valid":false,"done":false}
-//   ]
-// }
-
-//finishedExercises 
-// [
-//   {"name":"Pull-up","type":"repsOnly","sets":[{"reps":2}]},
-//   {"name":"Squats","type":"repsOnly","sets":[{"reps":2}]},
-//   {"name":"Dips","type":"repsOnly","sets":[{"reps":2}]}
-// ]
-//time 11
-//finishedExercises [{"name":"Pull-up","type":"repsOnly","sets":[{"reps":2}]}]
-//time 7
-// finishedExercises [{"name":"Pull-up","type":"repsOnly","sets":[{"reps":2},{"reps":2}]}]
-// time 21
+import { stringToHmsFormat } from '../../utils/timedate';
 
 
 const DoRoutineScreen = ({ navigation, route }) => {
@@ -83,12 +33,12 @@ const DoRoutineScreen = ({ navigation, route }) => {
   }, 1000);
 
   const handleSubmit = async (finishedExercises) => {
-    const testRoutine = {
+    const testRoutine = { // remove this later
       name: routineName,
       duration: count,
       exercises: finishedExercises
     };
-    console.log("testRoutine" + JSON.stringify(testRoutine));
+    console.log("testRoutine" + JSON.stringify(testRoutine)); // remove this later
 
     try {
       await addRoutine({
@@ -104,6 +54,9 @@ const DoRoutineScreen = ({ navigation, route }) => {
   };
 
   const routineFinished = (doneExercises) => {
+    //todo fix timed set parseDoneExercises()
+    //testRoutine{"name":"One Timed recommended routine","duration":113,"exercises":[{"name":"Deadbugs prep","type":"timed","sets":[{"time":null},{"time":null}]}]}
+    // [{"time":null},{"time":null}] ?
     const parsedExercises = workoutService.parseDoneExercises(doneExercises);
 
     if (parsedExercises.length === 0) {
@@ -137,35 +90,34 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   const handleChange = ({ value, setIndex, exerciseIndex, exerciseType }) => {
     const updatedExercises = [...exercises];
-    //swith exerciseIndex to get exersize type
-    //  reps
-    // timed
-    // weigted
-    // addd kg to handleChange
+    // todo add
+    // weigthed
+    // add kg to handleChange
 
     switch (exerciseType) {
-      case "repsOnly": 
+      case "repsOnly":
         if (Number(value) > 0) {
           updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
         } else {
           updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
           updatedExercises[exerciseIndex].sets[setIndex].done = false;
         }
-        updatedExercises[exerciseIndex].sets[setIndex].reps = value;      
+        updatedExercises[exerciseIndex].sets[setIndex].reps = value;
         break;
 
-      default:
+      default: //timed
+        value = value.replace(":", "");
+        value = value.replace(/^0+/, ''); // removing leading zeroes
+        if (Number(value) > 0) {
+          updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+        } else {
+          updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+          updatedExercises[exerciseIndex].sets[setIndex].done = false;
+        }
+        updatedExercises[exerciseIndex].sets[setIndex].time = stringToHmsFormat(value);
         break;
     }
 
-    // if (Number(value) > 0) {
-    //   updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-    // } else {
-    //   updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-    //   updatedExercises[exerciseIndex].sets[setIndex].done = false;
-    // }
-
-    // updatedExercises[exerciseIndex].sets[setIndex].reps = value;
     setExercises(updatedExercises);
   };
 
@@ -173,6 +125,32 @@ const DoRoutineScreen = ({ navigation, route }) => {
     const updatedExercises = [...exercises];
     updatedExercises[exerciseIndex].sets[setIndex].done = checkboxValue;
     setExercises(updatedExercises);
+  };
+
+
+  const renderExerciseCard = (exercise, exerciseIndex) => {
+    switch (exercise.type) {
+      case "timed":
+        return (
+          <TimedExerciseCard
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            handleExerciseSetDone={handleExerciseSetDone}
+            addSet={addSet}
+          />);
+      default:
+        return (
+          <RepsExerciseCard
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            handleExerciseSetDone={handleExerciseSetDone}
+            addSet={addSet}
+          />);
+    }
   };
 
 
@@ -187,16 +165,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
         <Text>{routineName}</Text>
         {
           exercises.map((exercise, exerciseIndex) => (
-            // check type repsExercrisdeCard timed exersize card  wieghted card
-            // switch
-            <ExerciseCard
-              key={`exercise-${exerciseIndex}`}
-              exercise={exercise}
-              exerciseIndex={exerciseIndex}
-              handleChange={handleChange}
-              handleExerciseSetDone={handleExerciseSetDone}
-              addSet={addSet}
-            />
+            renderExerciseCard(exercise, exerciseIndex)
           ))
         }
         <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />

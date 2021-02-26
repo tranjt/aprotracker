@@ -10,6 +10,16 @@ const routines = [
     ]
   },
   {
+    name: 'One Timed recommended routine',
+    exercises: [
+      {
+        name: 'Deadbugs prep',
+        type: 'timed',
+        sets: { setCount: 1, timedPlaceholder: "00:00"  }
+      }   
+    ]
+  },
+  {
     name: 'Mini recommended routine',
     exercises: [
       {
@@ -116,7 +126,7 @@ const routines = [
       {
         name: 'Deadbugs prep',
         type: 'timed',
-        sets: { setCount: 1, repsPlaceholder: 5 }
+        sets: { setCount: 1, timedPlaceholder: "00:00" }
       },
     ]
   }

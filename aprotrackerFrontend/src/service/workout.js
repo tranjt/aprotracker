@@ -31,7 +31,8 @@ const generateRoutineComponentObject = (routineIndex) => {
         return Array.from(Array(sets.setCount),
           () => {
             return {
-              time: 0,
+              time: "",
+              timedPlaceholder: sets.timedPlaceholder,
               validInput: false,
               done: false
             };

@@ -3,6 +3,7 @@ import { TextInput, Text, View, StyleSheet } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 
 
+
 const TimedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exerciseType }) => {
 
 
@@ -21,11 +22,13 @@ const TimedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExercise
       <Text style={styles.setNumber}>{setIndex + 1}</Text>
       <Text style={styles.previous}>-</Text>
       <TextInput
-        placeholder={set.repsPlaceholder.toString()}
+      
+        placeholder={set.timedPlaceholder}
         style={repsTextInputStyle}
         onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType })}
-        value={set.reps}
+        value={set.time}
         keyboardType="number-pad"
+        selectTextOnFocus
       />
       <CheckBox
         disabled={!set.validInput}
