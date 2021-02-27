@@ -40,6 +40,10 @@
 |       | 4    | bug fix server ParallelSaveError |
 | 25.2  | 2    | bug fix server response app breaking when render |
 |       | 4    | refactor time service and started on implementation of TimedInput |
-| total | 110  | | 
+| 27.2  | 5    | timed input form works |
+|       | 1    | bug fix unsuccessful creation of timed exercises |
+|       | 2    | improved ui text and loading |
+|       | 4    | added support for weighted exercise type input |
+| total | 122  | | 
 
 
