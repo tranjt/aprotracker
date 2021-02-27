@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Text from '../Text';
 import ExerciseList from './ExerciseList';
 import { dateFormat } from '../../utils/timedate';
+import theme from '../../theme';
 
 
 const RoutineList = ({ routines }) => {
@@ -54,8 +55,9 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   date: {
-    color: "#7e7e7e",
-    marginBottom: 10
+    color: theme.colors.smallerText,
+    marginBottom: 10,
+    fontSize: theme.fontSizes.smallerText
   }
 });
 

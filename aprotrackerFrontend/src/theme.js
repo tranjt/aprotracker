@@ -7,9 +7,11 @@ const theme = {
     primary: '#0366d6',       
     appBar: '#24292e',
     error: '#d73a4a',    
-    disabled: '#c0c0c0'
+    disabled: '#c0c0c0',
+    smallerText: '#989898'
   },
   fontSizes: {
+    smallerText: 12,
     body: 14,
     subheading: 16,
     title: 20,

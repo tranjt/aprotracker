@@ -6,6 +6,7 @@ import workoutService from '../../service/workout';
 import ExerciseList from './ExerciseList';
 import useRoutines from '../../hooks/useRoutines';
 import { dateFormat } from '../../utils/timedate';
+import theme from '../../theme';
 
 
 
@@ -18,7 +19,7 @@ const RoutineOptions = ({ navigation }) => {
     if (routine) {
       return (
         <Text style={styles.date}>
-          Last completed:
+          last completed:
           {dateFormat(routine.createdAt)}
         </Text>
       );
@@ -76,8 +77,9 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   date: {
-    color: "#7e7e7e",
-    marginBottom: 10
+    color: theme.colors.smallerText,
+    marginBottom: 10,
+    fontSize: theme.fontSizes.smallerText
   }
 });
 

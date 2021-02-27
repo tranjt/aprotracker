@@ -1,31 +1,47 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import Constants from 'expo-constants';
 import useRoutines from '../../hooks/useRoutines';
 import RoutineList from './RoutineList';
 
 
 function HistoryScreen() {
-  const { routines, loading } = useRoutines(); 
-  
+  const { routines, loading } = useRoutines();
+
+  const renderScreen = () => {
+    if (loading) {
+      return <ActivityIndicator style={styles.activityIndicator} size="large" color="##7e7e7e" />;
+    }
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>History</Text>
+        <RoutineList routines={routines} />
+      </View>
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>History</Text>
-      {loading ? null : <RoutineList routines={routines} />}    
-    </View>
+    <>
+      {renderScreen()}
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,    
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: "white",
   },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: Constants.statusBarHeight,
+  },
   title: {
-     fontSize: 30,
-     marginLeft: 10
+    fontSize: 30,
+    marginLeft: 10
   }
 });
 
