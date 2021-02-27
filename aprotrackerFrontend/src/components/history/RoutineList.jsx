@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import Text from '../Text';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import ExerciseList from './ExerciseList';
 import { dateFormat } from '../../utils/timedate';
 import theme from '../../theme';
@@ -11,19 +10,17 @@ const RoutineList = ({ routines }) => {
   return (
     <ScrollView >
       {
-        routines.map((routine, routineIndex) => {          
+        routines.map((routine, routineIndex) => {
           return (
             <View key={`routine-${routineIndex}`} style={styles.card}>
               <Text
-                fontWeight="bold"
-                fontSize="subheading"
                 style={styles.title}
               >
                 {routine.name}
               </Text>
               <Text
                 style={styles.date}
-              > completed:             
+              > completed:
                 {dateFormat(routine.createdAt)}
               </Text>
               <ExerciseList execises={routine.exercises} />
@@ -56,8 +53,12 @@ const styles = StyleSheet.create({
   },
   date: {
     color: theme.colors.smallerText,
-    marginBottom: 10,
+    marginBottom: 5,
     fontSize: theme.fontSizes.smallerText
+  },
+  title: {
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.subheading
   }
 });
 

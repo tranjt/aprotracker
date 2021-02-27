@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
-import Text from '../Text';
+
 
 import RoutineOptions from './RoutineOptions';
 import theme from '../../theme';
@@ -11,7 +11,7 @@ const WorkoutScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text fontWeight="bold" fontSize="title" style={styles.title}>Workout Screen</Text>
+      <Text style={styles.title}>Workout Screen</Text>
       <RoutineOptions navigation={navigation} />
     </View>
   );
@@ -26,8 +26,10 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: "center",
-    paddingBottom: 15,    
-    color: theme.colors.primary
+    paddingBottom: 15,
+    color: theme.colors.primary,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.title
   }
 });
 

@@ -8,6 +8,7 @@ import WorkoutScreen from './workout/WorkoutScreen';
 import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
+import theme from '../theme';
 
 function ProfileScreen() {
   return (
@@ -43,9 +44,18 @@ function Home() {
 function Main() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
+      <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
         <RootStack.Screen name="Home" options={{ headerShown: false }} component={Home} />
-        <RootStack.Screen name="RoutineOverview" component={RoutineOverviewScreen} />
+        <RootStack.Screen
+          name="RoutineOverview"
+          component={RoutineOverviewScreen}
+          options={{
+            title: 'Routine Overview',
+            headerTitleStyle: {
+              color: theme.colors.primary,
+            }
+          }}
+        />
         <RootStack.Screen name="DoRoutine" component={DoRoutineScreen} options={{ headerShown: false }} />
       </RootStack.Navigator>
     </NavigationContainer>

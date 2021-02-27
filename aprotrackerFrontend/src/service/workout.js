@@ -72,9 +72,10 @@ const getNewExerciseSet = (exerciseType) => {
         validInput: false,
         done: false
       };
-    default:
+    default: //timed
       return {
         time: "",
+        timedPlaceholder: "00:00",
         validInput: false,
         done: false
       };

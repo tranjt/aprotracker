@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Pressable, StyleSheet, ScrollView } from 'react-native';
-import Text from '../Text';
+import { View, Pressable, StyleSheet, ScrollView, Text } from 'react-native';
+
 
 import workoutService from '../../service/workout';
 import ExerciseList from './ExerciseList';
@@ -41,8 +41,6 @@ const RoutineOptions = ({ navigation }) => {
                 })}
               >
                 <Text
-                  fontWeight="bold"
-                  fontSize="subheading"
                   style={styles.subheadingStyle}
                 >
                   {routineTemplate.name}
@@ -75,6 +73,8 @@ const styles = StyleSheet.create({
   subheadingStyle: {
     color: "#0e1111",
     paddingBottom: 4,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.subheading
   },
   date: {
     color: theme.colors.smallerText,
