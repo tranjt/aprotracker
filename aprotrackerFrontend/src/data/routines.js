@@ -6,7 +6,7 @@ const routines = [
         name: 'Pull-up',
         type: 'repsOnly',
         sets: { setCount: 3, repsPlaceholder: 5 }
-      }      
+      }
     ]
   },
   {
@@ -15,8 +15,18 @@ const routines = [
       {
         name: 'Deadbugs prep',
         type: 'timed',
-        sets: { setCount: 1, timedPlaceholder: "00:00"  }
-      }   
+        sets: { setCount: 1, timedPlaceholder: "00:00" }
+      }
+    ]
+  },
+  {
+    name: 'Back',
+    exercises: [
+      {
+        name: 'Deadlift',
+        type: 'weighted',
+        sets: { setCount: 3, kgPlaceholder: 20, repsPlaceholder: 5 }
+      }
     ]
   },
   {

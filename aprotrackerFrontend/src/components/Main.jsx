@@ -45,7 +45,11 @@ function Main() {
   return (
     <NavigationContainer>
       <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-        <RootStack.Screen name="Home" options={{ headerShown: false }} component={Home} />
+        <RootStack.Screen
+          name="Home"
+          options={{ headerShown: false }}
+          component={Home}
+        />
         <RootStack.Screen
           name="RoutineOverview"
           component={RoutineOverviewScreen}
@@ -53,10 +57,16 @@ function Main() {
             title: 'Routine Overview',
             headerTitleStyle: {
               color: theme.colors.primary,
+              fontFamily: theme.fonts.main,
+              fontWeight: theme.fontWeights.bold,
             }
           }}
         />
-        <RootStack.Screen name="DoRoutine" component={DoRoutineScreen} options={{ headerShown: false }} />
+        <RootStack.Screen
+          name="DoRoutine"
+          component={DoRoutineScreen}
+          options={{ headerShown: false }}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );

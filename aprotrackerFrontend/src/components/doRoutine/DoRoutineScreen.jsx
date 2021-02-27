@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 
 import RepsExerciseCard from './RepsExerciseCard';
 import TimedExerciseCard from './TimedExerciseCard';
+import WeightedExerciseCard from './WeightedExerciseCard';
 import workoutService from '../../service/workout';
 import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
@@ -85,11 +86,8 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   };
 
-  const handleChange = ({ value, setIndex, exerciseIndex, exerciseType }) => {
+  const handleChange = ({ value, setIndex, exerciseIndex, exerciseType, kgInputField }) => {
     const updatedExercises = [...exercises];
-    // todo add
-    // weigthed
-    // add kg to handleChange
 
     switch (exerciseType) {
       case "repsOnly":
@@ -100,6 +98,29 @@ const DoRoutineScreen = ({ navigation, route }) => {
           updatedExercises[exerciseIndex].sets[setIndex].done = false;
         }
         updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+        break;
+
+      case "weighted":
+        if (kgInputField) { //kg input field
+          const respValue = Number(updatedExercises[exerciseIndex].sets[setIndex].reps);
+          if (Number(value) > 0 && respValue) { // make sure kg and reps field are valid
+            updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+          } else {
+            updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+            updatedExercises[exerciseIndex].sets[setIndex].done = false;
+          }
+          updatedExercises[exerciseIndex].sets[setIndex].kg = value;
+        }
+        else { // reps input field
+          const kgValue = Number(updatedExercises[exerciseIndex].sets[setIndex].kg);
+          if (Number(value) > 0 && kgValue) { // make sure kg and reps field are valid
+            updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+          } else {
+            updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+            updatedExercises[exerciseIndex].sets[setIndex].done = false;
+          }
+          updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+        }
         break;
 
       default: //timed
@@ -130,6 +151,16 @@ const DoRoutineScreen = ({ navigation, route }) => {
       case "timed":
         return (
           <TimedExerciseCard
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            handleExerciseSetDone={handleExerciseSetDone}
+            addSet={addSet}
+          />);
+      case "weighted":
+        return (
+          <WeightedExerciseCard
             key={`exercise-${exerciseIndex}`}
             exercise={exercise}
             exerciseIndex={exerciseIndex}

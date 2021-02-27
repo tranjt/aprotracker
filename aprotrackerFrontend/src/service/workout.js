@@ -21,7 +21,8 @@ const generateRoutineComponentObject = (routineIndex) => {
           () => {
             return {
               reps: "",
-              kg: 0,
+              kg: "",
+              kgPlaceholder: sets.kgPlaceholder,
               repsPlaceholder: sets.repsPlaceholder,
               validInput: false,
               done: false
@@ -68,6 +69,7 @@ const getNewExerciseSet = (exerciseType) => {
       return {
         kg: "",
         reps: "",
+        kgPlaceholder: 25,
         repsPlaceholder: 5,
         validInput: false,
         done: false
