@@ -34,7 +34,7 @@ const typeDefs = gql`
   type ExerciseSet {
     kg: Int
     reps: Int
-    time: Int
+    time: String
   }
 
   input ExerciseInput {
@@ -47,7 +47,7 @@ const typeDefs = gql`
   input ExerciseSetInput {
     kg: Int
     reps: Int
-    time: Int
+    time: String
   }
 
   type Routine {

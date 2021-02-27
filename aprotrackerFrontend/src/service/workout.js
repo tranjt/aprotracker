@@ -94,9 +94,9 @@ const parseDoneSet = (exercise) => {
             reps: Number(set.reps),
             kg: Number(set.kg)
           };
-        default:
+        default: //timed
           return {
-            time: Number(set.time)
+            time: set.time
           };
       }
     }

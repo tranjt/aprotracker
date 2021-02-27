@@ -54,9 +54,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
   };
 
   const routineFinished = (doneExercises) => {
-    //todo fix timed set parseDoneExercises()
-    //testRoutine{"name":"One Timed recommended routine","duration":113,"exercises":[{"name":"Deadbugs prep","type":"timed","sets":[{"time":null},{"time":null}]}]}
-    // [{"time":null},{"time":null}] ?
     const parsedExercises = workoutService.parseDoneExercises(doneExercises);
 
     if (parsedExercises.length === 0) {
