@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import WorkoutScreen from './workout/WorkoutScreen';
 import DoRoutineScreen from './doRoutine/DoRoutineScreen';
@@ -32,7 +33,32 @@ const Tab = createBottomTabNavigator();
 
 function Home() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        // eslint-disable-next-line react/display-name
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'History') {
+            iconName = focused ? 'history' : 'history';
+          }
+          else if (route.name === 'Workout') {
+            iconName = focused ? 'fitness-center' : 'fitness-center';
+          }
+          else if (route.name === 'Exercise') {
+            iconName = focused ? 'inventory' : 'inventory';
+          }
+          return <MaterialIcons name={iconName} size={size} color={color} />;
+
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#0366d6',
+        inactiveTintColor: 'gray',
+      }}
+    >
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="History" component={HistoryScreen} />
       <Tab.Screen name="Workout" component={WorkoutScreen} />
