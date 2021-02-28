@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, Button, View, StyleSheet, Alert } from 'react-native';
+import { ScrollView, Text, Button as OgButton, View, StyleSheet, Alert } from 'react-native';
 import Constants from 'expo-constants';
 
 import RepsExerciseCard from './RepsExerciseCard';
@@ -12,6 +12,7 @@ import useNotifiction from '../../hooks/useNotification';
 import useAddRoutine from '../../hooks/useAddRoutine';
 import { secondsToHms } from '../../utils/timedate';
 import { stringToHmsFormat } from '../../utils/timedate';
+import Button from '../Button';
 
 
 const DoRoutineScreen = ({ navigation, route }) => {
@@ -86,53 +87,66 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   };
 
+  const changeValue = ({ value, setIndex, exerciseIndex, type, validInput, updatedExercises }) => {
+    if (validInput) {
+      updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
+    } else {
+      updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
+      updatedExercises[exerciseIndex].sets[setIndex].done = false;
+    }
+    updatedExercises[exerciseIndex].sets[setIndex][type] = value;
+  };
+
   const handleChange = ({ value, setIndex, exerciseIndex, exerciseType, kgInputField }) => {
     const updatedExercises = [...exercises];
 
     switch (exerciseType) {
       case "repsOnly":
-        if (Number(value) > 0) {
-          updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-        } else {
-          updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-          updatedExercises[exerciseIndex].sets[setIndex].done = false;
-        }
-        updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+        changeValue({
+          value,
+          setIndex,
+          exerciseIndex,
+          type: "reps",
+          validInput: (Number(value) > 0),
+          updatedExercises
+        });
         break;
-
       case "weighted":
         if (kgInputField) { //kg input field
           const respValue = Number(updatedExercises[exerciseIndex].sets[setIndex].reps);
-          if (Number(value) > 0 && respValue) { // make sure kg and reps field are valid
-            updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-          } else {
-            updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-            updatedExercises[exerciseIndex].sets[setIndex].done = false;
-          }
-          updatedExercises[exerciseIndex].sets[setIndex].kg = value;
+          changeValue({
+            value,
+            setIndex,
+            exerciseIndex,
+            type: "kg",
+            validInput: (Number(value) > 0 && respValue),
+            updatedExercises
+          });
         }
         else { // reps input field
           const kgValue = Number(updatedExercises[exerciseIndex].sets[setIndex].kg);
-          if (Number(value) > 0 && kgValue) { // make sure kg and reps field are valid
-            updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-          } else {
-            updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-            updatedExercises[exerciseIndex].sets[setIndex].done = false;
-          }
-          updatedExercises[exerciseIndex].sets[setIndex].reps = value;
+          changeValue({
+            value,
+            setIndex,
+            exerciseIndex,
+            type: "reps",
+            validInput: (Number(value) > 0 && kgValue),
+            updatedExercises
+          });
         }
         break;
 
       default: //timed
         value = value.replace(":", "");
         value = value.replace(/^0+/, ''); // removing leading zeroes
-        if (Number(value) > 0) {
-          updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
-        } else {
-          updatedExercises[exerciseIndex].sets[setIndex].validInput = false;
-          updatedExercises[exerciseIndex].sets[setIndex].done = false;
-        }
-        updatedExercises[exerciseIndex].sets[setIndex].time = stringToHmsFormat(value);
+        changeValue({
+          value: stringToHmsFormat(value),
+          setIndex,
+          exerciseIndex,
+          type: "time",
+          validInput: (Number(value) > 0),
+          updatedExercises
+        });
         break;
     }
 
@@ -186,7 +200,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       <View>
         <Text>Duration: {secondsToHms(count)}</Text>
-        <Button onPress={() => routineFinished(exercises)} title="Finished" />
+        <OgButton onPress={() => routineFinished(exercises)} title="Finished" />
       </View>
       <Notification notification={notifcation} />
       <ScrollView >
@@ -196,7 +210,11 @@ const DoRoutineScreen = ({ navigation, route }) => {
             renderExerciseCard(exercise, exerciseIndex)
           ))
         }
-        <Button onPress={() => navigation.navigate('History', { someParam: 'Workout done here are the stats' })} title="goTo History" />
+        <Button
+          onPress={() => navigation.navigate('Workout')}
+          title="Cancel workout!"
+          titleStyle={{ color: "tomato" }}
+        />
       </ScrollView>
     </View>
   );

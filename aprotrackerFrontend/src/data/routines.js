@@ -20,7 +20,7 @@ const routines = [
     ]
   },
   {
-    name: 'Back',
+    name: 'Back Routine',
     exercises: [
       {
         name: 'Deadlift',
