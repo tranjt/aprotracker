@@ -44,6 +44,7 @@
 |       | 1    | bug fix unsuccessful creation of timed exercises |
 |       | 2    | improved ui text and loading |
 |       | 4    | added support for weighted exercise type input |
-| total | 122  | | 
+| 28.2  | 2    | added icon to tabbar and refactor doRoutine |
+| total | 124  | | 
 
 
