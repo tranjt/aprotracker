@@ -15,7 +15,7 @@ import {  Text, View, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
     alignSelf: 'center'
   },
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   timedInput: {
     borderRadius: 4,
     marginLeft: 10,
-    textAlign: "center",
+    textAlign: 'center',
     flexGrow: 1,
     fontSize: 12,
     fontWeight: 'bold', 

@@ -24,12 +24,12 @@ const ExerciseList = ({ execises }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   text: {
-    color: "#7e7e7e"
+    color: '#7e7e7e'
   }
 });
 

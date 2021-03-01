@@ -33,7 +33,7 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
         onPress={() => navigation.navigate('DoRoutine', {
           routineIndex
         })}
-        title="Do routine"
+        title='Do routine'
       />
     </View>
   );
@@ -42,27 +42,27 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 10
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   execisesContainer: {
     paddingBottom: 30
   },
   execiseContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingTop: 15,
   },
   infoText: {
-    marginLeft: "auto",
-    fontWeight: "bold",
+    marginLeft: 'auto',
+    fontWeight: 'bold',
     paddingRight: 10
   },
   text: {
-    color: "#7e7e7e"
+    color: '#7e7e7e'
   },
 });
 

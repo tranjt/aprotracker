@@ -7,8 +7,8 @@ const ExerciseList = ({ execises }) => {
   return (
     <View>
       <Text
-        fontWeight="bold"
-        fontSize="subheading"
+        fontWeight='bold'
+        fontSize='subheading'
         style={styles.subheadingStyle}
       >
         Exercises
@@ -31,17 +31,17 @@ const ExerciseList = ({ execises }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   text: {
-    color: "#7e7e7e"
+    color: '#7e7e7e'
   },
   subheadingStyle: {
-    color: "#0e1111",
+    color: '#0e1111',
     paddingBottom: 4,
-    fontWeight: "bold"
+    fontWeight: 'bold'
     
   },
 });

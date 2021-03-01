@@ -11,7 +11,7 @@ function HistoryScreen() {
 
   const renderScreen = () => {
     if (loading) {
-      return <ActivityIndicator style={styles.activityIndicator} size="large" color="#7e7e7e" />;
+      return <ActivityIndicator style={styles.activityIndicator} size='large' color='#7e7e7e' />;
     }
     return (
       <View style={styles.container}>
@@ -33,18 +33,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   activityIndicator: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
   },
   title: {
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.title,
     color: theme.colors.primary,
-    alignSelf: "center",
+    alignSelf: 'center',
     marginLeft: 10
   }
 });

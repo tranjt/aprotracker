@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   title: {
-    alignSelf: "center",
+    alignSelf: 'center',
     paddingBottom: 15,
     color: theme.colors.primary,
     fontWeight: theme.fontWeights.bold,

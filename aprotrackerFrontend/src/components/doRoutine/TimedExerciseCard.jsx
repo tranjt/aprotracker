@@ -31,7 +31,7 @@ const TimedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerci
           ))
         }
         <Button
-          title="ADD SET"
+          title='ADD SET'
           onPress={() => addSet({ exerciseIndex, exerciseType: exercise.type })}
           style={styles.button}
           titleStyle={styles.titleStyle}
@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 6,
     elevation: 3,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     shadowOffset: { width: 1, height: 1 },
-    shadowColor: "#333",
+    shadowColor: '#333',
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginHorizontal: 4,
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   button: {
-    alignSelf: "flex-start",
-    backgroundColor: "#ececec",
+    alignSelf: 'flex-start',
+    backgroundColor: '#ececec',
   },
   titleStyle: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 12,
-    color: "#7e7e7e"
+    color: '#7e7e7e'
   }
 });
 

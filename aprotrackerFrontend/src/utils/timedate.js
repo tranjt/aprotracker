@@ -4,9 +4,9 @@ export const secondsToHms = (d) => {
   const m = Math.floor(d % 3600 / 60);
   const s = Math.floor(d % 3600 % 60);
 
-  const hDisplay = h > 0 ? (h < 10 ? "0" : "") + h + ":" : "";
-  const mDisplay = m > 0 ? (m < 10 ? "0" : "") + m + ":" : "";
-  const sDisplay = s > 0 ? (s < 10 ? "0" : "") + s : "00";
+  const hDisplay = h > 0 ? (h < 10 ? '0' : '') + h + ':' : '';
+  const mDisplay = m > 0 ? (m < 10 ? '0' : '') + m + ':' : '';
+  const sDisplay = s > 0 ? (s < 10 ? '0' : '') + s : '00';
 
   return hDisplay + mDisplay + sDisplay;
 };
@@ -18,14 +18,14 @@ export const dateFormat = (time) => {
 };
 
 export const stringToHmsFormat = (str) => {
-  let modifedStr = "";  
+  let modifedStr = '';
 
   switch (str.length) {
     case 1:
-      modifedStr = "00:0" + str;
+      modifedStr = '00:0' + str;
       break;
     case 2:
-      modifedStr = "00:" + str;
+      modifedStr = '00:' + str;
       break;
     case 3:
       modifedStr = `0${str.charAt(0)}:${str.substring(1)}`;
@@ -36,12 +36,17 @@ export const stringToHmsFormat = (str) => {
     case 5:
       modifedStr = `0${str.charAt(0)}:${str.substring(1, 3)}:${str.substring(3)}`;
       break;
+    case 6:   
+      modifedStr = `${str.substring(0, 2)}:${str.substring(2, 4)}:${str.substring(4, 6)}`;
+      break;
+    case 7:  
+      modifedStr = `${str.substring(1, 3)}:${str.substring(3, 5)}:${str.substring(5, 7)}`;      
+      break;
     default:
       modifedStr = str;
       break;
-
-  }
+  }  
+  
   return modifedStr;
-
 };
 

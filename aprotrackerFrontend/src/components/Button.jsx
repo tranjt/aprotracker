@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, Pressable } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
 const Button = ({ title, style, titleStyle, onPress }) => {
   const buttonStyle = [
@@ -26,12 +26,12 @@ const Button = ({ title, style, titleStyle, onPress }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingHorizontal: 10
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
     padding: 10
   },
   text: {

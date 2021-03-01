@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
 const useNotification = () => {
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState('');
 
   useEffect(() => {
     let timeoutID = setTimeout(() => {
-      setNotification("");
+      setNotification('');
     }, 5000);
 
     return () => clearTimeout(timeoutID);

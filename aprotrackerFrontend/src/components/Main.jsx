@@ -59,10 +59,10 @@ function Home() {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="History" component={HistoryScreen} />
-      <Tab.Screen name="Workout" component={WorkoutScreen} />
-      <Tab.Screen name="Exercise" component={ExerciseScreen} />
+      <Tab.Screen name='Profile' component={ProfileScreen} />
+      <Tab.Screen name='History' component={HistoryScreen} />
+      <Tab.Screen name='Workout' component={WorkoutScreen} />
+      <Tab.Screen name='Exercise' component={ExerciseScreen} />
     </Tab.Navigator>
   );
 }
@@ -72,12 +72,12 @@ function Main() {
     <NavigationContainer>
       <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
         <RootStack.Screen
-          name="Home"
+          name='Home'
           options={{ headerShown: false }}
           component={Home}
         />
         <RootStack.Screen
-          name="RoutineOverview"
+          name='RoutineOverview'
           component={RoutineOverviewScreen}
           options={{
             title: 'Routine Overview',
@@ -89,7 +89,7 @@ function Main() {
           }}
         />
         <RootStack.Screen
-          name="DoRoutine"
+          name='DoRoutine'
           component={DoRoutineScreen}
           options={{ headerShown: false }}
         />

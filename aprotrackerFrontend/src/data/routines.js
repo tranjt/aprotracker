@@ -15,7 +15,7 @@ const routines = [
       {
         name: 'Deadbugs prep',
         type: 'timed',
-        sets: { setCount: 1, timedPlaceholder: "00:00" }
+        sets: { setCount: 1, timedPlaceholder: '00:00' }
       }
     ]
   },
@@ -136,7 +136,7 @@ const routines = [
       {
         name: 'Deadbugs prep',
         type: 'timed',
-        sets: { setCount: 1, timedPlaceholder: "00:00" }
+        sets: { setCount: 1, timedPlaceholder: '00:00' }
       },
     ]
   }

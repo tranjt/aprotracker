@@ -40,7 +40,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
       duration: count,
       exercises: finishedExercises
     };
-    console.log("testRoutine" + JSON.stringify(testRoutine)); // remove this later
+    console.log('testRoutine' + JSON.stringify(testRoutine)); // remove this later
 
     try {
       await addRoutine({
@@ -48,30 +48,29 @@ const DoRoutineScreen = ({ navigation, route }) => {
         duration: count,
         exercises: finishedExercises
       });
-      navigation.navigate("History");
+      navigation.navigate('History');
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const routineFinished = (doneExercises) => {
     const parsedExercises = workoutService.parseDoneExercises(doneExercises);
 
     if (parsedExercises.length === 0) {
-      setNotifiction("Some sets must be completed to finish routine!");
+      setNotifiction('Some sets must be completed to finish routine!');
     }
     else {
       Alert.alert(
-        "Are you finished?",
-        "All empty or none checked sets will be discarded!",
+        'Are you finished?',
+        'All empty or none checked sets will be discarded!',
         [
           {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel'
           },
-          { text: "Finish workout", onPress: () => handleSubmit(parsedExercises) }
+          { text: 'Finish workout', onPress: () => handleSubmit(parsedExercises) }
         ],
         { cancelable: false }
       );
@@ -84,10 +83,9 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
     updatedExercises[exerciseIndex].sets.push(newSet);
     setExercises(updatedExercises);
-
   };
 
-  const changeValue = ({ value, setIndex, exerciseIndex, type, validInput, updatedExercises }) => {
+  const changeSetValue = ({ value, setIndex, exerciseIndex, type, validInput, updatedExercises }) => {
     if (validInput) {
       updatedExercises[exerciseIndex].sets[setIndex].validInput = true;
     } else {
@@ -101,49 +99,48 @@ const DoRoutineScreen = ({ navigation, route }) => {
     const updatedExercises = [...exercises];
 
     switch (exerciseType) {
-      case "repsOnly":
-        changeValue({
+      case 'repsOnly':
+        changeSetValue({
           value,
           setIndex,
           exerciseIndex,
-          type: "reps",
+          type: 'reps',
           validInput: (Number(value) > 0),
           updatedExercises
         });
         break;
-      case "weighted":
+      case 'weighted':
         if (kgInputField) { //kg input field
           const respValue = Number(updatedExercises[exerciseIndex].sets[setIndex].reps);
-          changeValue({
+          changeSetValue({
             value,
             setIndex,
             exerciseIndex,
-            type: "kg",
-            validInput: (Number(value) > 0 && respValue),
+            type: 'kg',
+            validInput: (Number(value) > 0 && respValue), // make sure kg and reps field are valid
             updatedExercises
           });
         }
         else { // reps input field
           const kgValue = Number(updatedExercises[exerciseIndex].sets[setIndex].kg);
-          changeValue({
+          changeSetValue({
             value,
             setIndex,
             exerciseIndex,
-            type: "reps",
-            validInput: (Number(value) > 0 && kgValue),
+            type: 'reps',
+            validInput: (Number(value) > 0 && kgValue), // make sure kg and reps field are valid
             updatedExercises
           });
         }
         break;
-
       default: //timed
-        value = value.replace(":", "");
+        value = value.replace(/:/g, '');
         value = value.replace(/^0+/, ''); // removing leading zeroes
-        changeValue({
+        changeSetValue({
           value: stringToHmsFormat(value),
           setIndex,
           exerciseIndex,
-          type: "time",
+          type: 'time',
           validInput: (Number(value) > 0),
           updatedExercises
         });
@@ -162,7 +159,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   const renderExerciseCard = (exercise, exerciseIndex) => {
     switch (exercise.type) {
-      case "timed":
+      case 'timed':
         return (
           <TimedExerciseCard
             key={`exercise-${exerciseIndex}`}
@@ -172,7 +169,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
             handleExerciseSetDone={handleExerciseSetDone}
             addSet={addSet}
           />);
-      case "weighted":
+      case 'weighted':
         return (
           <WeightedExerciseCard
             key={`exercise-${exerciseIndex}`}
@@ -200,7 +197,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       <View>
         <Text>Duration: {secondsToHms(count)}</Text>
-        <OgButton onPress={() => routineFinished(exercises)} title="Finished" />
+        <OgButton onPress={() => routineFinished(exercises)} title='Finished' />
       </View>
       <Notification notification={notifcation} />
       <ScrollView >
@@ -212,8 +209,8 @@ const DoRoutineScreen = ({ navigation, route }) => {
         }
         <Button
           onPress={() => navigation.navigate('Workout')}
-          title="Cancel workout!"
-          titleStyle={{ color: "tomato" }}
+          title='Cancel workout!'
+          titleStyle={{ color: 'tomato' }}
         />
       </ScrollView>
     </View>
