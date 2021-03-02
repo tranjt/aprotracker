@@ -24,3 +24,28 @@ mutation routineDone($name: String!, $duration: Int!, $exercises: [ExerciseInput
   }
 }
 `;
+
+
+export const SIGN_UP = gql` 
+mutation CreateUser ($username: String!, $password: String!) {
+  createUser(
+    username: $username",
+    password: $password
+  ) {
+    username
+    id  
+    createdAt	
+  }
+}
+`;
+
+export const SIGN_IN = gql`
+mutation Login ($username: String!, $password: String!) {
+  login(
+    username: $username",
+    password: $password
+  ) {
+    value
+  }
+}
+`;
