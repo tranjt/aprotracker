@@ -1,9 +1,16 @@
-const { ApolloServer, gql } = require('apollo-server')
-const config = require('./utils/config.js')
+const { ApolloServer, UserInputError } = require('apollo-server')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
+const config = require('./utils/config.js')
 const Exercise = require('./models/exercise')
 const Routine = require('./models/routine')
+const User = require('./models/user')
+const typeDefs = require('./typeDefs')
 
+
+const JWT_SECRET = config.TOKEN_SECRET
 
 console.log('connecting to', config.MONGODB_URI)
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
@@ -13,66 +20,6 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
   .catch((error) => {
     console.log('error connection to MongoDB:', error.message)
   })
-
-
-const typeDefs = gql`
-  type User {    
-    username: String!
-    id: ID!
-  }
-
-  type Exercise {
-    name: String!
-    description: String
-    type: String!
-    createdAt: String!
-    sets: [ExerciseSet!]!
-    id: ID!
-    routine: ID!
-  }
-
-  type ExerciseSet {
-    kg: Int
-    reps: Int
-    time: String
-  }
-
-  input ExerciseInput {
-    name: String!
-    description: String
-    type: String!    
-    sets: [ExerciseSetInput]   
-  }
-
-  input ExerciseSetInput {
-    kg: Int
-    reps: Int
-    time: String
-  }
-
-  type Routine {
-    name: String!
-    description: String
-    createdAt: String!
-    duration: Int!
-    exercises: [Exercise!]!
-    id: ID!
-  }   
-  
-
-  type Query {
-    allRoutines: [Routine!]!
-    allExercises: [Exercise!]!
-  }
-
-  type Mutation {
-    addRoutine(
-      name: String!,
-      duration: Int!,
-      exercises: [ExerciseInput]
-      ): Routine
-  }
-`
 
 
 const createExercise = async (exerciseInput, newRoutine) => {
@@ -92,7 +39,7 @@ const createExercise = async (exerciseInput, newRoutine) => {
 
 const resolvers = {
   Query: {
-    allRoutines: () => Routine.find({}).populate("exercises"),
+    allRoutines: () => Routine.find({}).populate('exercises'),
     allExercises: () => Exercise.find({})
   },
 
@@ -107,14 +54,50 @@ const resolvers = {
           let newExercise = await createExercise(exerciseInput, newRoutine)
           newRoutine.exercises.push(newExercise._id)
           await newRoutine.save()
-          
+
         } catch (error) {
           console.log('error' + error);
         }
       }
 
-      return newRoutine.populate("exercises").execPopulate()
-    }
+      return newRoutine.populate('exercises').execPopulate()
+    },
+
+    createUser: async (root, args) => {      
+
+      const saltRounds = 10
+      const passwordHash = await bcrypt.hash(args.password, saltRounds)
+      const user = new User({
+        username: args.username,
+        passwordHash
+      })
+
+      return user.save()
+        .catch(error => {
+          throw new UserInputError(error.message, {
+            invalidArgs: args,
+          })
+        })
+    },
+
+    login: async (root, args) => {
+      const user = await User.findOne({ username: args.username })
+
+      const passwordCorrect = user === null
+        ? false
+        : await bcrypt.compare(args.password, user.passwordHash)
+
+      if (!(user && passwordCorrect)) {
+        throw new UserInputError('invalid username or password')
+      }
+
+      const userForToken = {
+        username: user.username,
+        id: user._id,
+      }
+
+      return { value: jwt.sign(userForToken, JWT_SECRET) }
+    },
   }
 
 }
