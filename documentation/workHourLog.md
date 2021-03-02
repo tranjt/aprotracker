@@ -45,6 +45,10 @@
 |       | 2    | improved ui text and loading |
 |       | 4    | added support for weighted exercise type input |
 | 28.2  | 2    | added icon to tabbar and refactor doRoutine |
-| total | 124  | | 
+|  2.3  | 1    | changing double quotes to single and minor fix stringToHmsFormat |
+|       | 2    | added createUser and login backend |
+|       | 2    | added hooks create user and login frontend |
+|       | 3    | added signIn component and form |
+| total | 132  | | 
 
 
