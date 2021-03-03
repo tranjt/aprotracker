@@ -49,6 +49,11 @@
 |       | 2    | added createUser and login backend |
 |       | 2    | added hooks create user and login frontend |
 |       | 3    | added signIn component and form |
-| total | 132  | | 
+|  3.3  | 3    | added sign in screen and moving auth to authContext |
+|       |      | added initial profile screen with logout button |
+|       | 1    | added notification for login error (invalid password or username) |
+|       | 2    | added sign up screen |
+|       | 3    | added initial local token handling |
+| total | 141  | | 
 
 
