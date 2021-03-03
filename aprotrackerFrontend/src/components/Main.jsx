@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,6 +13,7 @@ import SignInScreen from './signIn/SignInScreen';
 import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import { useAuth } from './authContext';
+import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
 
 
@@ -63,7 +64,22 @@ const Home = () => {
 };
 
 const Main = () => {
-  const [auth] = useAuth();
+  const [auth, setAuth] = useAuth();
+  const authStorage = useContext(AuthStorageContext);
+
+
+  useEffect(() => {
+    const getLocalToken = async () => {
+      const token = await authStorage.getAccessToken();
+      return token;
+    };
+
+    const savedToken = getLocalToken();
+    if (savedToken) {
+      console.log('local token ' + savedToken);
+      setAuth(true);
+    }
+  }, []);
 
   return (
     <NavigationContainer>
