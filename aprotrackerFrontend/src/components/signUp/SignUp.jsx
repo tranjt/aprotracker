@@ -1,16 +1,19 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { View } from 'react-native';
 import * as yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 
-import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 import useSignIn from '../../hooks/useSignIn';
+import useSignUp from '../../hooks/useSignUp';
 import { useAuth } from '../authContext';
 
 
 const initialValues = {
   username: '',
   password: '',
+  passwordConfirm: '',
 };
 
 const validationSchema = yup.object().shape({
@@ -20,23 +23,13 @@ const validationSchema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required'),
+  passwordConfirm: yup.string()
+    .oneOf([yup.ref('password'), null], "Passwords don't match")
+    .required('Password confirm is required'),
 });
 
-
-export const SignInContainer = ({ onSubmit }) => {
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ handleSubmit, dirty, isValid }) => <SignInForm onSubmit={handleSubmit} dirty={dirty} isValid={isValid} />}
-    </Formik>
-  );
-};
-
-
-const SignIn = ({ setNotifiction }) => {
+const SignUp = ({ setNotifiction }) => {
+  const [signUp] = useSignUp();
   const [signIn] = useSignIn();
   const navigation = useNavigation();
   const [, setAuth] = useAuth();
@@ -44,7 +37,9 @@ const SignIn = ({ setNotifiction }) => {
   const onSubmit = async (values) => {
     const { username, password } = values;
     console.log(values);
+
     try {
+      await signUp({ username, password });
       await signIn({ username, password });
       setAuth(true);
       navigation.navigate('Home', { screen: 'Profile' });
@@ -54,9 +49,17 @@ const SignIn = ({ setNotifiction }) => {
   };
 
   return (
-    <SignInContainer onSubmit={onSubmit} />
+    <View>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ handleSubmit, dirty, isValid }) => <SignUpForm onSubmit={handleSubmit} dirty={dirty} isValid={isValid} />}
+      </Formik>
+    </View>
   );
+
 };
 
-export default SignIn;
-
+export default SignUp;

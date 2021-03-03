@@ -10,6 +10,7 @@ import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
 import SignInScreen from './signIn/SignInScreen';
+import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import { useAuth } from './authContext';
 import theme from '../theme';
@@ -95,11 +96,18 @@ const Main = () => {
         ) : (
             <>
               <RootStack.Screen
-                name="SignIn"
+                name='SignIn'
                 options={{
                   title: 'Sign in',
                 }}
                 component={SignInScreen}
+              />
+              <RootStack.Screen
+                name='SignUp'
+                options={{
+                  title: 'Sign up',
+                }}
+                component={SignUpScreen}
               />
             </>
           )
