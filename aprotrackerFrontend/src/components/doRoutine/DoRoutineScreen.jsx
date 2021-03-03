@@ -19,7 +19,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
   const [routineName, setRoutineName] = useState('');
   const [exercises, setExercises] = useState([]);
   const [count, setCount] = useState(0);
-  const [notifcation, setNotifiction] = useNotifiction();
+  const [notification, setNotifiction] = useNotifiction();
   const { routineIndex } = route.params;
   const [addRoutine] = useAddRoutine();
 
@@ -199,7 +199,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
         <Text>Duration: {secondsToHms(count)}</Text>
         <OgButton onPress={() => routineFinished(exercises)} title='Finished' />
       </View>
-      <Notification notification={notifcation} />
+      <Notification notification={notification} />
       <ScrollView >
         <Text>{routineName}</Text>
         {

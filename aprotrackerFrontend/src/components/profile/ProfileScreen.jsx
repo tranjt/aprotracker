@@ -20,7 +20,7 @@ const ProfileScreen = () => {
       <Button
         onPress={() => logout()}
         title='Sign out'
-        titleStyle={{ color: 'Tomato' }}
+        titleStyle={{ color: 'black' }}
       />
     </View>
   );

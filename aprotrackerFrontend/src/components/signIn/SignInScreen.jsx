@@ -1,11 +1,17 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+
 import SignIn from './SignIn';
+import Notification from '../Notification';
+import useNotifiction from '../../hooks/useNotification';
 
 const SignInScreen = () => {
+  const [notification, setNotifiction] = useNotifiction();
+
   return (
     <View style={styles.container}>
-      <SignIn />
+      <Notification notification={notification} />
+      <SignIn setNotifiction={setNotifiction} />
     </View>
   );
 };

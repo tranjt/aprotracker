@@ -36,7 +36,7 @@ export const SignInContainer = ({ onSubmit }) => {
 };
 
 
-const SignIn = () => {
+const SignIn = ({ setNotifiction }) => {
   const [signIn] = useSignIn();
   const navigation = useNavigation();
   const [, setAuth] = useAuth();
@@ -48,8 +48,8 @@ const SignIn = () => {
       await signIn({ username, password });
       setAuth(true);
       navigation.navigate('Home', { screen: 'Profile' });
-    } catch (e) {
-      console.log(e); //todo show notification
+    } catch (e) {            
+      setNotifiction(e.message);
     }
   };
 
