@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import SignIn from './SignIn';
 
-const SignInScreen = ({ setAuth }) => {
+const SignInScreen = () => {
   return (
     <View style={styles.container}>
-      <SignIn setAuth={setAuth} />
+      <SignIn />
     </View>
   );
 };

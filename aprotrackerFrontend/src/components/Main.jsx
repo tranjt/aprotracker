@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,7 +10,7 @@ import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
 import SignInScreen from './signIn/SignInScreen';
-
+import { useAuth } from './authContext';
 import theme from '../theme';
 
 
@@ -54,7 +54,6 @@ const Home = () => {
             iconName = focused ? 'inventory' : 'inventory';
           }
           return <MaterialIcons name={iconName} size={size} color={color} />;
-
         },
       })}
       tabBarOptions={{
@@ -71,7 +70,7 @@ const Home = () => {
 };
 
 const Main = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth] = useAuth();
 
   return (
     <NavigationContainer>
@@ -108,9 +107,8 @@ const Main = () => {
                 options={{
                   title: 'Sign in',
                 }}
-              >
-                {(props) => <SignInScreen  {...props} setAuth={setAuth} />}
-              </RootStack.Screen>
+                component={SignInScreen}
+              />
             </>
           )
         }

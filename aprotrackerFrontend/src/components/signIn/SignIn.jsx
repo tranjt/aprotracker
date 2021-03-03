@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import SignInForm from './SignInForm';
 import useSignIn from '../../hooks/useSignIn';
+import { useAuth } from '../authContext';
 
 
 const initialValues = {
@@ -35,9 +36,10 @@ export const SignInContainer = ({ onSubmit }) => {
 };
 
 
-const SignIn = ({ setAuth }) => {
+const SignIn = () => {
   const [signIn] = useSignIn();
   const navigation = useNavigation();
+  const [, setAuth] = useAuth();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
@@ -45,7 +47,7 @@ const SignIn = ({ setAuth }) => {
     try {
       await signIn({ username, password });
       setAuth(true);
-      navigation.navigate('Home', { screen: 'Profile' });      
+      navigation.navigate('Home', { screen: 'Profile' });
     } catch (e) {
       console.log(e); //todo show notification
     }
