@@ -35,7 +35,7 @@ export const SignInContainer = ({ onSubmit }) => {
 };
 
 
-const SignIn = () => {
+const SignIn = ({ setAuth }) => {
   const [signIn] = useSignIn();
   const navigation = useNavigation();
 
@@ -44,14 +44,15 @@ const SignIn = () => {
     console.log(values);
     try {
       await signIn({ username, password });
-      navigation.navigate("Workout");
+      setAuth(true);
+      navigation.navigate('Home', { screen: 'Profile' });      
     } catch (e) {
-      console.log(e);
+      console.log(e); //todo show notification
     }
   };
 
   return (
-    <SignInContainer onSubmit={onSubmit} />    
+    <SignInContainer onSubmit={onSubmit} />
   );
 };
 

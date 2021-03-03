@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,7 +9,10 @@ import WorkoutScreen from './workout/WorkoutScreen';
 import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
+import SignInScreen from './signIn/SignInScreen';
+
 import theme from '../theme';
+
 
 function ProfileScreen() {
   return (
@@ -31,7 +34,7 @@ function ExerciseScreen() {
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function Home() {
+const Home = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -65,38 +68,56 @@ function Home() {
       <Tab.Screen name='Exercise' component={ExerciseScreen} />
     </Tab.Navigator>
   );
-}
+};
 
-function Main() {
+const Main = () => {
+  const [auth, setAuth] = useState(false);
+
   return (
     <NavigationContainer>
       <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-        <RootStack.Screen
-          name='Home'
-          options={{ headerShown: false }}
-          component={Home}
-        />
-        <RootStack.Screen
-          name='RoutineOverview'
-          component={RoutineOverviewScreen}
-          options={{
-            title: 'Routine Overview',
-            headerTitleStyle: {
-              color: theme.colors.primary,
-              fontFamily: theme.fonts.main,
-              fontWeight: theme.fontWeights.bold,
-            }
-          }}
-        />
-        <RootStack.Screen
-          name='DoRoutine'
-          component={DoRoutineScreen}
-          options={{ headerShown: false }}
-        />
+        {auth ? (
+          <>
+            <RootStack.Screen
+              name='Home'
+              options={{ headerShown: false }}
+              component={Home}
+            />
+            <RootStack.Screen
+              name='RoutineOverview'
+              component={RoutineOverviewScreen}
+              options={{
+                title: 'Routine Overview',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                }
+              }}
+            />
+            <RootStack.Screen
+              name='DoRoutine'
+              component={DoRoutineScreen}
+              options={{ headerShown: false }}
+            />
+          </>
+        ) : (
+            <>
+              <RootStack.Screen
+                name="SignIn"
+                options={{
+                  title: 'Sign in',
+                }}
+              >
+                {(props) => <SignInScreen  {...props} setAuth={setAuth} />}
+              </RootStack.Screen>
+            </>
+          )
+        }
       </RootStack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 
 export default Main;

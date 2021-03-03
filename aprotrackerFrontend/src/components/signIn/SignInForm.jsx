@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
-import FormikTextInput from './FormikTextInput';
+import FormikTextInput from '../FormikTextInput';
 
 const SignInForm = ({ onSubmit, dirty, isValid }) => {
 
