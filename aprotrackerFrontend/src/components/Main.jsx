@@ -67,18 +67,15 @@ const Main = () => {
   const [auth, setAuth] = useAuth();
   const authStorage = useContext(AuthStorageContext);
 
-
-  useEffect(() => {
-    const getLocalToken = async () => {
-      const token = await authStorage.getAccessToken();
-      return token;
-    };
-
-    const savedToken = getLocalToken();
+  const authorizedUserCheck = async () => {
+    const savedToken = await authStorage.getAccessToken();
     if (savedToken) {
-      console.log('local token ' + savedToken);
       setAuth(true);
     }
+  };
+
+  useEffect(() => {
+    authorizedUserCheck();   
   }, []);
 
   return (

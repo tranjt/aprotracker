@@ -5,6 +5,7 @@ import Main from './src/components/Main';
 import createApolloClient from './src/utils/apolloClient';
 import AuthStorage from './src/utils/authStorage';
 import { AuthProvider } from './src/components/authContext';
+import AuthStorageContext from './src/contexts/AuthStorageContext';
 
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
@@ -13,10 +14,12 @@ const App = () => {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <AuthProvider>
-        <Main />
-      </AuthProvider>
-    </ApolloProvider>
+      <AuthStorageContext.Provider value={authStorage}>
+        <AuthProvider>
+          <Main />
+        </AuthProvider>
+      </AuthStorageContext.Provider>
+    </ApolloProvider >
   );
 };
 

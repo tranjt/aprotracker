@@ -12,9 +12,9 @@ const ProfileScreen = () => {
   const [, setAuth] = useAuth();
 
   const logout = async () => {
-    setAuth(false);
-    apolloClient.resetStore();
     await authStorage.removeAccessToken();
+    apolloClient.resetStore();
+    setAuth(false);
   };
 
   return (
