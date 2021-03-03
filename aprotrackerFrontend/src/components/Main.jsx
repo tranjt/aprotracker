@@ -10,17 +10,9 @@ import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
 import SignInScreen from './signIn/SignInScreen';
+import ProfileScreen from './profile/ProfileScreen';
 import { useAuth } from './authContext';
 import theme from '../theme';
-
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is the profile screen!</Text>
-    </View>
-  );
-}
 
 
 function ExerciseScreen() {
