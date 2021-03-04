@@ -21,9 +21,11 @@ const schema = new mongoose.Schema({
     kg: Number,
     reps: Number,
     time: String
-  }]
-
-
+  }],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 module.exports = mongoose.model('Exercise', schema)

@@ -19,6 +19,7 @@ const typeDefs = gql`
     sets: [ExerciseSet!]!
     id: ID!
     routine: ID!
+    user: User!
   }
 
   type ExerciseSet {
@@ -47,6 +48,7 @@ const typeDefs = gql`
     duration: Int!
     exercises: [Exercise!]!
     id: ID!
+    user: User!
   }   
   
 

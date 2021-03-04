@@ -1,4 +1,4 @@
-const { ApolloServer, UserInputError } = require('apollo-server')
+const { ApolloServer, UserInputError, AuthenticationError } = require('apollo-server')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -27,10 +27,11 @@ mongoose.connect(config.MONGODB_URI, {
   })
 
 
-const createExercise = async (exerciseInput, newRoutine) => {
+const createExercise = async (exerciseInput, newRoutine, currentUser) => {
   const newExercise = new Exercise({
     ...exerciseInput,
-    routine: newRoutine._id
+    routine: newRoutine._id,
+    user: currentUser._id
   })
 
   try {
@@ -45,22 +46,28 @@ const createExercise = async (exerciseInput, newRoutine) => {
 
 const resolvers = {
   Query: {
-    allRoutines: () => Routine.find({}).populate('exercises'),
-    allExercises: () => Exercise.find({}),
+    allRoutines: () => Routine.find({}).populate('exercises').populate('user'),
+    allExercises: () => Exercise.find({}).populate('user'),
     me: (root, args, context) => {
       return context.currentUser
     }
   },
 
   Mutation: {
-    addRoutine: async (root, args) => {
+    addRoutine: async (root, args, context) => {
+      const currentUser = context.currentUser
+
+      if (!currentUser) {
+        throw new AuthenticationError('not authenticated')
+      }
+
       const { name, duration, exercises } = args
-      const newRoutine = new Routine({ name, duration })
+      const newRoutine = new Routine({ name, duration, user: currentUser._id })
       await newRoutine.save()
 
       for (let exerciseInput of exercises) {
         try {
-          let newExercise = await createExercise(exerciseInput, newRoutine)
+          let newExercise = await createExercise(exerciseInput, newRoutine, currentUser)
           newRoutine.exercises.push(newExercise._id)
           await newRoutine.save()
 

@@ -12,8 +12,11 @@ const schema = new mongoose.Schema({
   exercises: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Exercise'
-  }]
-  
+  }],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }  
 })
 
 module.exports = mongoose.model('Routine', schema)
