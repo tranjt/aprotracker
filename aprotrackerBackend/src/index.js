@@ -13,7 +13,12 @@ const typeDefs = require('./typeDefs')
 const JWT_SECRET = config.TOKEN_SECRET
 
 console.log('connecting to', config.MONGODB_URI)
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+mongoose.connect(config.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+})
   .then(() => {
     console.log('connected to MongoDB')
   })
@@ -27,6 +32,7 @@ const createExercise = async (exerciseInput, newRoutine) => {
     ...exerciseInput,
     routine: newRoutine._id
   })
+
   try {
     await newExercise.save()
     return newExercise
@@ -40,7 +46,10 @@ const createExercise = async (exerciseInput, newRoutine) => {
 const resolvers = {
   Query: {
     allRoutines: () => Routine.find({}).populate('exercises'),
-    allExercises: () => Exercise.find({})
+    allExercises: () => Exercise.find({}),
+    me: (root, args, context) => {
+      return context.currentUser
+    }
   },
 
   Mutation: {
@@ -63,8 +72,7 @@ const resolvers = {
       return newRoutine.populate('exercises').execPopulate()
     },
 
-    createUser: async (root, args) => {      
-
+    createUser: async (root, args) => {
       const saltRounds = 10
       const passwordHash = await bcrypt.hash(args.password, saltRounds)
       const user = new User({
@@ -82,7 +90,6 @@ const resolvers = {
 
     login: async (root, args) => {
       const user = await User.findOne({ username: args.username })
-
       const passwordCorrect = user === null
         ? false
         : await bcrypt.compare(args.password, user.passwordHash)
@@ -105,6 +112,17 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: async ({ req }) => {
+    const auth = req ? req.headers.authorization : null
+
+    if (auth && auth.toLowerCase().startsWith('bearer ')) {
+      const decodedToken = jwt.verify(
+        auth.substring(7), JWT_SECRET
+      )
+      const currentUser = await User.findById(decodedToken.id)
+      return { currentUser }
+    }
+  }
 })
 
 server.listen().then(({ url }) => {
