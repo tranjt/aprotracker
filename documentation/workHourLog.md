@@ -54,6 +54,13 @@
 |       | 1    | added notification for login error (invalid password or username) |
 |       | 2    | added sign up screen |
 |       | 3    | added initial local token handling |
-| total | 141  | | 
+|  4.3  | 2    | local token handling and token auth now works |
+|       |      | add user context backend and me query |
+|       | 2    | changed schema every exercise and routine must belong to a user |
+|       | 1    | refactor resolvers |
+|       |      | changed query allRoutines and allExercises, 
+|       | 2    | only return those owned by current login user |
+|       | 3    | planning implementation of data storage and creation of exercises and routine program |
+| total | 151  | | 
 
 
