@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 import { useApolloClient } from '@apollo/client';
 
-import { useAuth } from '../authContext';
+import { useAuth } from '../../utils/authContext';
 import AuthStorageContext from '../../contexts/AuthStorageContext';
 import Button from '../Button';
 

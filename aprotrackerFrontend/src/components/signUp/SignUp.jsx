@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import SignUpForm from './SignUpForm';
 import useSignIn from '../../hooks/useSignIn';
 import useSignUp from '../../hooks/useSignUp';
-import { useAuth } from '../authContext';
+import { useAuth } from '../../utils/authContext';
 
 
 const initialValues = {

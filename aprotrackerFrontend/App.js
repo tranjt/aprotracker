@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import Main from './src/components/Main';
 import createApolloClient from './src/utils/apolloClient';
 import AuthStorage from './src/utils/authStorage';
-import { AuthProvider } from './src/components/authContext';
+import { AuthProvider } from './src/utils/authContext';
 import AuthStorageContext from './src/contexts/AuthStorageContext';
 
 

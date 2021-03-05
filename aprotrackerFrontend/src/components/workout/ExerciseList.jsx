@@ -2,17 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 
-const ExerciseList = ({ execises }) => {
+const ExerciseList = ({ exercises }) => {
   return (
     <View>
       {
-        execises.map((execise, key) => {
+        exercises.map((exercise, key) => {
           return (
             <Text
-              key={`execise-${key}`}
+              key={`exercise-${key}`}
               style={styles.text}
             >
-              {`${execise.sets.setCount} x ${execise.name}  (${execise.type})`}
+              {`${exercise.sets.setCount} x ${exercise.name}  (${exercise.type})`}
             </Text>
           );
         })

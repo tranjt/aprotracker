@@ -43,7 +43,7 @@ const RoutineOptions = ({ navigation }) => {
                   {routineTemplate.name}
                 </Text>
                 {renderLatestCompletedRoutine(routineTemplate.name)}
-                <ExerciseList execises={routineTemplate.exercises} />
+                <ExerciseList exercises={routineTemplate.exercises} />
               </Pressable>
             </View>
           );

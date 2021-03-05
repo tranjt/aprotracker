@@ -14,8 +14,8 @@ const useAuth = () => {
 };
 
 const AuthProvider = (props) => {
-  const [count, setCount] = useState(0);
-  const value = useMemo(() => [count, setCount], [count]);
+  const [auth, setAuth] = useState(false);
+  const value = useMemo(() => [auth, setAuth], [auth]);
   
   return <AuthContext.Provider value={value} {...props} />;
 };

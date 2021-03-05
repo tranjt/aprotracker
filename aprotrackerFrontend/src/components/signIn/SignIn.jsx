@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import SignInForm from './SignInForm';
 import useSignIn from '../../hooks/useSignIn';
-import { useAuth } from '../authContext';
+import { useAuth } from '../../utils/authContext';
 
 
 const initialValues = {

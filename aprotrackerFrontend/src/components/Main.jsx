@@ -12,7 +12,7 @@ import SignInScreen from './signIn/SignInScreen';
 import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
-import { useAuth } from './authContext';
+import { useAuth } from '../utils/authContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
 

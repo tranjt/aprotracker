@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
+import ExerciseList from './ExerciseList';
 
 import theme from '../../theme';
 
@@ -9,7 +10,7 @@ const ExerciseScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Exercise Screen</Text>
-      {/* <RoutineOptions navigation={navigation} /> */}
+      <ExerciseList />
     </View>
   );
 };

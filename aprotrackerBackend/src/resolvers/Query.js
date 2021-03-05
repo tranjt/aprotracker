@@ -5,7 +5,7 @@ const Routine = require('../models/routine')
 
 const allRoutines = (root, args, context) => {
   const currentUser = context.currentUser;
-  
+
   if (!currentUser) {
     throw new AuthenticationError('not authenticated')
   }
@@ -20,7 +20,7 @@ const allExercises = (root, args, context) => {
     throw new AuthenticationError('not authenticated')
   }
 
-  return Exercise.find({user: currentUser._id}).populate('user')
+  return Exercise.find({ user: currentUser._id }).populate('user')
 }
 
 const me = (root, args, context) => {
