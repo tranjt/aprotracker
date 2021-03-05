@@ -2,15 +2,14 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 
-import RoutineOptions from './RoutineOptions';
 import theme from '../../theme';
 
 
-const WorkoutScreen = ({ navigation }) => {
+const ExerciseScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Workout Screen</Text>
-      <RoutineOptions navigation={navigation} />
+      <Text style={styles.title}>Exercise Screen</Text>
+      {/* <RoutineOptions navigation={navigation} /> */}
     </View>
   );
 };
@@ -31,4 +30,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default WorkoutScreen;
+export default ExerciseScreen;

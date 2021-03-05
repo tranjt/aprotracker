@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
+
 class AuthStorage {
   constructor(namespace = 'auth') {
     this.namespace = namespace;

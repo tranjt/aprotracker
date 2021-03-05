@@ -21,6 +21,7 @@ const TextInput = ({ style, error, ...props }) => {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {   
     borderColor: theme.colors.textSecondary,

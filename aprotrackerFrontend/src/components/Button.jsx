@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
 
+
 const Button = ({ title, style, titleStyle, onPress }) => {
   const buttonStyle = [
     styles.button,

@@ -39,8 +39,8 @@ const WeightedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExe
       </View>
     </View>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   card: {

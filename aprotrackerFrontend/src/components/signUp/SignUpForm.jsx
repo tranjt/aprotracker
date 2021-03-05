@@ -4,7 +4,6 @@ import FormikTextInput from '../FormikTextInput';
 
 
 const SignUpForm = ({ onSubmit, dirty, isValid }) => {
-
   return (
     <View style={styles.container}>
       <FormikTextInput
@@ -31,6 +30,7 @@ const SignUpForm = ({ onSubmit, dirty, isValid }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,18 +11,11 @@ import HistoryScreen from './history/HistoryScreen';
 import SignInScreen from './signIn/SignInScreen';
 import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
+import ExerciseScreen from './exercise/ExerciseScreen';
 import { useAuth } from './authContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
 
-
-function ExerciseScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Exercise</Text>
-    </View>
-  );
-}
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();

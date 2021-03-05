@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Pressable, StyleSheet, ScrollView, Text } from 'react-native';
 
-
 import workoutService from '../../service/workout';
 import ExerciseList from './ExerciseList';
 import useRoutines from '../../hooks/useRoutines';
 import { dateFormat } from '../../utils/timedate';
 import theme from '../../theme';
-
 
 
 const RoutineOptions = ({ navigation }) => {
@@ -26,7 +24,6 @@ const RoutineOptions = ({ navigation }) => {
     }
     return null;
   };
-
 
   return (
     <ScrollView >
@@ -54,8 +51,8 @@ const RoutineOptions = ({ navigation }) => {
       }
     </ScrollView>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   card: {

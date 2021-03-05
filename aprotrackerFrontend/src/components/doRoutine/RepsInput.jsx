@@ -34,8 +34,8 @@ const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseS
       />
     </View>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   container: {

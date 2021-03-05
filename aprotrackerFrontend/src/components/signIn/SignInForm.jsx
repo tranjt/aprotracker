@@ -3,8 +3,8 @@ import React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import FormikTextInput from '../FormikTextInput';
 
-const SignInForm = ({ onSubmit, dirty, isValid }) => {
 
+const SignInForm = ({ onSubmit, dirty, isValid }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput
@@ -26,6 +26,7 @@ const SignInForm = ({ onSubmit, dirty, isValid }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

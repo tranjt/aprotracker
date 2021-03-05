@@ -28,6 +28,7 @@ function HistoryScreen() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

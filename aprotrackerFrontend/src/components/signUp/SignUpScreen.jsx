@@ -5,6 +5,7 @@ import SignUp from './SignUp';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 
+
 const SignUpScreen = () => {
   const [notification, setNotifiction] = useNotifiction();
 
@@ -15,6 +16,7 @@ const SignUpScreen = () => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

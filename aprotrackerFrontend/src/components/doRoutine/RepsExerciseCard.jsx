@@ -7,7 +7,7 @@ import RepsInputHeader from './RepsInputHeader';
 
 
 const RepsExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone, addSet }) => {
-
+  
   if (!exercise.sets) {
     return <ActivityIndicator />;
   }
@@ -39,8 +39,8 @@ const RepsExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExercis
       </View>
     </View>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   card: {

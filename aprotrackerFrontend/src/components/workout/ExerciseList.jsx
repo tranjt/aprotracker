@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 
 
 const ExerciseList = ({ execises }) => {
-
   return (
     <View>
       {
@@ -21,6 +20,7 @@ const ExerciseList = ({ execises }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

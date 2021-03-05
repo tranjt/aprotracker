@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+
 export const ADD_ROUTINE = gql`
 mutation routineDone($name: String!, $duration: Int!, $exercises: [ExerciseInput]){
   addRoutine(
@@ -24,7 +25,6 @@ mutation routineDone($name: String!, $duration: Int!, $exercises: [ExerciseInput
   }
 }
 `;
-
 
 export const SIGN_UP = gql` 
 mutation CreateUser ($username: String!, $password: String!) {

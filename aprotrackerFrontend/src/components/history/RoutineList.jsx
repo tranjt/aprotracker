@@ -6,7 +6,6 @@ import theme from '../../theme';
 
 
 const RoutineList = ({ routines }) => {
-
   return (
     <ScrollView >
       {
@@ -31,8 +30,8 @@ const RoutineList = ({ routines }) => {
       }
     </ScrollView>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   card: {

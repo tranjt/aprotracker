@@ -42,8 +42,8 @@ const WeightedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerc
       />
     </View>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   container: {

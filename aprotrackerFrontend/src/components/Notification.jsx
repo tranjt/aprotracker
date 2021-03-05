@@ -4,7 +4,6 @@ import theme from '../theme';
 
 
 const Notification = ({ notification }) => {
-
   const style = [    
     notification !== '' && styles.notification,
   ];
@@ -19,6 +18,7 @@ const Notification = ({ notification }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   notification: {      

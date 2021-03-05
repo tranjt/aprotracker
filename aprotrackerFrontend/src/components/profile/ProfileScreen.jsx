@@ -6,6 +6,7 @@ import { useAuth } from '../authContext';
 import AuthStorageContext from '../../contexts/AuthStorageContext';
 import Button from '../Button';
 
+
 const ProfileScreen = () => {
   const apolloClient = useApolloClient();
   const authStorage = useContext(AuthStorageContext);

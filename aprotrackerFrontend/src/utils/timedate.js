@@ -11,7 +11,6 @@ export const secondsToHms = (d) => {
   return hDisplay + mDisplay + sDisplay;
 };
 
-
 export const dateFormat = (time) => {
   const date = new Date(Number(time));
   return ` ${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;

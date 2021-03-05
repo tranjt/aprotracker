@@ -10,7 +10,7 @@ const generateRoutineComponentObject = (routineIndex) => {
         return Array.from(Array(sets.setCount),
           () => {
             return {
-              reps: "",
+              reps: '',
               repsPlaceholder: sets.repsPlaceholder,
               validInput: false,
               done: false
@@ -20,8 +20,8 @@ const generateRoutineComponentObject = (routineIndex) => {
         return Array.from(Array(sets.setCount),
           () => {
             return {
-              reps: "",
-              kg: "",
+              reps: '',
+              kg: '',
               kgPlaceholder: sets.kgPlaceholder,
               repsPlaceholder: sets.repsPlaceholder,
               validInput: false,
@@ -32,7 +32,7 @@ const generateRoutineComponentObject = (routineIndex) => {
         return Array.from(Array(sets.setCount),
           () => {
             return {
-              time: "",
+              time: '',
               timedPlaceholder: sets.timedPlaceholder,
               validInput: false,
               done: false
@@ -58,17 +58,17 @@ const generateRoutineComponentObject = (routineIndex) => {
 
 const getNewExerciseSet = (exerciseType) => {
   switch (exerciseType) {
-    case "repsOnly":
+    case 'repsOnly':
       return {
-        reps: "",
+        reps: '',
         repsPlaceholder: 5,
         validInput: false,
         done: false
       };
-    case "weighted":
+    case 'weighted':
       return {
-        kg: "",
-        reps: "",
+        kg: '',
+        reps: '',
         kgPlaceholder: 25,
         repsPlaceholder: 5,
         validInput: false,
@@ -76,8 +76,8 @@ const getNewExerciseSet = (exerciseType) => {
       };
     default: //timed
       return {
-        time: "",
-        timedPlaceholder: "00:00",
+        time: '',
+        timedPlaceholder: '00:30',
         validInput: false,
         done: false
       };
@@ -88,11 +88,11 @@ const parseDoneSet = (exercise) => {
   return exercise.sets.map(set => {
     if (set.done) {
       switch (exercise.type) {
-        case "repsOnly":
+        case 'repsOnly':
           return {
             reps: Number(set.reps)
           };
-        case "weighted":
+        case 'weighted':
           return {
             reps: Number(set.reps),
             kg: Number(set.kg)
@@ -126,7 +126,6 @@ const getRoutines = () => {
 const getRoutine = (routineIndex) => {
   return routines[routineIndex];
 };
-
 
 export default {
   generateRoutineComponentObject,

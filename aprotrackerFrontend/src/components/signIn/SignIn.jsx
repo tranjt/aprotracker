@@ -22,7 +22,6 @@ const validationSchema = yup.object().shape({
     .required('Password is required'),
 });
 
-
 export const SignInContainer = ({ onSubmit }) => {
   return (
     <Formik
@@ -34,7 +33,6 @@ export const SignInContainer = ({ onSubmit }) => {
     </Formik>
   );
 };
-
 
 const SignIn = ({ setNotifiction }) => {
   const [signIn] = useSignIn();

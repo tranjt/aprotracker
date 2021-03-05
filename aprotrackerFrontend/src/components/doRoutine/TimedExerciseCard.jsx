@@ -39,8 +39,8 @@ const TimedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerci
       </View>
     </View>
   );
-
 };
+
 
 const styles = StyleSheet.create({
   card: {

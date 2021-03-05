@@ -59,7 +59,6 @@ const SignUp = ({ setNotifiction }) => {
       </Formik>
     </View>
   );
-
 };
 
 export default SignUp;

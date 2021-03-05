@@ -6,6 +6,7 @@ import SignIn from './SignIn';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 
+
 const SignInScreen = ({ navigation }) => {
   const [notification, setNotifiction] = useNotifiction();
 
@@ -22,6 +23,7 @@ const SignInScreen = ({ navigation }) => {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
   signUpButton: {
     margin: 10
   }
-
 });
 
 export default SignInScreen;

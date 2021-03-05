@@ -7,7 +7,6 @@ const useAddRoutine = () => {
   const [mutate, result] = useMutation(ADD_ROUTINE);
 
   const addRoutine = async ({ name, duration, exercises }) => {
-
     const payload = await mutate({
       variables: { name, duration, exercises },
       update: (store, response) => {
@@ -20,7 +19,7 @@ const useAddRoutine = () => {
           }
         });
       }
-    });
+    });            
     return payload;
   };
 

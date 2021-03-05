@@ -1,6 +1,8 @@
 import { ApolloClient } from '@apollo/client';
 import Constants from 'expo-constants';
+
 import { cache } from '../cache';
+
 
 const createApolloClient = (authStorage) => {
   return new ApolloClient({

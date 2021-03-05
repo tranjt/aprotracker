@@ -156,7 +156,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
     setExercises(updatedExercises);
   };
 
-
   const renderExerciseCard = (exercise, exerciseIndex) => {
     switch (exercise.type) {
       case 'timed':
@@ -192,7 +191,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
     }
   };
 
-
   return (
     <View style={styles.container}>
       <View>
@@ -216,6 +214,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
