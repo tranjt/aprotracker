@@ -61,6 +61,9 @@
 |       |      | changed query allRoutines and allExercises, 
 |       | 2    | only return those owned by current login user |
 |       | 3    | planning implementation of data storage and creation of exercises and routine program |
-| total | 151  | | 
+|  5.3  | 1    | add initial exercise screen, changed some white space |
+|       | 1    | add exercise and exerciselist |
+|       | 5    | bug fix not authenticated server response |
+| total | 158  | | 
 
 
