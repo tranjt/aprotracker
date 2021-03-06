@@ -9,14 +9,16 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const ExerciseList = () => {
   const exercises = exerciseService.getExercises();
-  
+
   return (
-    <FlatList
-      data={exercises}
-      renderItem={({ item }) => <Exercise exercise={item} />}      
-      ItemSeparatorComponent={ItemSeparator}
-      keyExtractor={(item, index) => `$exercises-${index}`}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={exercises}
+        renderItem={({ item }) => <Exercise exercise={item} />}
+        ItemSeparatorComponent={ItemSeparator}
+        keyExtractor={(item, index) => `$exercises-${index}`}
+      />
+    </View>
   );
 };
 
@@ -24,14 +26,14 @@ const ExerciseList = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    padding: 10,
-    alignSelf: 'center'
+    backgroundColor: '#ebecf0',
+    padding: 5
   },
   text: {
     color: '#7e7e7e'
   },
   separator: {
-    height: 10,
+    height: 2,
   },
 });
 

@@ -1,14 +1,19 @@
 import React from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 
+import theme from '../../theme';
+
 
 const Exercise = ({ exercise }) => {
   return (
-    <View>
-      <Text        
-        style={styles.text}
+    <View style={styles.container}>
+      <Text
+        style={styles.title}
       >
-        {`${exercise.sets.setCount} x ${exercise.name}  (${exercise.type})`}
+        {`${exercise.name} `}
+      </Text>
+      <Text style={styles.text}>
+        {`(${exercise.type})`}
       </Text>
     </View>
   );
@@ -18,15 +23,22 @@ const Exercise = ({ exercise }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    padding: 10,
-    alignSelf: 'center'
+    padding: 15,
+    backgroundColor: 'white',
+    elevation: 1,
+    borderRadius: 1,
+    borderColor: 'black',
+
+  },
+  title: {
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.subheading,
+    color: '#0e1111',
   },
   text: {
     color: '#7e7e7e'
   },
-  separator: {
-    height: 10,
-  },
+
 });
 
 
