@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 
-class listStorage {
+class ListStorage {
   constructor(namespace = 'defaultList') {
     this.namespace = namespace;
   }
@@ -30,7 +30,7 @@ class listStorage {
     const currentListItems = await this.getList();
 
     const newListItems = currentListItems.filter(item => {
-      return item.name === itemName;
+      return item.name !== itemName;
     });
 
     await AsyncStorage.setItem(
@@ -41,4 +41,4 @@ class listStorage {
 
 }
 
-export default listStorage;
+export default ListStorage;
