@@ -64,6 +64,10 @@
 |  5.3  | 1    | add initial exercise screen, changed some white space |
 |       | 1    | add exercise and exerciselist |
 |       | 5    | bug fix not authenticated server response |
-| total | 158  | | 
+|  6.3  | 1    | add styling for exercise and exerciselist, added listStorage |
+|       | 1    | modified local exercise access to work with async storage |
+|       | 1    | added round plus button and load exercises from both async and file |
+|       | 1    | added initial create exercise screen |
+| total | 162  | | 
 
 
