@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import RoundPlusButton from '../RoundPlusButton';
 
 import Exercise from './Exercise';
-import exerciseService from '../../service/exercise';
 
 
-const ExerciseList = () => {
-  const [exercises, setExercises] = useState([]);
-
-  const getExercises = async () => {
-    const localExercises = await exerciseService.getExercises();
-    if (localExercises) {
-      setExercises(localExercises);
-    }
-  };
-
-  useEffect(() => {
-    getExercises();
-  }, []);
-
+const ExerciseList = ({ createExercise, exercises }) => {  
   return (
     <View style={styles.container}>
       <FlatList
@@ -29,7 +15,11 @@ const ExerciseList = () => {
         keyExtractor={(item, index) => `$exercises-${index}`}
         contentContainerStyle={{ paddingBottom: 45 }}
       />
-      <RoundPlusButton size={40} color='black' />
+      <RoundPlusButton
+        size={40}
+        color='black'
+        onPress={createExercise}
+      />
     </View>
   );
 };

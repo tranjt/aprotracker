@@ -12,6 +12,7 @@ import SignInScreen from './signIn/SignInScreen';
 import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
+import CreateExerciseScreen from './createExercise/CreateExerciseScreen';
 import { useAuth } from '../utils/authContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
@@ -67,8 +68,13 @@ const Main = () => {
   };
 
   useEffect(() => {
-    authorizedUserCheck();   
+    authorizedUserCheck();
   }, []);
+
+
+  const MyCustomHeaderBackImage = () => (
+    <MaterialIcons name="cancel" size={24} color="black" />
+  );
 
   return (
     <NavigationContainer>
@@ -97,6 +103,21 @@ const Main = () => {
               component={DoRoutineScreen}
               options={{ headerShown: false }}
             />
+            <RootStack.Screen
+              name='createExercise'
+              component={CreateExerciseScreen}
+              options={{
+                title: 'Create Exercise',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                },
+                headerBackImage: MyCustomHeaderBackImage,
+                
+              }}
+             
+            />
           </>
         ) : (
             <>
@@ -121,6 +142,8 @@ const Main = () => {
     </NavigationContainer>
   );
 };
+
+
 
 
 export default Main;
