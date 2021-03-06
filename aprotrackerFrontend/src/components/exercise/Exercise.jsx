@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     elevation: 1,
     borderRadius: 1,
     borderColor: 'black',
-
   },
   title: {
     fontWeight: theme.fontWeights.bold,

@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import Exercise from './Exercise';
+import RoundPlusButton from '../RoundPlusButton';
 
+import Exercise from './Exercise';
 import exerciseService from '../../service/exercise';
 
 
-const ItemSeparator = () => <View style={styles.separator} />;
-
 const ExerciseList = () => {
-  const exercises = exerciseService.getExercises();
+  const [exercises, setExercises] = useState([]);
+
+  const getExercises = async () => {
+    const localExercises = await exerciseService.getExercises();
+    if (localExercises) {
+      setExercises(localExercises);
+    }
+  };
+
+  useEffect(() => {
+    getExercises();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -17,10 +27,14 @@ const ExerciseList = () => {
         renderItem={({ item }) => <Exercise exercise={item} />}
         ItemSeparatorComponent={ItemSeparator}
         keyExtractor={(item, index) => `$exercises-${index}`}
+        contentContainerStyle={{ paddingBottom: 45 }}
       />
+      <RoundPlusButton size={40} color='black' />
     </View>
   );
 };
+
+const ItemSeparator = () => <View style={styles.separator} />;
 
 
 const styles = StyleSheet.create({
