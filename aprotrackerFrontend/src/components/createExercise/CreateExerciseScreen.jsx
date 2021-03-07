@@ -1,45 +1,22 @@
 import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import exerciseService from '../../service/exercise';
-import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 
+import Notification from '../Notification';
+import useNotifiction from '../../hooks/useNotification';
 import CreateExercise from './CreateExercise';
 
-const CreateExerciseScreen = () => {
-  const navigation = useNavigation();
-
-  const onSubmit = async () => {
-    try {
-      await exerciseService.addExercise({
-        name: 'Test Squat',
-        type: 'repsOnly',
-        sets: { setCount: 3, repsPlaceholder: 5 }
-      });
-
-      navigation.navigate('Home', {
-        screen: 'Exercise',
-        params: {
-          newExercise: {
-            name: 'Test Squat',
-            type: 'repsOnly',
-            sets: { setCount: 3, repsPlaceholder: 5 }
-          }
-        }
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const CreateExerciseScreen = ({ navigation }) => {
+  const [notification, setNotifiction] = useNotifiction();
 
   const onDelete = async () => {
     try {
-      await exerciseService.deleteExercise('Test Squat');
+      await exerciseService.deleteExercise('Test');
 
       navigation.navigate('Home', {
         screen: 'Exercise',
-        params: { deletedName: 'Test Squat' },
+        params: { deletedName: 'Test' },
       });
     } catch (error) {
       console.log(error);
@@ -48,15 +25,15 @@ const CreateExerciseScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Button
-        onPress={onSubmit}
-        title="Test create"
+      <Notification notification={notification} />
+      <CreateExercise
+        navigation={navigation}
+        setNotifiction={setNotifiction}
       />
       <Button
         onPress={onDelete}
         title="Test Delete create"
       />
-      <CreateExercise />
     </View>
   );
 };
@@ -64,8 +41,7 @@ const CreateExerciseScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 1,    
     paddingTop: Constants.statusBarHeight,
     backgroundColor: 'white',
   },

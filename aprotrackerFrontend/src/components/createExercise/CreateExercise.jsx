@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import * as yup from 'yup';
 
 import CreateExerciseForm from './CreateExerciseForm';
+import exerciseService from '../../service/exercise';
 
 
 const initialValues = {
@@ -21,9 +22,9 @@ const validationSchema = yup.object().shape({
     .required(),
 });
 
-const CreateExercise = () => {
+const CreateExercise = ({ navigation, setNotifiction }) => {
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     const { exerciseName, exerciseType, description } = values;
     const newExercise = {
       name: exerciseName,
@@ -31,9 +32,20 @@ const CreateExercise = () => {
       description,
       editable: true
     };
-
     console.log(JSON.stringify(newExercise));
 
+    try {
+      await exerciseService.addExercise(newExercise);
+
+      navigation.navigate('Home', {
+        screen: 'Exercise',
+        params: {
+          newExercise
+        }
+      });
+    } catch (e) {
+      setNotifiction(e);      
+    }
   };
 
   return (
