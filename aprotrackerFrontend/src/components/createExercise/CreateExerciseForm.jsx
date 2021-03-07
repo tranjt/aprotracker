@@ -2,7 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 
 import FormikTextInput from '../FormikTextInput';
-import FormikPicker from './FormikPicker';
+import FormikPicker from '../FormikPicker';
+import FormikTextArea from '../FormikTextArea';
 
 const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
   const exerciseTypeOptions = [
@@ -30,9 +31,18 @@ const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
         name='exerciseName'
         placeholder='exercise name'
       />
-      <FormikPicker
-        name='exerciseType'
-        options={exerciseTypeOptions}
+      <View style={styles.typePicker}>
+        <FormikPicker
+          name='exerciseType'
+          options={exerciseTypeOptions}
+        />
+      </View>
+      <FormikTextArea
+        name='description'
+        placeholder='optional description'
+        multiline={true}
+        numberOfLines={10}
+        style={styles.textArea}
       />
       <View style={styles.buttonContainer}>
         <Button
@@ -54,6 +64,13 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 10,
+  },
+  textArea: {
+    height: 200,
+    textAlignVertical: 'top',
+  },
+  typePicker: {
+    paddingLeft: 12
   }
 });
 

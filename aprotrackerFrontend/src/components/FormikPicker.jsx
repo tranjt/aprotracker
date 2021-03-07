@@ -3,7 +3,7 @@ import { useField } from 'formik';
 import { Picker } from '@react-native-picker/picker';
 
 
-const FormikPicker = ({ name, options, ...props}) => {
+const FormikPicker = ({ name, options, ...props }) => {
   const [field, , helpers] = useField(name);
 
   return (
@@ -15,9 +15,9 @@ const FormikPicker = ({ name, options, ...props}) => {
       >
         {
           options.map((item, index) => {
-            return <Picker.Item label={item.label}  value={item.value} key={index} />;
+            return <Picker.Item label={item.label} value={item.value} key={index} />;
           })
-        }      
+        }
       </Picker>
     </>
   );

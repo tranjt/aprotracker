@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import exerciseService from '../../service/exercise';
 import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
 
 import CreateExercise from './CreateExercise';
 
@@ -30,7 +31,7 @@ const CreateExerciseScreen = () => {
     } catch (error) {
       console.log(error);
     }
-  }; 
+  };
 
   const onDelete = async () => {
     try {
@@ -46,8 +47,7 @@ const CreateExerciseScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is the CreateExerciseScreen!</Text>
+    <View style={styles.container}>
       <Button
         onPress={onSubmit}
         title="Test create"
@@ -55,12 +55,20 @@ const CreateExerciseScreen = () => {
       <Button
         onPress={onDelete}
         title="Test Delete create"
-      />     
-      <CreateExercise/>
+      />
+      <CreateExercise />
     </View>
   );
 };
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: 'white',
+  },
+});
 
 export default CreateExerciseScreen;

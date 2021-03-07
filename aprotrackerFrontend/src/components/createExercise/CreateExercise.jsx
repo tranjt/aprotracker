@@ -9,6 +9,7 @@ import CreateExerciseForm from './CreateExerciseForm';
 const initialValues = {
   exerciseName: '',
   exerciseType: '',
+  description: ''
 };
 
 const validationSchema = yup.object().shape({
@@ -23,9 +24,16 @@ const validationSchema = yup.object().shape({
 const CreateExercise = () => {
 
   const onSubmit = (values) => {
-    const { exerciseName, exerciseType } = values;
-    console.log(exerciseName);
-    console.log(exerciseType);
+    const { exerciseName, exerciseType, description } = values;
+    const newExercise = {
+      name: exerciseName,
+      type: exerciseType,
+      description,
+      editable: true
+    };
+
+    console.log(JSON.stringify(newExercise));
+
   };
 
   return (
@@ -33,7 +41,7 @@ const CreateExercise = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}        
+        validationSchema={validationSchema}
       >
         {({ handleSubmit, dirty, isValid }) =>
           <CreateExerciseForm onSubmit={handleSubmit} dirty={dirty} isValid={isValid} />}
