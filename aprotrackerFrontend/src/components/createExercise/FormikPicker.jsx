@@ -3,7 +3,7 @@ import { useField } from 'formik';
 import { Picker } from '@react-native-picker/picker';
 
 
-const FormikExercisePicker = ({ name, ...props }) => {
+const FormikPicker = ({ name, options, ...props}) => {
   const [field, , helpers] = useField(name);
 
   return (
@@ -13,15 +13,14 @@ const FormikExercisePicker = ({ name, ...props }) => {
         onValueChange={value => helpers.setValue(value)}
         {...props}
       >
-        <Picker.Item label='Select exercise type' key={0} />
-        <Picker.Item label='repsOnly' value={'repsOnly'} key={1} />
-        <Picker.Item label='timed' value={'timed'} key={2} />
-        <Picker.Item label='weighted' value={'weighted'} key={3} />
+        {
+          options.map((item, index) => {
+            return <Picker.Item label={item.label}  value={item.value} key={index} />;
+          })
+        }      
       </Picker>
     </>
   );
 };
 
-
-
-export default FormikExercisePicker;
+export default FormikPicker;

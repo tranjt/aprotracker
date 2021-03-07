@@ -14,10 +14,10 @@ const initialValues = {
 const validationSchema = yup.object().shape({
   exerciseName: yup
     .string()
-    .required('exerciseName is required'),
+    .required('Exercise name is required'),
   exerciseType: yup
     .string()
-    .required(''),
+    .required(),
 });
 
 const CreateExercise = () => {
