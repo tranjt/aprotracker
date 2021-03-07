@@ -3,6 +3,8 @@ import { View, Text, Button } from 'react-native';
 import exerciseService from '../../service/exercise';
 import { useNavigation } from '@react-navigation/native';
 
+import CreateExercise from './CreateExercise';
+
 const CreateExerciseScreen = () => {
   const navigation = useNavigation();
 
@@ -54,6 +56,7 @@ const CreateExerciseScreen = () => {
         onPress={onDelete}
         title="Test Delete create"
       />     
+      <CreateExercise/>
     </View>
   );
 };
