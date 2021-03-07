@@ -68,6 +68,9 @@
 |       | 1    | modified local exercise access to work with async storage |
 |       | 1    | added round plus button and load exercises from both async and file |
 |       | 1    | added initial create exercise screen |
-| total | 162  | | 
+|  7.3  | 2    | added exercise form |
+|       | 1    | refactor FormikExercisePicker and added FormikTextArea |
+|       | 1    | add new exercise now works (for local options)  |
+| total | 166  | | 
 
 

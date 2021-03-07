@@ -14,7 +14,6 @@ const FormikTextArea = ({ name, ...props }) => {
         value={field.value}
         {...props}
       />
-
     </>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import exerciseService from '../../service/exercise';
 import Constants from 'expo-constants';
 
+import exerciseService from '../../service/exercise';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import CreateExercise from './CreateExercise';
