@@ -119,18 +119,8 @@ const parseDoneExercises = (exercises) => {
   return parsedExercises.filter(exercise => exercise.sets.length !== 0);
 };
 
-const getRoutines = () => {
-  return routines;
-};
-
-const getRoutine = (routineIndex) => {
-  return routines[routineIndex];
-};
-
 export default {
   generateRoutineComponentObject,
   getNewExerciseSet,
   parseDoneExercises,
-  getRoutines,
-  getRoutine
 };

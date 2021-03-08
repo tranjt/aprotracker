@@ -10,10 +10,7 @@ const Exercise = ({ exercise, exerciseIndex }) => {
 
   return (
     <Pressable
-      onPress={() => navigation.navigate('ExerciseDetail', {
-        exerciseName: exercise.name,
-        exerciseIndex
-      })}
+      onPress={() => navigation.navigate('ExerciseDetail', { exerciseIndex })}
     >
       <View style={styles.container}>
 

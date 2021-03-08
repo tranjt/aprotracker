@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Pressable, StyleSheet, ScrollView, Text } from 'react-native';
 
-import workoutService from '../../service/workout';
+import { useLocalData } from '../../state/localDataContext';
 import ExerciseList from './ExerciseList';
 import useRoutines from '../../hooks/useRoutines';
 import { dateFormat } from '../../utils/timedate';
@@ -9,7 +9,7 @@ import theme from '../../theme';
 
 
 const RoutineOptions = ({ navigation }) => {
-  const routinesTemplates = workoutService.getRoutines();
+  const [state] = useLocalData();
   const { routines } = useRoutines();
 
   const renderLatestCompletedRoutine = (name) => {
@@ -28,7 +28,7 @@ const RoutineOptions = ({ navigation }) => {
   return (
     <ScrollView >
       {
-        routinesTemplates.map((routineTemplate, routineIndex) => {
+        state.routinesTemplates.map((routineTemplate, routineIndex) => {
           return (
             <View key={`routine-${routineIndex}`} style={styles.card}>
               <Pressable

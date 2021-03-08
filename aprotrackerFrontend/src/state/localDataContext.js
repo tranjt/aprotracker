@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import exerciseService from '../service/exercise';
+import routineService from '../service/routine';
 import reducer from './reducer';
 
 
@@ -7,22 +8,24 @@ const LocalDataState = createContext();
 const LocalDataDispatch = createContext();
 const initialState = {
   exercises: [],
-  routines: [],
+  routinesTemplates: [],
   auth: false
 };
 
 const LocalDataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const getExercises = async () => {
+  const initData = async () => {
     const localExercises = await exerciseService.getExercises();
-    if (localExercises) {
-      dispatch({ type: 'INIT', exercises: localExercises });
+    const routinesTemplates = await routineService.getRoutines();
+
+    if (localExercises && routinesTemplates) {
+      dispatch({ type: 'INIT', payload: { localExercises, routinesTemplates } });
     }
   };
 
   useEffect(() => {
-    getExercises();
+    initData();
   }, []);
 
   return (

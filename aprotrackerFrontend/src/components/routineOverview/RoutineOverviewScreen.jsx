@@ -1,12 +1,13 @@
 
 import React from 'react';
 import { Text, Button, View, StyleSheet } from 'react-native';
-import workoutService from '../../service/workout';
+import { useLocalData } from '../../state/localDataContext';
 
 
 const RoutineOverviewScreen = ({ navigation, route }) => {
   const { routineName, routineIndex } = route.params;
-  const { exercises } = workoutService.getRoutine(routineIndex);
+  const [state] = useLocalData();    
+  const { exercises } = state.routinesTemplates[routineIndex];
 
   return (
     <View style={styles.container}>
