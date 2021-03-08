@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import Main from './src/components/Main';
 import createApolloClient from './src/utils/apolloClient';
 import AuthStorage from './src/utils/authStorage';
-import { AuthProvider } from './src/utils/authContext';
+import { LocalDataProvider } from './src/state/localDataContext';
 import AuthStorageContext from './src/contexts/AuthStorageContext';
 
 
@@ -15,9 +15,9 @@ const App = () => {
   return (
     <ApolloProvider client={apolloClient}>
       <AuthStorageContext.Provider value={authStorage}>
-        <AuthProvider>
+        <LocalDataProvider>
           <Main />
-        </AuthProvider>
+        </LocalDataProvider>
       </AuthStorageContext.Provider>
     </ApolloProvider >
   );

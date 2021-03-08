@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import SignInForm from './SignInForm';
 import useSignIn from '../../hooks/useSignIn';
-import { useAuth } from '../../utils/authContext';
+import { useLocalData } from '../../state/localDataContext';
 
 
 const initialValues = {
@@ -36,15 +36,16 @@ export const SignInContainer = ({ onSubmit }) => {
 
 const SignIn = ({ setNotifiction }) => {
   const [signIn] = useSignIn();
-  const navigation = useNavigation();
-  const [, setAuth] = useAuth();
+  const navigation = useNavigation();  
+  const [, dispatch] = useLocalData();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
     console.log(values);
+    
     try {
-      await signIn({ username, password });
-      setAuth(true);
+      await signIn({ username, password });      
+      dispatch({ type: 'LOGGED_IN' });
       navigation.navigate('Home', { screen: 'Profile' });
     } catch (e) {
       setNotifiction(e.message);

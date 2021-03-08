@@ -2,20 +2,20 @@ import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 import { useApolloClient } from '@apollo/client';
 
-import { useAuth } from '../../utils/authContext';
+import { useLocalData } from '../../state/localDataContext';
 import AuthStorageContext from '../../contexts/AuthStorageContext';
 import Button from '../Button';
 
 
 const ProfileScreen = () => {
   const apolloClient = useApolloClient();
-  const authStorage = useContext(AuthStorageContext);
-  const [, setAuth] = useAuth();
+  const authStorage = useContext(AuthStorageContext);  
+  const [, dispatch] = useLocalData();
 
   const logout = async () => {
     await authStorage.removeAccessToken();
-    apolloClient.resetStore();
-    setAuth(false);
+    apolloClient.resetStore();    
+    dispatch({ type: 'LOGGED_OUT' });
   };
 
   return (

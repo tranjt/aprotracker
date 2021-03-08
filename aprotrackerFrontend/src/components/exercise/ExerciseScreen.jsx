@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 
 import ExerciseList from './ExerciseList';
-import exerciseService from '../../service/exercise';
+import { useLocalData } from '../../state/localDataContext';
 import theme from '../../theme';
 
 
-const ExerciseScreen = ({ navigation, route }) => {
-  const [exercises, setExercises] = useState([]);
-
-  const getExercises = async () => {
-    const localExercises = await exerciseService.getExercises();
-    if (localExercises) {
-      setExercises(localExercises);
-    }
-  }; 
-
-  useEffect(() => {
-    getExercises();
-  }, [route.params?.newExercise]);  
+const ExerciseScreen = ({ navigation, route }) => {  
+  const [state] = useLocalData();
 
   const createExercise = () => {
     navigation.navigate('createExercise');
@@ -31,7 +21,7 @@ const ExerciseScreen = ({ navigation, route }) => {
       <ExerciseList
         createExercise={createExercise}
         route={route}
-        exercises={exercises}
+        exercises={state.exercises}
       />
     </View>
   );

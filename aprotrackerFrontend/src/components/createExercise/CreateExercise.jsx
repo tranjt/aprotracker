@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 import CreateExerciseForm from './CreateExerciseForm';
 import exerciseService from '../../service/exercise';
-
+import { useLocalData } from '../../state/localDataContext';
 
 const initialValues = {
   exerciseName: '',
@@ -23,6 +23,7 @@ const validationSchema = yup.object().shape({
 });
 
 const CreateExercise = ({ navigation, setNotifiction }) => {
+  const [, dispatch] = useLocalData();
 
   const onSubmit = async (values) => {
     const { exerciseName, exerciseType, description } = values;
@@ -32,19 +33,15 @@ const CreateExercise = ({ navigation, setNotifiction }) => {
       description,
       editable: true
     };
-    console.log(JSON.stringify(newExercise));
+    console.log(JSON.stringify(newExercise));   
 
     try {
       await exerciseService.addExercise(newExercise);
+      dispatch({ type: 'ADD_EXERCISE', newExercise });
+      navigation.navigate('Home', { screen: 'Exercise' });
 
-      navigation.navigate('Home', {
-        screen: 'Exercise',
-        params: {
-          newExercise
-        }
-      });
     } catch (e) {
-      setNotifiction(e);      
+      setNotifiction(e);
     }
   };
 

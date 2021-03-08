@@ -1,18 +1,9 @@
 import exercises from '../data/exercises';
 import ListStorage from '../utils/listStorage';
+import compareName from '../utils/compareName';
 
 
 const exerciseListStorage = new ListStorage('exerciseList');
-
-const compareName = (a, b) => {
-  if (a.name.toLowerCase() < b.name.toLowerCase()) {
-    return -1;
-  }
-  if (a.name.toLowerCase() > b.name.toLowerCase()) {
-    return 1;
-  }
-  return 0;
-};
 
 const getExercises = async () => {
   const exerciseList = await exerciseListStorage.getList();

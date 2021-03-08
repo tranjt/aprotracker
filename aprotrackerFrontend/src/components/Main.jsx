@@ -13,7 +13,7 @@ import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
 import CreateExerciseScreen from './createExercise/CreateExerciseScreen';
-import { useAuth } from '../utils/authContext';
+import { useLocalData } from '../state/localDataContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
 
@@ -56,14 +56,14 @@ const Home = () => {
   );
 };
 
-const Main = () => {
-  const [auth, setAuth] = useAuth();
+const Main = () => {  
+  const [state, dispatch] = useLocalData();
   const authStorage = useContext(AuthStorageContext);
 
   const authorizedUserCheck = async () => {
     const savedToken = await authStorage.getAccessToken();
-    if (savedToken) {
-      setAuth(true);
+    if (savedToken) {      
+      dispatch({ type: 'LOGGED_IN' });
     }
   };
 
@@ -71,15 +71,14 @@ const Main = () => {
     authorizedUserCheck();
   }, []);
 
-
   const MyCustomHeaderBackImage = () => (
     <MaterialIcons name="cancel" size={24} color="black" />
   );
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-        {auth ? (
+      <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>        
+        {state.auth ? (
           <>
             <RootStack.Screen
               name='Home'
@@ -114,9 +113,7 @@ const Main = () => {
                   fontWeight: theme.fontWeights.bold,
                 },
                 headerBackImage: MyCustomHeaderBackImage,
-                
               }}
-             
             />
           </>
         ) : (
@@ -142,8 +139,5 @@ const Main = () => {
     </NavigationContainer>
   );
 };
-
-
-
 
 export default Main;

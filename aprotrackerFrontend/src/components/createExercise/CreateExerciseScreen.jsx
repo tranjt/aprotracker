@@ -6,18 +6,18 @@ import exerciseService from '../../service/exercise';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import CreateExercise from './CreateExercise';
+import { useLocalData } from '../../state/localDataContext';
 
 const CreateExerciseScreen = ({ navigation }) => {
   const [notification, setNotifiction] = useNotifiction();
+  const [, dispatch] = useLocalData();
 
-  const onDelete = async () => {
+  const onDelete = async () => { 
     try {
       await exerciseService.deleteExercise('Test');
-
-      navigation.navigate('Home', {
-        screen: 'Exercise',
-        params: { deletedName: 'Test' },
-      });
+      dispatch({ type: 'DELETE_EXERCISE', exerciseName: 'Test' });
+      navigation.navigate('Home', { screen: 'Exercise' });
+      
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +41,7 @@ const CreateExerciseScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
     paddingTop: Constants.statusBarHeight,
     backgroundColor: 'white',
   },
