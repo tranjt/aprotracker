@@ -14,6 +14,7 @@ import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
 import CreateExerciseScreen from './createExercise/CreateExerciseScreen';
 import ExerciseDetailScreen from './exerciseDetail/ExerciseDetailScreen';
+import CreateRoutineScreen from './createRoutine/CreateRoutineScreen';
 import { useLocalData } from '../state/localDataContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
@@ -104,7 +105,7 @@ const Main = () => {
               options={{ headerShown: false }}
             />
             <RootStack.Screen
-              name='createExercise'
+              name='CreateExercise'
               component={CreateExerciseScreen}
               options={{
                 title: 'Create Exercise',
@@ -126,6 +127,19 @@ const Main = () => {
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 }
+              }}
+            />
+            <RootStack.Screen
+              name='CreateRoutine'
+              component={CreateRoutineScreen}
+              options={{
+                title: 'Create Routine',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                },
+                headerBackImage: MyCustomHeaderBackImage,
               }}
             />
           </>

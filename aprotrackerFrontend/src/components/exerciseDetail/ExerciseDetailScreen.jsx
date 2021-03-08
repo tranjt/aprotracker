@@ -15,9 +15,9 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
     setExercise(state.exercises[exerciseIndex]);
   }, []);
 
-  const onDelete = async () => {
+  const doDelete = async () => {
     try {
-      await exerciseService.deleteExercise('Test');
+      await exerciseService.deleteExercise(exercise.name);
       dispatch({ type: 'DELETE_EXERCISE', exerciseName: exercise.name });
       navigation.navigate('Home', { screen: 'Exercise' });
 
@@ -26,7 +26,7 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
     }
   };
 
-  const handlePress = () => {
+  const onDelete = () => {
     Alert.alert(
       'Are you sure you want to delete?',
       'Existing routine with this exercise might not be useable after deletion!',
@@ -36,7 +36,7 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel'
         },
-        { text: 'Delete exercise', onPress: () => onDelete() }
+        { text: 'Delete exercise', onPress: () => doDelete() }
       ],
       { cancelable: false }
     );
@@ -45,7 +45,7 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
   const renderDeleteButton = () => {
     return (
       <Pressable
-        onPress={handlePress}
+        onPress={onDelete}
         style={styles.deleteButton}
       >
         <MaterialIcons name="delete-forever" size={30} color="black" />

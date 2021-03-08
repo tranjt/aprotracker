@@ -11,7 +11,7 @@ const ExerciseScreen = ({ navigation, route }) => {
   const [state] = useLocalData();
 
   const createExercise = () => {
-    navigation.navigate('createExercise');
+    navigation.navigate('CreateExercise');
   };
 
   return (

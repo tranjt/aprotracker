@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
   },
   title: {
-    fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSizes.title,
-    color: theme.colors.primary,
     alignSelf: 'center',
-    marginLeft: 10
+    paddingBottom: 15,
+    color: theme.colors.primary,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.title
   }
 });
 

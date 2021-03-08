@@ -5,12 +5,17 @@ import { useLocalData } from '../../state/localDataContext';
 import ExerciseList from './ExerciseList';
 import useRoutines from '../../hooks/useRoutines';
 import { dateFormat } from '../../utils/timedate';
+import RoundPlusButton from '../RoundPlusButton';
 import theme from '../../theme';
 
 
 const RoutineOptions = ({ navigation }) => {
   const [state] = useLocalData();
   const { completedRoutines } = useRoutines();
+
+  const createRoutine = () => {
+    navigation.navigate('CreateRoutine');
+  };
 
   const renderLatestCompletedRoutine = (name) => {
     const completedRoutine = completedRoutines?.find(routine => routine.name === name);
@@ -26,30 +31,37 @@ const RoutineOptions = ({ navigation }) => {
   };
 
   return (
-    <ScrollView >
-      {
-        state.routines.map((routine, routineIndex) => {
-          return (
-            <View key={`routine-${routineIndex}`} style={styles.card}>
-              <Pressable
-                onPress={() => navigation.navigate('RoutineOverview', {
-                  routineName: routine.name,
-                  routineIndex
-                })}
-              >
-                <Text
-                  style={styles.subheadingStyle}
+    <View>
+      <ScrollView >
+        {
+          state.routines.map((routine, routineIndex) => {
+            return (
+              <View key={`routine-${routineIndex}`} style={styles.card}>
+                <Pressable
+                  onPress={() => navigation.navigate('RoutineOverview', {
+                    routineName: routine.name,
+                    routineIndex
+                  })}
                 >
-                  {routine.name}
-                </Text>
-                {renderLatestCompletedRoutine(routine.name)}
-                <ExerciseList exercises={routine.exercises} />
-              </Pressable>
-            </View>
-          );
-        })
-      }
-    </ScrollView>
+                  <Text
+                    style={styles.subheadingStyle}
+                  >
+                    {routine.name}
+                  </Text>
+                  {renderLatestCompletedRoutine(routine.name)}
+                  <ExerciseList exercises={routine.exercises} />
+                </Pressable>
+              </View>
+            );
+          })
+        }
+      </ScrollView>
+      <RoundPlusButton
+        size={40}
+        color='black'
+        onPress={createRoutine}
+      />
+    </View>
   );
 };
 
