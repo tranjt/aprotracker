@@ -1,18 +1,19 @@
 import compareName from '../utils/compareName';
 
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'INIT': {
-      return { 
+      return {
         ...state,
         exercises: action.exercises
-       };
+      };
     }
     case 'ADD_EXERCISE': {
-      return { 
+      return {
         ...state,
         exercises: [...state.exercises, action.newExercise].sort(compareName)
-       };
+      };
     }
     case 'DELETE_EXERCISE': {
       return {
@@ -39,9 +40,10 @@ const reducer = (state, action) => {
         ...state,
         auth: false
       };
-    }    
-    default:
-      return state;
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
   }
 };
 

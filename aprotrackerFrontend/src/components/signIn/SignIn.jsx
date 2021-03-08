@@ -36,15 +36,15 @@ export const SignInContainer = ({ onSubmit }) => {
 
 const SignIn = ({ setNotifiction }) => {
   const [signIn] = useSignIn();
-  const navigation = useNavigation();  
+  const navigation = useNavigation();
   const [, dispatch] = useLocalData();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
     console.log(values);
-    
+
     try {
-      await signIn({ username, password });      
+      await signIn({ username, password });
       dispatch({ type: 'LOGGED_IN' });
       navigation.navigate('Home', { screen: 'Profile' });
     } catch (e) {

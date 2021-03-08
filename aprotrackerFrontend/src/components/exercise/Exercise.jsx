@@ -1,21 +1,32 @@
 import React from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
 
 
-const Exercise = ({ exercise }) => {
+const Exercise = ({ exercise, exerciseIndex }) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Text
-        style={styles.title}
-      >
-        {`${exercise.name} `}
-      </Text>
-      <Text style={styles.text}>
-        {`(${exercise.type})`}
-      </Text>
-    </View>
+    <Pressable
+      onPress={() => navigation.navigate('ExerciseDetail', {
+        exerciseName: exercise.name,
+        exerciseIndex
+      })}
+    >
+      <View style={styles.container}>
+
+        <Text
+          style={styles.title}
+        >
+          {`${exercise.name} `}
+        </Text>
+        <Text style={styles.text}>
+          {`(${exercise.type})`}
+        </Text>
+      </View>
+    </Pressable>
   );
 };
 

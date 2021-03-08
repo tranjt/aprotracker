@@ -10,7 +10,7 @@ const ExerciseList = ({ createExercise, exercises }) => {
     <View style={styles.container}>
       <FlatList
         data={exercises}
-        renderItem={({ item }) => <Exercise exercise={item} />}
+        renderItem={({ item, index }) => <Exercise exercise={item} exerciseIndex={index}/>}
         ItemSeparatorComponent={ItemSeparator}
         keyExtractor={(item, index) => `$exercises-${index}`}
         contentContainerStyle={{ paddingBottom: 45 }}

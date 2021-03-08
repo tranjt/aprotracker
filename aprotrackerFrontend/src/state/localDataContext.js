@@ -2,12 +2,13 @@ import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import exerciseService from '../service/exercise';
 import reducer from './reducer';
 
+
 const LocalDataState = createContext();
 const LocalDataDispatch = createContext();
 const initialState = {
   exercises: [],
   routines: [],
-  auth: false  
+  auth: false
 };
 
 const LocalDataProvider = ({ children }) => {
@@ -23,7 +24,6 @@ const LocalDataProvider = ({ children }) => {
   useEffect(() => {
     getExercises();
   }, []);
-
 
   return (
     <LocalDataState.Provider value={state}>
@@ -54,6 +54,5 @@ const useLocalData = () => {
   //usage const [state, dispatch] = useLocalData()
   return [useLocalDataState(), useLocalDataDispatch()];
 };
-
 
 export { LocalDataProvider, useLocalData };

@@ -7,6 +7,7 @@ import CreateExerciseForm from './CreateExerciseForm';
 import exerciseService from '../../service/exercise';
 import { useLocalData } from '../../state/localDataContext';
 
+
 const initialValues = {
   exerciseName: '',
   exerciseType: '',
@@ -33,7 +34,7 @@ const CreateExercise = ({ navigation, setNotifiction }) => {
       description,
       editable: true
     };
-    console.log(JSON.stringify(newExercise));   
+    console.log(JSON.stringify(newExercise));
 
     try {
       await exerciseService.addExercise(newExercise);

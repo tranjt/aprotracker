@@ -13,6 +13,7 @@ import SignUpScreen from './signUp/SignUp';
 import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
 import CreateExerciseScreen from './createExercise/CreateExerciseScreen';
+import ExerciseDetailScreen from './exerciseDetail/ExerciseDetailScreen';
 import { useLocalData } from '../state/localDataContext';
 import AuthStorageContext from '../contexts/AuthStorageContext';
 import theme from '../theme';
@@ -56,13 +57,13 @@ const Home = () => {
   );
 };
 
-const Main = () => {  
+const Main = () => {
   const [state, dispatch] = useLocalData();
   const authStorage = useContext(AuthStorageContext);
 
   const authorizedUserCheck = async () => {
     const savedToken = await authStorage.getAccessToken();
-    if (savedToken) {      
+    if (savedToken) {
       dispatch({ type: 'LOGGED_IN' });
     }
   };
@@ -77,7 +78,7 @@ const Main = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>        
+      <RootStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
         {state.auth ? (
           <>
             <RootStack.Screen
@@ -113,6 +114,18 @@ const Main = () => {
                   fontWeight: theme.fontWeights.bold,
                 },
                 headerBackImage: MyCustomHeaderBackImage,
+              }}
+            />
+            <RootStack.Screen
+              name='ExerciseDetail'
+              component={ExerciseDetailScreen}
+              options={{
+                title: 'Exercise Detail',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                }
               }}
             />
           </>
