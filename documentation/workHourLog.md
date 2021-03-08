@@ -71,6 +71,11 @@
 |  7.3  | 2    | added exercise form |
 |       | 1    | refactor FormikExercisePicker and added FormikTextArea |
 |       | 1    | add new exercise now works (for local options)  |
-| total | 166  | | 
+|  8.3  | 4    | changed state management for auth and exercise into one provider |
+|       | 2    | add exercise detail screen and some code fix |
+|       | 1    | routine templates are now a combination of data file and async storage |
+|       | 1    | add initial createRoutineScreen and some minor refactor |
+|       | 1    | planning routine creation form |
+| total | 175  | | 
 
 
