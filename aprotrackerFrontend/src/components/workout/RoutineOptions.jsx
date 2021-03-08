@@ -10,15 +10,15 @@ import theme from '../../theme';
 
 const RoutineOptions = ({ navigation }) => {
   const [state] = useLocalData();
-  const { routines } = useRoutines();
+  const { completedRoutines } = useRoutines();
 
   const renderLatestCompletedRoutine = (name) => {
-    const routine = routines?.find(routine => routine.name === name);
-    if (routine) {
+    const completedRoutine = completedRoutines?.find(routine => routine.name === name);
+    if (completedRoutine) {
       return (
         <Text style={styles.date}>
           last completed:
-          {dateFormat(routine.createdAt)}
+          {dateFormat(completedRoutine.createdAt)}
         </Text>
       );
     }
@@ -28,22 +28,22 @@ const RoutineOptions = ({ navigation }) => {
   return (
     <ScrollView >
       {
-        state.routinesTemplates.map((routineTemplate, routineIndex) => {
+        state.routines.map((routine, routineIndex) => {
           return (
             <View key={`routine-${routineIndex}`} style={styles.card}>
               <Pressable
                 onPress={() => navigation.navigate('RoutineOverview', {
-                  routineName: routineTemplate.name,
+                  routineName: routine.name,
                   routineIndex
                 })}
               >
                 <Text
                   style={styles.subheadingStyle}
                 >
-                  {routineTemplate.name}
+                  {routine.name}
                 </Text>
-                {renderLatestCompletedRoutine(routineTemplate.name)}
-                <ExerciseList exercises={routineTemplate.exercises} />
+                {renderLatestCompletedRoutine(routine.name)}
+                <ExerciseList exercises={routine.exercises} />
               </Pressable>
             </View>
           );

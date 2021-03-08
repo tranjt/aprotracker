@@ -7,7 +7,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         exercises: action.payload.localExercises,
-        routinesTemplates: action.payload.routinesTemplates
+        routines: action.payload.localRoutines
       };
     }
     case 'ADD_EXERCISE': {

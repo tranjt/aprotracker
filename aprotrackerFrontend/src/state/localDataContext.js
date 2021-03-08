@@ -8,7 +8,7 @@ const LocalDataState = createContext();
 const LocalDataDispatch = createContext();
 const initialState = {
   exercises: [],
-  routinesTemplates: [],
+  routineTemplates: [],
   auth: false
 };
 
@@ -17,10 +17,10 @@ const LocalDataProvider = ({ children }) => {
 
   const initData = async () => {
     const localExercises = await exerciseService.getExercises();
-    const routinesTemplates = await routineService.getRoutines();
+    const localRoutines = await routineService.getRoutines();
 
-    if (localExercises && routinesTemplates) {
-      dispatch({ type: 'INIT', payload: { localExercises, routinesTemplates } });
+    if (localExercises && localRoutines) {
+      dispatch({ type: 'INIT', payload: { localExercises, localRoutines } });
     }
   };
 

@@ -7,7 +7,7 @@ import { useLocalData } from '../../state/localDataContext';
 const RoutineOverviewScreen = ({ navigation, route }) => {
   const { routineName, routineIndex } = route.params;
   const [state] = useLocalData();    
-  const { exercises } = state.routinesTemplates[routineIndex];
+  const { exercises } = state.routines[routineIndex];
 
   return (
     <View style={styles.container}>

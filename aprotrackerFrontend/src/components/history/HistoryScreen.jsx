@@ -7,7 +7,7 @@ import theme from '../../theme';
 
 
 function HistoryScreen() {
-  const { routines, loading } = useRoutines();
+  const { completedRoutines, loading } = useRoutines();
 
   const renderScreen = () => {
     if (loading) {
@@ -16,7 +16,7 @@ function HistoryScreen() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>History</Text>
-        <RoutineList routines={routines} />
+        <RoutineList routines={completedRoutines} />
       </View>
     );
   };

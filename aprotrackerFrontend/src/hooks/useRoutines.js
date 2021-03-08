@@ -8,7 +8,7 @@ const userRoutines = () => {
   });
 
   return {
-    routines: data ? data.allRoutines.slice(0).reverse() : [],
+    completedRoutines: data ? data.allRoutines.slice(0).reverse() : [],
     loading
   };
 };

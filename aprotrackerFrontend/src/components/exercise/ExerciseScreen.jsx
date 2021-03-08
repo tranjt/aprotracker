@@ -7,7 +7,7 @@ import { useLocalData } from '../../state/localDataContext';
 import theme from '../../theme';
 
 
-const ExerciseScreen = ({ navigation, route }) => {  
+const ExerciseScreen = ({ navigation, route }) => {
   const [state] = useLocalData();
 
   const createExercise = () => {
