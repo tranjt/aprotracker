@@ -20,7 +20,6 @@ const ExerciseSelectorHeader = ({ setModalVisible, modalVisible }) => {
 
 
 const styles = StyleSheet.create({
-
   header: {
     backgroundColor: 'white',
     alignItems: 'center',

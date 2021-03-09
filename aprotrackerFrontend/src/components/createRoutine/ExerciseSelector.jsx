@@ -9,11 +9,11 @@ import RoundButton from '../RoundButton';
 
 const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
   const [state] = useLocalData();
-  const [exercises, setExercises] = useState([]);
+  const [modalExercises, setModalExercises] = useState([]);
   const [valid, setValid] = useState(false);
 
   useEffect(() => {
-    setExercises(state.exercises.map(exercise => {
+    setModalExercises(state.exercises.map(exercise => {
       return {
         ...exercise,
         selected: false
@@ -24,18 +24,18 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
   }, [modalVisible]);
 
   const selectExercise = (exerciseIndex) => {
-    const updatedExercises = [...exercises];
-    updatedExercises[exerciseIndex].selected = !exercises[exerciseIndex].selected;
+    const updatedExercises = [...modalExercises];
+    updatedExercises[exerciseIndex].selected = !modalExercises[exerciseIndex].selected;
 
-    setExercises(updatedExercises);
+    setModalExercises(updatedExercises);
     checkSelectedExercises();
   };
 
   const checkSelectedExercises = () => {
-    const selectedCount = exercises.reduce((acc, curr) => {
+    const selectedCount = modalExercises.reduce((acc, curr) => {
       return acc + curr.selected ? 1 : 0;
     }, 0);
-    
+
     if (selectedCount > 0) {
       setValid(true);
     } else {
@@ -44,8 +44,14 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
   };
 
   const onSelectionDone = () => {
-    const selectedExercises = exercises.filter(ex => {
-      return ex.selected;
+    const selectedExercises = modalExercises.filter(exercise => {
+      return exercise.selected;
+    }).map((exercise) => {
+      return {
+        name: exercise.name,
+        type: exercise.type,
+        sets: exercise.sets
+      };
     });
 
     addExercises(selectedExercises);
@@ -64,7 +70,7 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
       <View style={styles.modalView}>
         <ExerciseSelectorHeader setModalVisible={setModalVisible} modalVisible={modalVisible} />
         <FlatList
-          data={exercises}
+          data={modalExercises}
           renderItem={({ item, index }) =>
             <Exercise
               exercise={item}
