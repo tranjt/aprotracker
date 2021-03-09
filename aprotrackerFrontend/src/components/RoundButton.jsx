@@ -3,7 +3,7 @@ import { Entypo } from '@expo/vector-icons';
 import { StyleSheet, Pressable } from 'react-native';
 
 
-const RoundPlusButton = ({ style, onPress, size, color }) => {
+const RoundButton = ({ name, style, onPress, size, color }) => {
   const buttonStyle = [
     styles.container,
     style
@@ -14,7 +14,7 @@ const RoundPlusButton = ({ style, onPress, size, color }) => {
       style={buttonStyle}
       onPress={onPress}
     >
-      <Entypo name="plus" size={size} color={color} />
+      <Entypo name={name} size={size} color={color} />
     </Pressable>
   );
 };
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: '#69f0ae',
     borderRadius: 100,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoundPlusButton;
+export default RoundButton;

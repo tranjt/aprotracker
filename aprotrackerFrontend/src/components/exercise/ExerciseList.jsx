@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import RoundPlusButton from '../RoundPlusButton';
+import RoundButton from '../RoundButton';
 
 import Exercise from './Exercise';
 
 
-const ExerciseList = ({ createExercise, exercises }) => {  
+const ExerciseList = ({ createExercise, exercises }) => {
   return (
     <View style={styles.container}>
       <FlatList
         data={exercises}
-        renderItem={({ item, index }) => <Exercise exercise={item} exerciseIndex={index}/>}
+        renderItem={({ item, index }) => <Exercise exercise={item} exerciseIndex={index} />}
         ItemSeparatorComponent={ItemSeparator}
         keyExtractor={(item, index) => `$exercises-${index}`}
         contentContainerStyle={{ paddingBottom: 45 }}
       />
-      <RoundPlusButton
+      <RoundButton
         size={40}
+        name='plus'
         color='black'
         onPress={createExercise}
       />

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
-
+import CreateRoutine from './CreateRoutine';
 
 
 const CreateRoutineScreen = () => {
@@ -13,7 +13,7 @@ const CreateRoutineScreen = () => {
   return (
     <View style={styles.container}>
       <Notification notification={notification} />
-      <Text>CreateRoutineScreen</Text>
+      <CreateRoutine />
     </View>
   );
 };

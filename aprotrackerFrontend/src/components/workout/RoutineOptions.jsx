@@ -5,7 +5,7 @@ import { useLocalData } from '../../state/localDataContext';
 import ExerciseList from './ExerciseList';
 import useRoutines from '../../hooks/useRoutines';
 import { dateFormat } from '../../utils/timedate';
-import RoundPlusButton from '../RoundPlusButton';
+import RoundButton from '../RoundButton';
 import theme from '../../theme';
 
 
@@ -56,8 +56,9 @@ const RoutineOptions = ({ navigation }) => {
           })
         }
       </ScrollView>
-      <RoundPlusButton
+      <RoundButton
         size={40}
+        name='plus'
         color='black'
         onPress={createRoutine}
       />
