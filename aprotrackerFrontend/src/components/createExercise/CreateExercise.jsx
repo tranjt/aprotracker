@@ -25,13 +25,26 @@ const validationSchema = yup.object().shape({
 
 const CreateExercise = ({ navigation, setNotifiction }) => {
   const [, dispatch] = useLocalData();
+  
+  const getSets = (exerciseType) => {
+    switch (exerciseType) {
+      case 'repsOnly':
+        return { setCount: 1, repsPlaceholder: 5 };
+      case 'weighted':
+        return { setCount: 1, kgPlaceholder: 5, repsPlaceholder: 5 };
+      default: //timed
+        return { setCount: 1, timedPlaceholder: '00:30' };
+    }
+  };
 
   const onSubmit = async (values) => {
     const { exerciseName, exerciseType, description } = values;
+
     const newExercise = {
       name: exerciseName,
       type: exerciseType,
       description,
+      sets: getSets(exerciseType),
       editable: true
     };
     console.log(JSON.stringify(newExercise));

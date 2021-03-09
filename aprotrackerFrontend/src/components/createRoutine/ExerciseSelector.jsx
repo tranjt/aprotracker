@@ -19,12 +19,14 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
         selected: false
       };
     }));
+
     setValid(false);
   }, [modalVisible]);
 
   const selectExercise = (exerciseIndex) => {
     const updatedExercises = [...exercises];
     updatedExercises[exerciseIndex].selected = !exercises[exerciseIndex].selected;
+
     setExercises(updatedExercises);
     checkSelectedExercises();
   };
@@ -33,6 +35,7 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
     const selectedCount = exercises.reduce((acc, curr) => {
       return acc + curr.selected ? 1 : 0;
     }, 0);
+    
     if (selectedCount > 0) {
       setValid(true);
     } else {
@@ -44,6 +47,7 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
     const selectedExercises = exercises.filter(ex => {
       return ex.selected;
     });
+
     addExercises(selectedExercises);
     setModalVisible(!modalVisible);
   };

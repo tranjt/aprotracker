@@ -16,7 +16,7 @@ const ExerciseSelectorHeader = ({ setModalVisible, modalVisible }) => {
       <Text style={styles.title}>Add exercises</Text>
     </View>
   );
-}
+};
 
 
 const styles = StyleSheet.create({

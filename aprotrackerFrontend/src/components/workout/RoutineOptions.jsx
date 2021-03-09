@@ -32,7 +32,9 @@ const RoutineOptions = ({ navigation }) => {
 
   return (
     <View>
-      <ScrollView >
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 45 }}
+      >
         {
           state.routines.map((routine, routineIndex) => {
             return (
