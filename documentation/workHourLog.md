@@ -76,6 +76,8 @@
 |       | 1    | routine templates are now a combination of data file and async storage |
 |       | 1    | add initial createRoutineScreen and some minor refactor |
 |       | 1    | planning routine creation form |
-| total | 175  | | 
+|  9.3  | 4    | createRoutine now able to add exercises and add name to the new routine |
+|       | 3    | selected exercices now added to new routine creation and are editable |
+| total | 182  | | 
 
 

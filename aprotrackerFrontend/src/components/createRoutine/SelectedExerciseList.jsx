@@ -7,8 +7,6 @@ import RepsInputForm from './RepsInputForm';
 const SelectedExerciseList = ({ exercises, handleChange }) => {
 
   const renderExerciseForm = (exercise, exerciseIndex) => {
-    console.log(JSON.stringify(exerciseIndex));
-    console.log(JSON.stringify(exercise));
     return (
       <RepsInputForm
         key={`exercise-${exerciseIndex}`}
@@ -24,7 +22,8 @@ const SelectedExerciseList = ({ exercises, handleChange }) => {
       <Text style={styles.text}>
         Please set number of sets and reps as your goal for exercises.
         Default values will be used if none are given.
-          </Text>{
+      </Text>
+      {
         exercises.map((exercise, exerciseIndex) => {
           return renderExerciseForm(exercise, exerciseIndex);
         })
