@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, Button as OgButton, View, StyleSheet, Alert } from 'react-native';
+import { ScrollView, Text, Button as OgButton, View, StyleSheet, Alert, Pressable } from 'react-native';
 import Constants from 'expo-constants';
+import { Entypo } from '@expo/vector-icons';
 
 import RepsExerciseCard from './RepsExerciseCard';
 import TimedExerciseCard from './TimedExerciseCard';
 import WeightedExerciseCard from './WeightedExerciseCard';
 import workoutService from '../../service/workout';
+import Timer from './Timer';
 import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
@@ -13,7 +15,10 @@ import useAddRoutine from '../../hooks/useAddRoutine';
 import { useLocalData } from '../../state/localDataContext';
 import { secondsToHms } from '../../utils/timedate';
 import { stringToHmsFormat } from '../../utils/timedate';
+import { secondsToHmsV2 } from '../../utils/timedate';
+import { stringToSeconds } from '../../utils/timedate';
 import Button from '../Button';
+import theme from '../../theme';
 
 
 const DoRoutineScreen = ({ navigation, route }) => {
@@ -24,6 +29,10 @@ const DoRoutineScreen = ({ navigation, route }) => {
   const { routineIndex } = route.params;
   const [addRoutine] = useAddRoutine();
   const [state] = useLocalData();
+  const [timerVisible, setTimerVisible] = useState(false);
+  const [timer, setTimer] = useState('00:45');
+  const [timerActive, setTimerActive] = useState(false);
+
 
   useEffect(() => {
     const routine = workoutService.generateRoutineComponentObject(state.routines[routineIndex]);
@@ -34,7 +43,29 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   useInterval(() => {
     setCount(count + 1);
+
+    if (stringToSeconds(timer) <= 1) {
+      setTimerActive(false);
+    }
+    if (timerActive) {
+      const timerInSeconds = stringToSeconds(timer);
+      const timerInString = secondsToHmsV2(timerInSeconds - 1);
+
+      setTimer(timerInString);
+    }
   }, 1000);
+
+  const handleTimerChange = (value) => {
+    value = value.replace(/:/g, '');
+    value = value.replace(/^0+/, '');
+    let timestring = stringToHmsFormat(value);
+    if (!timestring) {
+      timestring = '00:00';
+    }
+
+    setTimer(timestring);
+  };
+
 
   const handleSubmit = async (finishedExercises) => {
     const testRoutine = { // remove this later
@@ -195,24 +226,42 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Duration: {secondsToHms(count)}</Text>
+
+      <View style={styles.header}>
+        <Text>{secondsToHms(count)}</Text>
         <OgButton onPress={() => routineFinished(exercises)} title='Finished' />
+        <Pressable
+          onPress={() => setTimerVisible(true)}
+        >
+          <Entypo name="stopwatch" size={36} color="black" />
+        </Pressable>
+
       </View>
-      <Notification notification={notification} />
-      <ScrollView >
-        <Text>{routineName}</Text>
-        {
-          exercises.map((exercise, exerciseIndex) => (
-            renderExerciseCard(exercise, exerciseIndex)
-          ))
-        }
-        <Button
-          onPress={() => navigation.navigate('Workout')}
-          title='Cancel workout!'
-          titleStyle={{ color: 'tomato' }}
+      <View style={styles.body}>
+        <Notification notification={notification} />
+        <ScrollView >
+          <Text style={styles.title}>{routineName}</Text>
+          {
+            exercises.map((exercise, exerciseIndex) => (
+              renderExerciseCard(exercise, exerciseIndex)
+            ))
+          }
+
+          <Button
+            onPress={() => navigation.navigate('Workout')}
+            title='Cancel workout!'
+            titleStyle={{ color: 'tomato' }}
+            style={styles.buttonCancel}
+          />
+        </ScrollView>
+        <Timer
+          modalVisible={timerVisible}
+          setModalVisible={setTimerVisible}
+          timer={timer}
+          setTimerActive={setTimerActive}
+          handleTimerChange={handleTimerChange}
         />
-      </ScrollView>
+      </View>
     </View>
   );
 };
@@ -222,7 +271,29 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
+    backgroundColor: 'white',
   },
+  header: {
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 10
+  },
+  body: {
+    backgroundColor: '#e8eaf6',
+    padding: 10,
+    flex: 1
+  },
+  title: {
+    paddingLeft: 5,
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.subheading
+  },
+  buttonCancel: {
+    marginTop: 10,
+    marginHorizontal: 5
+  }
+
 });
 
 export default DoRoutineScreen;

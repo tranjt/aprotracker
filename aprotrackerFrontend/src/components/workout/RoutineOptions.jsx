@@ -81,16 +81,18 @@ const RoutineOptions = ({ navigation }) => {
                   {renderLatestCompletedRoutine(routine.name)}
                   <ExerciseList exercises={routine.exercises} />
                 </Pressable>
-                {
-                  routine.editable ?
-                    (<Pressable
-                      onPress={() => onDelete(routine.name)}
-                      style={styles.deleteButton}
-                    >
-                      <MaterialIcons name="delete-forever" size={24} color="black" />
-                    </Pressable>)
-                    : null
-                }
+                <View style={styles.deleteButton}>
+                  {
+                    routine.editable ?
+                      (<Pressable
+                        onPress={() => onDelete(routine.name)}
+
+                      >
+                        <MaterialIcons name="delete-forever" size={24} color="black" />
+                      </Pressable>)
+                      : null
+                  }
+                </View>
               </View>
             );
           })
@@ -137,6 +139,9 @@ const styles = StyleSheet.create({
     color: theme.colors.smallerText,
     marginBottom: 10,
     fontSize: theme.fontSizes.smallerText
+  },
+  deleteButton: {
+    width: 50
   }
 });
 
