@@ -78,6 +78,10 @@
 |       | 1    | planning routine creation form |
 |  9.3  | 4    | createRoutine now able to add exercises and add name to the new routine |
 |       | 3    | selected exercices now added to new routine creation and are editable |
-| total | 182  | | 
+| 10.3  | 2    | create routine now support all type of exercise types  |
+|       | 1    | new custom routine can be added and will show up in workout options selections  |
+|       | 1    | custom routine can be deleted from workout screen, minor bugfix and css changes  |
+|       | 4    | added timer and some css changes in doRoutine  |
+| total | 190  | | 
 
 

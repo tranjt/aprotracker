@@ -62,10 +62,9 @@ export const secondsToHmsV2 = (d) => {
 };
 
 export const stringToSeconds = (value) => {
-  //var hms = '02:04:33';   // your input string
-  const arr = value.split(':'); // split it at the colons
+  //'02:04:33' or '00:04' input string
+  const arr = value.split(':');
 
-  // minutes are worth 60 seconds. Hours are worth 60 minutes.
   if (arr.length === 3) {
     return (+arr[0]) * 60 * 60 + (+arr[1]) * 60 + (+arr[2]);
   }
