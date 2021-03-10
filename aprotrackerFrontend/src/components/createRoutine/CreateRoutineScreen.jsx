@@ -7,13 +7,13 @@ import useNotifiction from '../../hooks/useNotification';
 import CreateRoutine from './CreateRoutine';
 
 
-const CreateRoutineScreen = () => {
+const CreateRoutineScreen = ({ navigation }) => {
   const [notification] = useNotifiction();
 
   return (
     <View style={styles.container}>
       <Notification notification={notification} />
-      <CreateRoutine />
+      <CreateRoutine navigation={navigation} />
     </View>
   );
 };

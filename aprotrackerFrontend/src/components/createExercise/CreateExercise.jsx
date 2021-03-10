@@ -25,7 +25,7 @@ const validationSchema = yup.object().shape({
 
 const CreateExercise = ({ navigation, setNotifiction }) => {
   const [, dispatch] = useLocalData();
-  
+
   const getSets = (exerciseType) => {
     switch (exerciseType) {
       case 'repsOnly':
@@ -54,8 +54,8 @@ const CreateExercise = ({ navigation, setNotifiction }) => {
       dispatch({ type: 'ADD_EXERCISE', newExercise });
       navigation.navigate('Home', { screen: 'Exercise' });
 
-    } catch (e) {
-      setNotifiction(e);
+    } catch (error) {
+      setNotifiction(error);
     }
   };
 

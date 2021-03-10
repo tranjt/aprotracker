@@ -7,7 +7,6 @@ import WeightedInputForm from './WeightedInputForm';
 
 
 const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
-
   const renderExerciseForm = (exercise, exerciseIndex) => {
     switch (exercise.type) {
       case 'timed':
@@ -19,7 +18,7 @@ const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
             handleChange={handleChange}
             doDelete={doDelete}
           />);
-          case 'weighted':
+      case 'weighted':
         return (
           <WeightedInputForm
             key={`exercise-${exerciseIndex}`}
@@ -44,8 +43,8 @@ const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        Please set number of sets and reps as your goal for exercises.
-        Default values will be used if none are given.
+        You can edit each field to set your target goal for each exercises.
+        Default values will be used as placeholder if none are given.
       </Text>
       {
         exercises.map((exercise, exerciseIndex) => {

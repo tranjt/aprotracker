@@ -25,10 +25,18 @@ const reducer = (state, action) => {
       };
     }
     case 'ADD_ROUTINE': {
-      return { ...state };
+      return {
+        ...state,
+        routines: [action.newRoutine, ...state.routines]
+      };
     }
     case 'DELETE_ROUTINE': {
-      return { ...state };
+      return {
+        ...state,
+        routines: [...state.routines].filter(routine => {
+          return routine.name !== action.routineName;
+        })
+      };
     }
     case 'LOGGED_IN': {
       return {
