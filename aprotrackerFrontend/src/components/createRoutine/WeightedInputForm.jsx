@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import theme from '../../theme';
 
 
-const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
+const WeightedInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -33,6 +33,19 @@ const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
             value={exercise.sets.repsPlaceholder.toString()}
             style={styles.textInput}
             onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'repsPlaceholder' })}
+            keyboardType='number-pad'
+            exerciseIndex={exerciseIndex}
+            selectTextOnFocus
+          />
+        </View>
+        <View>
+          <Text style={styles.label}>
+            kg
+          </Text>
+          <TextInput
+            value={exercise.sets.kgPlaceholder.toString()}
+            style={styles.textInput}
+            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'kgPlaceholder' })}
             keyboardType='number-pad'
             exerciseIndex={exerciseIndex}
             selectTextOnFocus
@@ -99,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RepsInputForm;
+export default WeightedInputForm;

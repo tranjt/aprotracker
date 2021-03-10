@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+
 import theme from '../../theme';
 
 
-const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
+const TimedInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
+  console.log(JSON.stringify(exercise));
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -19,7 +21,7 @@ const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
           <TextInput
             style={styles.textInput}
             value={exercise.sets.setCount.toString()}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}
+            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}         
             keyboardType='number-pad'
             exerciseIndex={exerciseIndex}
             selectTextOnFocus
@@ -27,12 +29,12 @@ const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
         </View>
         <View>
           <Text style={styles.label}>
-            Reps number
+            Time
           </Text>
           <TextInput
-            value={exercise.sets.repsPlaceholder.toString()}
+            value={exercise.sets.timedPlaceholder}            
             style={styles.textInput}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'repsPlaceholder' })}
+            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'timedPlaceholder' })}         
             keyboardType='number-pad'
             exerciseIndex={exerciseIndex}
             selectTextOnFocus
@@ -77,11 +79,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10
   },
-  textInput: {
-    borderRadius: 4,
+  textInput: {    
+    borderRadius: 4,    
     textAlign: 'center',
     flexGrow: 1,
-    borderWidth: 1,
+    borderWidth: 1,    
     paddingHorizontal: 10,
     margin: 10
   },
@@ -95,8 +97,8 @@ const styles = StyleSheet.create({
     height: 30,
     backgroundColor: 'white',
     borderRadius: 100,
-    paddingLeft: 5
+    paddingLeft: 10
   },
 });
 
-export default RepsInputForm;
+export default TimedInputForm;

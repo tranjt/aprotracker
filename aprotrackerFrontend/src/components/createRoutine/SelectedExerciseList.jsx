@@ -2,19 +2,43 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import RepsInputForm from './RepsInputForm';
+import TimedInputForm from './TimedInputForm';
+import WeightedInputForm from './WeightedInputForm';
 
 
-const SelectedExerciseList = ({ exercises, handleChange }) => {
+const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
 
   const renderExerciseForm = (exercise, exerciseIndex) => {
-    return (
-      <RepsInputForm
-        key={`exercise-${exerciseIndex}`}
-        exercise={exercise}
-        exerciseIndex={exerciseIndex}
-        handleChange={handleChange}
-      />
-    );
+    switch (exercise.type) {
+      case 'timed':
+        return (
+          <TimedInputForm
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            doDelete={doDelete}
+          />);
+          case 'weighted':
+        return (
+          <WeightedInputForm
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            doDelete={doDelete}
+          />);
+      default:
+        return (
+          <RepsInputForm
+            key={`exercise-${exerciseIndex}`}
+            exercise={exercise}
+            exerciseIndex={exerciseIndex}
+            handleChange={handleChange}
+            doDelete={doDelete}
+          />
+        );
+    }
   };
 
   return (
