@@ -10,6 +10,7 @@ import useInterval from '../../hooks/useInterval';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import useAddRoutine from '../../hooks/useAddRoutine';
+import { useLocalData } from '../../state/localDataContext';
 import { secondsToHms } from '../../utils/timedate';
 import { stringToHmsFormat } from '../../utils/timedate';
 import Button from '../Button';
@@ -22,9 +23,10 @@ const DoRoutineScreen = ({ navigation, route }) => {
   const [notification, setNotifiction] = useNotifiction();
   const { routineIndex } = route.params;
   const [addRoutine] = useAddRoutine();
+  const [state] = useLocalData();
 
   useEffect(() => {
-    const routine = workoutService.generateRoutineComponentObject(routineIndex);
+    const routine = workoutService.generateRoutineComponentObject(state.routines[routineIndex]);
     setRoutineName(routine.name);
     setExercises([...routine.exercises]);
 

@@ -47,17 +47,6 @@ const CreateRoutine = ({ navigation }) => {
     setExercises(updatedExercises);
   };
 
-  const testDelete = async () => {
-    try {
-      await routineService.deleteRoutine('Test');
-      dispatch({ type: 'DELETE_ROUTINE', routineName: 'Test' });
-      navigation.navigate('Home', { screen: 'Workout' });
-
-    } catch (error) {
-      setNotifiction(error);
-    }
-  };
-
   const doSave = async ({ routineName, exercises }) => {
     const newRoutine = {
       name: routineName,
@@ -84,7 +73,6 @@ const CreateRoutine = ({ navigation }) => {
       setNotifiction('Routine must contain at least one exercise!');
     }
     if (routineName.length > 0 && exercises.length > 0) {
-      console.log(`routineName ${JSON.stringify(routineName)} exercises ${JSON.stringify(exercises)} `);
       doSave({ routineName, exercises });
     }
   };
@@ -118,11 +106,6 @@ const CreateRoutine = ({ navigation }) => {
         <Button
           onPress={() => handleSave()}
           title='Save'
-          titleStyle={{ color: 'black' }}
-        />
-        <Button
-          onPress={() => testDelete()}
-          title='testDelete'
           titleStyle={{ color: 'black' }}
         />
       </View>

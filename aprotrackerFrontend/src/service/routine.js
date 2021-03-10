@@ -6,7 +6,7 @@ const routineListStorage = new ListStorage('routineList');
 
 const getRoutines = async () => {
   const routineList = await routineListStorage.getList();
-  return [...routines, ...routineList];
+  return [...routineList, ...routines];
 };
 
 const addRoutine = async (newRoutine) => {

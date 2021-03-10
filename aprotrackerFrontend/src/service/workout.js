@@ -1,8 +1,6 @@
-import routines from '../data/routines';
 
 
-const generateRoutineComponentObject = (routineIndex) => {
-  const routine = routines[routineIndex];
+const generateRoutineComponentObject = (routine) => {
 
   const buildTrainingSets = ({ type, sets }) => {
     switch (type) {
