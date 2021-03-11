@@ -16,6 +16,15 @@ export const dateFormat = (time) => {
   return ` ${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
 };
 
+export const dateFormatV2 = (time) => {
+  const date = new Date(Number(time));
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const day = `${date.getDate()}`.padStart(2, '0');
+
+  return [year, month, day].join('-'); //2017-12-20
+};
+
 export const stringToHmsFormat = (str) => {
   let modifedStr = '';
 

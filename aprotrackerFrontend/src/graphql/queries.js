@@ -20,6 +20,12 @@ query{
       }
     }
   }
+  
+  me {
+    username
+    createdAt
+    id
+  }
 }
 `;
 
