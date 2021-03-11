@@ -43,9 +43,9 @@ const allLatestExercises = async (root, args, context) => {
       return true;
     }
     return false;
-  }) 
+  })
 
-  return uniqueExercises;  
+  return uniqueExercises;
 }
 
 module.exports = {

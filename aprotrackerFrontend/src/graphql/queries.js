@@ -6,6 +6,7 @@ query{
   allRoutines {
     name
     createdAt
+    duration
     id
     exercises {
       name            
@@ -18,6 +19,27 @@ query{
         time
       }
     }
+  }
+}
+`;
+
+export const GET_LATEST_EXERCISES = gql`
+query {
+  allLatestExercises {
+    name
+    createdAt
+    type
+    routine
+    sets {
+      reps
+      time
+      kg
+    }
+    user{
+      username
+      id
+    }
+    
   }
 }
 `;

@@ -2,8 +2,11 @@ import React from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
+import usePreviousStats from '../../hooks/usePreviousStats';
 
-const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exerciseType }) => {
+
+const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exercise }) => {
+  const { latestCompletedExercises } = usePreviousStats();
 
   const repsInputContainerStyle = [
     styles.container,
@@ -15,14 +18,28 @@ const RepsInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseS
     set.done && styles.textInputDone
   ];
 
+  const renderPreviousCompleted = (name) => {
+    const previousExercise = latestCompletedExercises.find(prevEx => prevEx.name === name);
+    const prevReps = previousExercise?.sets[setIndex]?.reps;
+
+    if (prevReps) {
+      return (
+        <Text style={styles.previous}>
+          {prevReps}
+        </Text>
+      );
+    }
+    return (<Text style={styles.previous}>-</Text>);
+  };
+
   return (
     <View style={repsInputContainerStyle}>
       <Text style={styles.setNumber}>{setIndex + 1}</Text>
-      <Text style={styles.previous}>-</Text>
+      {renderPreviousCompleted(exercise.name)}
       <TextInput
         placeholder={set.repsPlaceholder.toString()}
         style={repsTextInputStyle}
-        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType })}
+        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.type })}
         value={set.reps}
         keyboardType='number-pad'
         selectTextOnFocus
@@ -52,6 +69,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 25,
     textAlign: 'center',
+    color: 'blue'
   },
   previous: {
     marginLeft: 10,
@@ -59,6 +77,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 65,
     textAlign: 'center',
+    color: '#a9a9a9'
   },
   textInput: {
     backgroundColor: '#dfdfdf',

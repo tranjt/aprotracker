@@ -26,7 +26,7 @@ const TimedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerci
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
               handleExerciseSetDone={handleExerciseSetDone}
-              exerciseType={exercise.type}
+              exercise={exercise}
             />
           ))
         }

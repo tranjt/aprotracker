@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import ExerciseList from './ExerciseList';
-import { dateFormat } from '../../utils/timedate';
+import { dateFormat, secondsToHmsV2 } from '../../utils/timedate';
 import theme from '../../theme';
 
 
@@ -19,8 +21,14 @@ const RoutineList = ({ routines }) => {
               </Text>
               <Text
                 style={styles.date}
-              > completed:
-                {dateFormat(routine.createdAt)}
+              >
+                {`completed: ${dateFormat(routine.createdAt)}`}
+              </Text>
+              <Text
+                style={styles.date}
+              >
+                <MaterialCommunityIcons name="clock-outline" size={13} color={theme.colors.smallerText} />
+                {` ${secondsToHmsV2(routine.duration)}`}
               </Text>
               <ExerciseList execises={routine.exercises} />
 
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.subheading
-  }
+  },
 });
 
 export default RoutineList;

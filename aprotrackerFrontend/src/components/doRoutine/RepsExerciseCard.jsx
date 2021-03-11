@@ -7,7 +7,7 @@ import RepsInputHeader from './RepsInputHeader';
 
 
 const RepsExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExerciseSetDone, addSet }) => {
-  
+
   if (!exercise.sets) {
     return <ActivityIndicator />;
   }
@@ -26,7 +26,7 @@ const RepsExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExercis
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
               handleExerciseSetDone={handleExerciseSetDone}
-              exerciseType={exercise.type}
+              exercise={exercise}
             />
           ))
         }

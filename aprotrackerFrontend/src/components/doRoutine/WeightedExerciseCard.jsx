@@ -26,7 +26,7 @@ const WeightedExerciseCard = ({ exercise, exerciseIndex, handleChange, handleExe
               exerciseIndex={exerciseIndex}
               handleChange={handleChange}
               handleExerciseSetDone={handleExerciseSetDone}
-              exerciseType={exercise.type}
+              exercise={exercise}
             />
           ))
         }
