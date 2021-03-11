@@ -82,6 +82,8 @@
 |       | 1    | new custom routine can be added and will show up in workout options selections  |
 |       | 1    | custom routine can be deleted from workout screen, minor bugfix and css changes  |
 |       | 4    | added timer and some css changes in doRoutine  |
-| total | 190  | | 
+| 11.3  | 2    | added query allLatestExercises to server  |
+|       | 4    | previous field in doRoutine now shows latest exercise stats kg, reps and time  |
+| total | 196  | | 
 
 
