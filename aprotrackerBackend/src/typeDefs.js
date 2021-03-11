@@ -55,6 +55,7 @@ const typeDefs = gql`
   type Query {
     allRoutines: [Routine!]!
     allExercises: [Exercise!]!
+    allLatestExercises: [Exercise!]!
     me: User
   }
 
