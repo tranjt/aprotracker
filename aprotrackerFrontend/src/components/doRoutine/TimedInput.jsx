@@ -40,7 +40,7 @@ const TimedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExercise
 
         placeholder={set.timedPlaceholder}
         style={repsTextInputStyle}
-        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.name })}
+        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.type })}
         value={set.time}
         keyboardType='number-pad'
         selectTextOnFocus

@@ -40,7 +40,7 @@ const WeightedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerc
       <TextInput
         placeholder={set.kgPlaceholder.toString()}
         style={repsTextInputStyle}
-        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.name, kgInputField: true })}
+        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.type, kgInputField: true })}
         value={set.kg}
         keyboardType='number-pad'
         selectTextOnFocus
@@ -48,7 +48,7 @@ const WeightedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerc
       <TextInput
         placeholder={set.repsPlaceholder.toString()}
         style={repsTextInputStyle}
-        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.name })}
+        onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.type })}
         value={set.reps}
         keyboardType='number-pad'
         selectTextOnFocus
