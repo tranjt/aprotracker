@@ -233,7 +233,7 @@ const DoRoutineScreen = ({ navigation, route }) => {
         <Pressable
           onPress={() => setTimerVisible(true)}
         >
-          <Entypo name="stopwatch" size={36} color="black" />
+          <Entypo name='stopwatch' size={30} color='black' />
         </Pressable>
 
       </View>

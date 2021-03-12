@@ -61,13 +61,15 @@ const RoutineOptions = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 45 }}
+        contentContainerStyle={{ paddingBottom: 55 }}
       >
         {
           state.routines.map((routine, routineIndex) => {
             return (
               <View key={`routine-${routineIndex}`} style={styles.card}>
+                {routineIndex === 0 ? (<View style={styles.divider} />) : null}
                 <Pressable
+                  style={styles.routineButton}
                   onPress={() => navigation.navigate('RoutineOverview', {
                     routineName: routine.name,
                     routineIndex
@@ -112,7 +114,7 @@ const RoutineOptions = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#e8eaf6',
-    padding: 10,
+    paddingHorizontal: 10
   },
   card: {
     borderRadius: 6,
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginHorizontal: 4,
-    marginVertical: 5,
+    marginTop: 10,
     padding: 10,
     justifyContent: 'space-between',
     flexDirection: 'row'
@@ -141,8 +143,20 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSizes.smallerText
   },
   deleteButton: {
-    width: 50
-  }
+    flexBasis: 20,
+    width: 40
+  },
+  routineButton: {
+    flex: 1,
+    flexBasis: 80,
+    paddingBottom: 5
+  },
+  divider: {
+    height: 2,
+    backgroundColor: '#e8eaf6',
+    alignSelf: 'stretch',
+    marginVertical: 20
+  },
 });
 
 export default RoutineOptions;

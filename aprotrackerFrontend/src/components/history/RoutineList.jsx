@@ -9,39 +9,50 @@ import theme from '../../theme';
 
 const RoutineList = ({ routines }) => {
   return (
-    <ScrollView >
-      {
-        routines.map((routine, routineIndex) => {
-          return (
-            <View key={`routine-${routineIndex}`} style={styles.card}>
-              <Text
-                style={styles.title}
-              >
-                {routine.name}
-              </Text>
-              <Text
-                style={styles.date}
-              >
-                {`completed: ${dateFormat(routine.createdAt)}`}
-              </Text>
-              <Text
-                style={styles.date}
-              >
-                <MaterialCommunityIcons name="clock-outline" size={13} color={theme.colors.smallerText} />
-                {` ${secondsToHmsV2(routine.duration)}`}
-              </Text>
-              <ExerciseList execises={routine.exercises} />
-
-            </View>
-          );
-        })
-      }
-    </ScrollView>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 10 }}
+        >
+          {
+            routines.map((routine, routineIndex) => {
+              return (
+                <View key={`routine-${routineIndex}`} style={styles.routineContainer}>
+                  <Text
+                    style={styles.title}
+                  >
+                    {routine.name}
+                  </Text>
+                  <Text
+                    style={styles.date}
+                  >
+                    {`completed: ${dateFormat(routine.createdAt)}`}
+                  </Text>
+                  <Text
+                    style={styles.date}
+                  >
+                    <MaterialCommunityIcons name="clock-outline" size={13} color={theme.colors.smallerText} />
+                    {` ${secondsToHmsV2(routine.duration)}`}
+                  </Text>
+                  <ExerciseList execises={routine.exercises} />
+                  {routines.length - 1 > routineIndex ? (<View style={styles.divider} />) : null}
+                </View>
+              );
+            })
+          }
+        </ScrollView>
+      </View>
+    </View>
   );
 };
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#e8eaf6',
+    padding: 5,
+    marginBottom: 40
+  },
   card: {
     borderRadius: 6,
     elevation: 3,
@@ -51,8 +62,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginHorizontal: 4,
-    marginVertical: 5,
+    marginTop: 5,
+    marginBottom: 10,
     padding: 10,
+  },
+  divider: {
+    height: 2,
+    backgroundColor: '#e8eaf6',
+    alignSelf: 'stretch',
+    marginVertical: 20
   },
   subheadingStyle: {
     color: '#0e1111',
