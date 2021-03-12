@@ -5,7 +5,7 @@ import Button from '../Button';
 import theme from '../../theme';
 
 
-const Info = ({ infoModalVisible, setInfoModalVisible, description }) => {
+const Info = ({ infoModalVisible, setInfoModalVisible, exercise }) => {  
   return (
     <Modal
       animationType='slide'
@@ -16,8 +16,8 @@ const Info = ({ infoModalVisible, setInfoModalVisible, description }) => {
       }}
     >
       <View style={styles.modalView}>
-        <Text style={styles.title}>Info</Text>        
-          {description ? <Text style={styles.description}>{description}</Text> :
+        <Text style={styles.title}>{`${exercise.name}`}</Text>        
+          {exercise?.description ? <Text style={styles.description}>{exercise.description}</Text> :
             <Text style={styles.description}>
               No description available!
        </Text>}        

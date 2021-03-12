@@ -11,6 +11,12 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
   const [state] = useLocalData();
   const { exercises } = state.routines[routineIndex];
   const [infoModalVisible, setInfoModalVisible] = useState(false);
+  const [modalSelectedExercise, setModalSelectedExercise] = useState(null);
+
+  const handleModalOpen = (exerciseIndex) => {
+    setModalSelectedExercise(exercises[exerciseIndex]);
+    setInfoModalVisible(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -27,21 +33,21 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
               </Text>
               <Pressable
                 style={styles.infoButtonStyle}
-                onPress={() => setInfoModalVisible(true)}
+                onPress={() => handleModalOpen(idx)}
               >
                 <Text style={styles.infoText}>
                   Info
                 </Text>
               </Pressable>
-              <Info
-                infoModalVisible={infoModalVisible}
-                setInfoModalVisible={setInfoModalVisible}
-                description={execise.description}
-              />
             </View>
           );
         })}
       </View>
+      <Info
+        infoModalVisible={infoModalVisible}
+        setInfoModalVisible={setInfoModalVisible}
+        exercise={modalSelectedExercise}
+      />
       <Button
         onPress={() => navigation.navigate('DoRoutine', {
           routineIndex
