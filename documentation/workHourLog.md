@@ -84,6 +84,11 @@
 |       | 4    | added timer and some css changes in doRoutine  |
 | 11.3  | 2    | added query allLatestExercises to server  |
 |       | 4    | previous field in doRoutine now shows latest exercise stats kg, reps and time  |
-| total | 196  | | 
+| 12.3  | 3    | profile screen nows show user info and calendar of all routines done  |
+|       | 1    | css changes to history and workout pages  |
+|       | 1    | add info screen and minor css changes  |
+|       | 2    | add textinput with label replaced most textinput with it  |
+|       | 1    | added numbernput with label and is used instead of native TextInput  |
+| total | 204  | | 
 
 
