@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   card: {
     borderRadius: 6,
-    elevation: 3,
+    elevation: 1,
     backgroundColor: '#fff',
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#333',

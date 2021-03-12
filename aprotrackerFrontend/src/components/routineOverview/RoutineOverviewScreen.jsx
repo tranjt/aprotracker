@@ -1,13 +1,16 @@
 
-import React from 'react';
-import { Text, Button, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Text, Button, View, StyleSheet, Pressable } from 'react-native';
 import { useLocalData } from '../../state/localDataContext';
 
+import Info from './Info';
+import theme from '../../theme';
 
 const RoutineOverviewScreen = ({ navigation, route }) => {
   const { routineName, routineIndex } = route.params;
-  const [state] = useLocalData();    
+  const [state] = useLocalData();
   const { exercises } = state.routines[routineIndex];
+  const [infoModalVisible, setInfoModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -22,10 +25,19 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
               <Text style={styles.text}>
                 {`${execise.sets.setCount} x ${execise.name} `}
               </Text>
-              <Text style={styles.infoText}>
-                {/* todo modal info about execise */}
-                Info!
-              </Text>
+              <Pressable
+                style={styles.infoButtonStyle}
+                onPress={() => setInfoModalVisible(true)}
+              >
+                <Text style={styles.infoText}>
+                  Info
+                </Text>
+              </Pressable>
+              <Info
+                infoModalVisible={infoModalVisible}
+                setInfoModalVisible={setInfoModalVisible}
+                description={execise.description}
+              />
             </View>
           );
         })}
@@ -59,9 +71,12 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   infoText: {
-    marginLeft: 'auto',
     fontWeight: 'bold',
-    paddingRight: 10
+    paddingRight: 10,
+    color: theme.colors.smallerText,
+  },
+  infoButtonStyle: {
+    marginLeft: 'auto',
   },
   text: {
     color: '#7e7e7e'

@@ -9,7 +9,6 @@ import { dateFormatV2 } from '../../utils/timedate';
 import AuthStorageContext from '../../contexts/AuthStorageContext';
 import useRoutines from '../../hooks/useRoutines';
 import ProfileHeader from './ProfileHeader';
-import Button from '../Button';
 import theme from '../../theme';
 
 
@@ -42,9 +41,11 @@ const ProfileScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Profile</Text>
         <View style={styles.bodyContainer}>
+          <View style={styles.divider} />
           <ProfileHeader
             doneRoutinesLen={completedRoutines.length}
             currentUser={currentUser}
+            logout={logout}
           />
           <View style={styles.workoutCalendar}>
             <Text style={styles.workoutCalendarText}>
@@ -53,13 +54,7 @@ const ProfileScreen = () => {
             <Calendar
               markedDates={getTrainedDays(completedRoutines)}
             />
-          </View>
-          <Button
-            style={styles.logoutButton}
-            onPress={() => logout()}
-            title='Sign out'
-            titleStyle={{ color: '#7e7e7e' }}
-          />
+          </View>    
         </View>
       </View>
     );
@@ -94,10 +89,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 1
-  },
-  logoutButton: {
-    marginTop: 40
-  },
+  }, 
   workoutCalendar: {
     marginTop: 40
   },
@@ -105,7 +97,14 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 10,
     color: '#7e7e7e'
-  }
+  },
+  divider: {
+    height: 2,
+    backgroundColor: '#e8eaf6',
+    alignSelf: 'stretch',
+    marginBottom: 20,
+  },
+
 });
 
 

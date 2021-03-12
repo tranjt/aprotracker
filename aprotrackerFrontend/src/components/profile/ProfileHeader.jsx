@@ -2,27 +2,39 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
+import Button from '../Button';
 import theme from '../../theme';
 
 
-const ProfileHeader = ({ doneRoutinesLen, currentUser }) => {
+const ProfileHeader = ({ doneRoutinesLen, currentUser, logout }) => {
   return (
     <View style={styles.profile}>
-      <View style={styles.profilePic}>
-        <FontAwesome name="user-circle" size={40} color="black" />
-        <Text style={styles.profileText}>
-          {currentUser ? currentUser.username : null}
-        </Text>
+      <View>
+        <View style={styles.profilePic}>
+          <FontAwesome name="user-circle" size={40} color="black" />
+          <Text style={styles.profileText}>
+            {currentUser ? currentUser.username : null}
+          </Text>
+        </View>
+        <Text style={styles.workoutText}>{`${doneRoutinesLen} workouts`}</Text>
       </View>
-      <Text style={styles.workoutText}>{`${doneRoutinesLen} workouts`}</Text>
+      <Button
+        style={styles.logoutButton}
+        onPress={() => logout()}
+        title='Sign out'
+        titleStyle={{ color: '#7e7e7e' }}
+      />
     </View>
   );
 };
 
 
 const styles = StyleSheet.create({
-  profile: {
-    paddingLeft: 20
+  profile: {    
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal:20
   },
   profilePic: {
     flexDirection: 'row',
@@ -37,6 +49,9 @@ const styles = StyleSheet.create({
     color: theme.colors.smallerText,
     marginBottom: 5,
     fontSize: theme.fontSizes.smallerText
+  },
+  logoutButton: {
+    width: 100,    
   },
 
 });

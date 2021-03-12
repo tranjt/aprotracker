@@ -13,6 +13,7 @@ query{
       createdAt
       routine
       type
+      description
       sets {
         reps
         kg

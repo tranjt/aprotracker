@@ -9,7 +9,7 @@ import theme from '../../theme';
 const WorkoutScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Workout Screen</Text>
+      <Text style={styles.title}>Workout</Text>
       <RoutineOptions navigation={navigation} />
     </View>
   );

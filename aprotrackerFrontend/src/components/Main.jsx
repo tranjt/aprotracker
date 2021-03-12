@@ -144,23 +144,33 @@ const Main = () => {
             />
           </>
         ) : (
-            <>
-              <RootStack.Screen
-                name='SignIn'
-                options={{
-                  title: 'Sign in',
-                }}
-                component={SignInScreen}
-              />
-              <RootStack.Screen
-                name='SignUp'
-                options={{
-                  title: 'Sign up',
-                }}
-                component={SignUpScreen}
-              />
-            </>
-          )
+          <>
+            <RootStack.Screen
+              name='SignIn'
+              options={{
+                title: 'Sign in',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                },
+              }}
+              component={SignInScreen}
+            />
+            <RootStack.Screen
+              name='SignUp'
+              options={{
+                title: 'Sign up',
+                headerTitleStyle: {
+                  color: theme.colors.primary,
+                  fontFamily: theme.fonts.main,
+                  fontWeight: theme.fontWeights.bold,
+                },
+              }}
+              component={SignUpScreen}
+            />
+          </>
+        )
         }
       </RootStack.Navigator>
     </NavigationContainer>

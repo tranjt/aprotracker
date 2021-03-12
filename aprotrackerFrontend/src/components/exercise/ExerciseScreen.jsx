@@ -16,7 +16,7 @@ const ExerciseScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Exercise Screen</Text>
+      <Text style={styles.title}>Exercise</Text>
       <ExerciseList
         createExercise={createExercise}
         route={route}
