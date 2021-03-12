@@ -30,6 +30,7 @@ const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
       <FormikTextInput
         name='exerciseName'
         placeholder='exercise name'
+        label='Exercise name'
       />
       <View style={styles.typePicker}>
         <FormikPicker
@@ -42,6 +43,7 @@ const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
         placeholder='optional description'
         multiline={true}
         numberOfLines={10}
+        label='Optional description'
         style={styles.textArea}
       />
       <View style={styles.buttonContainer}>

@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   execisesContainer: {
-    paddingBottom: 30
+    paddingBottom: 30,
+    flex: 1
   },
   execiseContainer: {
     flexDirection: 'row',

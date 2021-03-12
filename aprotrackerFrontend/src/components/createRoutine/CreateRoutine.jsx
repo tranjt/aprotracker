@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Button } from 'react-native';
 
 import ExerciseSelector from './ExerciseSelector';
 import SelectedExerciseList from './SelectedExerciseList';
-import TextInput from '../TextInput';
+import TextInputWLabel from '../TextInputWLabel';
 import { stringToHmsFormat } from '../../utils/timedate';
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
@@ -80,10 +80,11 @@ const CreateRoutine = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Notification notification={notification} />
-      <TextInput
+      <TextInputWLabel
         placeholder='enter routine name'
         onChangeText={value => setRoutineName(value)}
         value={routineName}
+        label='Name'
         selectTextOnFocus
       />
       <ScrollView>

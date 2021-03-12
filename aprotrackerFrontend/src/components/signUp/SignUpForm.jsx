@@ -8,23 +8,26 @@ const SignUpForm = ({ onSubmit, dirty, isValid }) => {
     <View style={styles.container}>
       <FormikTextInput
         name="username"
-        placeholder="Username"        
+        placeholder="Username"
+        label='Username'
       />
       <FormikTextInput
         secureTextEntry
         name="password"
-        placeholder="Password"        
+        placeholder="Password"
+        label='Password'
       />
       <FormikTextInput
         secureTextEntry
         name="passwordConfirm"
-        placeholder="Re-enter Password"        
+        placeholder="Re-enter Password"
+        label='Re-password'
       />
       <View style={styles.buttonContainer}>
         <Button
           onPress={onSubmit}
           title="Sign Up"
-          disabled={!dirty || !isValid}          
+          disabled={!dirty || !isValid}
         />
       </View>
     </View>

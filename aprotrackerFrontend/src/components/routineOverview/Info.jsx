@@ -19,8 +19,7 @@ const Info = ({ infoModalVisible, setInfoModalVisible, description }) => {
         <Text style={styles.title}>Info</Text>        
           {description ? <Text style={styles.description}>{description}</Text> :
             <Text style={styles.description}>
-              Description under construction,
-              coming soon!
+              No description available!
        </Text>}        
       </View>
       <Button title='close'

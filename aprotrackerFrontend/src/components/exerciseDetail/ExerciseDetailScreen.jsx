@@ -68,8 +68,7 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
           {exercise?.description}
         </Text>
         : <Text style={styles.description}>
-          Description under construction,
-          coming soon!
+           No description available!
       </Text>
       }
 

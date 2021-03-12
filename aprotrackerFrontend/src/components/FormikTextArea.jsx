@@ -1,17 +1,18 @@
 import React from 'react';
 import { useField } from 'formik';
 
-import TextInput from './TextInput';
+import TextInputWLabel from './TextInputWLabel';
 
 
-const FormikTextArea = ({ name, ...props }) => {
+const FormikTextArea = ({ label, name, ...props }) => {
   const [field, , helpers] = useField(name);
 
   return (
     <>
-      <TextInput
+      <TextInputWLabel
         onChangeText={value => helpers.setValue(value)}
         value={field.value}
+        label={label}
         {...props}
       />
     </>
