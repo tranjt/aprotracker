@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-
+import NumberInputWLabel from '../NumberInputWLabel';
 import theme from '../../theme';
 
 
@@ -14,32 +14,22 @@ const TimedInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => 
         {exercise.name}
       </Text>
       <View style={styles.inputContainer}>
-        <View>
-          <Text style={styles.label} >
-            Sets number
-          </Text>
-          <TextInput
-            style={styles.textInput}
-            value={exercise.sets.setCount.toString()}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}         
-            keyboardType='number-pad'
-            exerciseIndex={exerciseIndex}
-            selectTextOnFocus
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>
-            Time
-          </Text>
-          <TextInput
-            value={exercise.sets.timedPlaceholder}            
-            style={styles.textInput}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'timedPlaceholder' })}         
-            keyboardType='number-pad'
-            exerciseIndex={exerciseIndex}
-            selectTextOnFocus
-          />
-        </View>
+        <NumberInputWLabel
+          style={styles.textInput}
+          value={exercise.sets.setCount.toString()}
+          onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}
+          exerciseIndex={exerciseIndex}
+          label='Sets'
+          selectTextOnFocus
+        />
+        <NumberInputWLabel
+          value={exercise.sets.timedPlaceholder}
+          style={styles.textInput}
+          onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'timedPlaceholder' })}
+          exerciseIndex={exerciseIndex}
+          label='Time'
+          selectTextOnFocus
+        />
       </View>
       <View>
         <Pressable
@@ -57,7 +47,7 @@ const TimedInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 6,
-    elevation: 3,
+    elevation: 1,
     backgroundColor: '#fff',
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#333',
@@ -79,13 +69,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10
   },
-  textInput: {    
-    borderRadius: 4,    
+  textInput: {
     textAlign: 'center',
     flexGrow: 1,
-    borderWidth: 1,    
-    paddingHorizontal: 10,
-    margin: 10
+    width: 70
   },
   label: {
     textAlign: 'center'

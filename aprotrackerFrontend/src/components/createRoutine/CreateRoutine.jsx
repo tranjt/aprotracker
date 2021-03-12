@@ -123,6 +123,8 @@ const CreateRoutine = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    paddingVertical: 5
   },
   buttonContainer: {
     flexDirection: 'row',

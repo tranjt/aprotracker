@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import NumberInputWLabel from '../NumberInputWLabel';
 import theme from '../../theme';
 
 
@@ -12,32 +13,22 @@ const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
         {exercise.name}
       </Text>
       <View style={styles.inputContainer}>
-        <View>
-          <Text style={styles.label} >
-            Sets number
-          </Text>
-          <TextInput
-            style={styles.textInput}
-            value={exercise.sets.setCount.toString()}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}
-            keyboardType='number-pad'
-            exerciseIndex={exerciseIndex}
-            selectTextOnFocus
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>
-            Reps number
-          </Text>
-          <TextInput
-            value={exercise.sets.repsPlaceholder.toString()}
-            style={styles.textInput}
-            onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'repsPlaceholder' })}
-            keyboardType='number-pad'
-            exerciseIndex={exerciseIndex}
-            selectTextOnFocus
-          />
-        </View>
+        <NumberInputWLabel
+          style={styles.textInput}
+          value={exercise.sets.setCount.toString()}
+          onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'setCount' })}
+          exerciseIndex={exerciseIndex}
+          label='Sets'
+          selectTextOnFocus
+        />
+        <NumberInputWLabel
+          value={exercise.sets.repsPlaceholder.toString()}
+          style={styles.textInput}
+          onChangeText={value => handleChange({ value, exerciseIndex, inputType: 'repsPlaceholder' })}
+          exerciseIndex={exerciseIndex}
+          label='Reps'
+          selectTextOnFocus
+        />
       </View>
       <View>
         <Pressable
@@ -55,17 +46,18 @@ const RepsInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 6,
-    elevation: 3,
+    elevation: 1,
     backgroundColor: '#fff',
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#333',
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginHorizontal: 4,
-    marginVertical: 6,
+    marginBottom: 6,
     paddingBottom: 10,
   },
   inputContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
@@ -78,12 +70,9 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   textInput: {
-    borderRadius: 4,
     textAlign: 'center',
     flexGrow: 1,
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    margin: 10
+    width: 70
   },
   label: {
     textAlign: 'center'

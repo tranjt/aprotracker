@@ -46,11 +46,13 @@ const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
         You can edit each field to set your target goal for each exercises.
         Default values will be used as placeholder if none are given.
       </Text>
-      {
-        exercises.map((exercise, exerciseIndex) => {
-          return renderExerciseForm(exercise, exerciseIndex);
-        })
-      }
+      <View >
+        {
+          exercises.map((exercise, exerciseIndex) => {
+            return renderExerciseForm(exercise, exerciseIndex);
+          })
+        }
+      </View>
     </View>
   );
 };
@@ -58,10 +60,17 @@ const SelectedExerciseList = ({ exercises, handleChange, doDelete }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#e8eaf6',
+    paddingHorizontal: 5,
+    flex: 1
   },
   text: {
-    padding: 10,
-    marginBottom: 10
+    backgroundColor: 'white',
+    color: '#7e7e7e',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginHorizontal: -5,
+    marginBottom: 6,
   }
 });
 

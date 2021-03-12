@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
@@ -22,7 +21,6 @@ const CreateRoutineScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: 'white',
   },
 });
