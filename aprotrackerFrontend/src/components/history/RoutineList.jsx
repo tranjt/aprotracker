@@ -8,6 +8,15 @@ import theme from '../../theme';
 
 
 const RoutineList = ({ routines }) => {
+
+  if (routines.length === 0) {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.empty}>No routine done</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -50,8 +59,9 @@ const RoutineList = ({ routines }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#e8eaf6',
-    padding: 5,
-    marginBottom: 40
+    paddingHorizontal: 5,
+    paddingTop: 5,
+    flex: 1
   },
   card: {
     borderRadius: 6,
@@ -84,6 +94,19 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.subheading
+  },
+  emptyContainer: {
+    backgroundColor: '#e8eaf6',
+    paddingHorizontal: 5,
+    paddingTop: 5,
+    flex: 1
+  },
+  empty: {
+    backgroundColor: '#fff',
+    padding: 5,
+    margin: 'auto',
+    flex: 1,
+    borderRadius: 6,
   },
 });
 

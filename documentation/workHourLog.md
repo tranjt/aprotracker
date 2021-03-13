@@ -89,6 +89,11 @@
 |       | 1    | add info screen and minor css changes  |
 |       | 2    | add textinput with label replaced most textinput with it  |
 |       | 1    | added numbernput with label and is used instead of native TextInput  |
-| total | 204  | | 
+| 13.3  | 1    | bugfix wrong value for exerciseType and changed routine list order  |
+|       | 1    | bug fix wrong exercise showned in Info  |
+|       | 4    | changed theme colors primary and text primary   |
+|       | 1    | changed css for sign in and sign up screens   |
+|       | 1    | changed pressable to TouchableOpacity, custom button can be disabled  |
+| total | 212  | | 
 
 
