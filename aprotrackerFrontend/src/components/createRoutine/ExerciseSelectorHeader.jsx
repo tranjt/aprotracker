@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 29,
     flex: 1,
-    fontWeight: 'bold',
+    fontWeight: theme.fontWeights.bold,
     alignSelf: 'center',
-    color: theme.colors.primary
+    color: theme.colors.textPrimary
   },
 });
 

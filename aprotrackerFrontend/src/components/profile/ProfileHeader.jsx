@@ -30,11 +30,13 @@ const ProfileHeader = ({ doneRoutinesLen, currentUser, logout }) => {
 
 
 const styles = StyleSheet.create({
-  profile: {    
+  profile: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal:20
+    paddingHorizontal: 20,
+    backgroundColor: 'white',
+    paddingVertical: 20
   },
   profilePic: {
     flexDirection: 'row',
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSizes.smallerText
   },
   logoutButton: {
-    width: 100,    
+    width: 100,
   },
 
 });

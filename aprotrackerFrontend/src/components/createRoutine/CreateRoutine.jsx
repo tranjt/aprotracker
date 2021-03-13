@@ -9,6 +9,7 @@ import Notification from '../Notification';
 import useNotifiction from '../../hooks/useNotification';
 import routineService from '../../service/routine';
 import { useLocalData } from '../../state/localDataContext';
+import theme from '../../theme';
 
 
 const CreateRoutine = ({ navigation }) => {
@@ -102,12 +103,12 @@ const CreateRoutine = ({ navigation }) => {
         <Button
           onPress={() => setExerciseSelectorVisible(true)}
           title='Add exercise'
-          titleStyle={{ color: 'blue' }}
+          color={theme.colors.primary}
         />
         <Button
           onPress={() => handleSave()}
           title='Save'
-          titleStyle={{ color: 'black' }}
+          color={theme.colors.primary}
         />
       </View>
       <ExerciseSelector

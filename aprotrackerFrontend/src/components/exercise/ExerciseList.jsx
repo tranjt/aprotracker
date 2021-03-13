@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import RoundButton from '../RoundButton';
 
+import RoundButton from '../RoundButton';
 import Exercise from './Exercise';
 
 
@@ -18,7 +18,7 @@ const ExerciseList = ({ createExercise, exercises }) => {
       <RoundButton
         size={40}
         name='plus'
-        color='black'
+        color='white'
         onPress={createExercise}
       />
     </View>

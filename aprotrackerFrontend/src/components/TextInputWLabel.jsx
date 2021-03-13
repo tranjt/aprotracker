@@ -48,7 +48,7 @@ const TextInputWLabel = ({ label, value, style, error, ...props }) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: theme.colors.textSecondary,
+    borderColor: theme.colors.textPrimary,
     padding: 10,
     margin: 10,
     borderWidth: 1,

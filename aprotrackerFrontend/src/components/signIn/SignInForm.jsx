@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
+
 import FormikTextInput from '../FormikTextInput';
+import theme from '../../theme';
 
 
 const SignInForm = ({ onSubmit, dirty, isValid }) => {
@@ -23,6 +25,7 @@ const SignInForm = ({ onSubmit, dirty, isValid }) => {
           onPress={onSubmit}
           title="Sign In"
           disabled={!dirty || !isValid}
+          color= {theme.colors.primary}
         />
       </View>
     </View>

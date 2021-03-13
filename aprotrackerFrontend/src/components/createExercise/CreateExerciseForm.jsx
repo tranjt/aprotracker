@@ -4,6 +4,8 @@ import { View, StyleSheet, Button } from 'react-native';
 import FormikTextInput from '../FormikTextInput';
 import FormikPicker from '../FormikPicker';
 import FormikTextArea from '../FormikTextArea';
+import theme from '../../theme';
+
 
 const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
   const exerciseTypeOptions = [
@@ -51,6 +53,7 @@ const CreateExerciseForm = ({ onSubmit, dirty, isValid }) => {
           onPress={onSubmit}
           title='Create Exercise'
           disabled={!dirty || !isValid}
+          color={theme.colors.primary}
         />
       </View>
     </View>

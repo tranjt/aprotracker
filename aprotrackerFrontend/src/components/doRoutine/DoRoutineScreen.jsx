@@ -66,7 +66,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
     setTimer(timestring);
   };
 
-
   const handleSubmit = async (finishedExercises) => {
     const testRoutine = { // remove this later
       name: routineName,
@@ -229,7 +228,11 @@ const DoRoutineScreen = ({ navigation, route }) => {
 
       <View style={styles.header}>
         <Text>{secondsToHms(count)}</Text>
-        <OgButton onPress={() => routineFinished(exercises)} title='Finished' />
+        <OgButton
+          onPress={() => routineFinished(exercises)}
+          title='Finished'
+          color={theme.colors.primary}
+        />
         <Pressable
           onPress={() => setTimerVisible(true)}
         >
@@ -246,7 +249,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
               renderExerciseCard(exercise, exerciseIndex)
             ))
           }
-
           <Button
             onPress={() => navigation.navigate('Workout')}
             title='Cancel workout!'
@@ -293,7 +295,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 5
   }
-
 });
 
 export default DoRoutineScreen;

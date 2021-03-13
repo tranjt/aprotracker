@@ -6,6 +6,7 @@ import { useLocalData } from '../../state/localDataContext';
 import Info from './Info';
 import theme from '../../theme';
 
+
 const RoutineOverviewScreen = ({ navigation, route }) => {
   const { routineName, routineIndex } = route.params;
   const [state] = useLocalData();
@@ -53,6 +54,7 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
           routineIndex
         })}
         title='Do routine'
+        color={theme.colors.primary}
       />
     </View>
   );

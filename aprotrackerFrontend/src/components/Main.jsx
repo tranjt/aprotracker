@@ -46,7 +46,7 @@ const Home = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: '#0366d6',
+        activeTintColor: theme.colors.primaryDark,
         inactiveTintColor: 'gray',
       }}
     >
@@ -93,7 +93,7 @@ const Main = () => {
               options={{
                 title: 'Routine Overview',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 }
@@ -110,7 +110,7 @@ const Main = () => {
               options={{
                 title: 'Create Exercise',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 },
@@ -123,7 +123,7 @@ const Main = () => {
               options={{
                 title: 'Exercise Detail',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 }
@@ -135,7 +135,7 @@ const Main = () => {
               options={{
                 title: 'Create Routine',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 },
@@ -150,7 +150,7 @@ const Main = () => {
               options={{
                 title: 'Sign in',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 },
@@ -162,7 +162,7 @@ const Main = () => {
               options={{
                 title: 'Sign up',
                 headerTitleStyle: {
-                  color: theme.colors.primary,
+                  color: theme.colors.textPrimary,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 },

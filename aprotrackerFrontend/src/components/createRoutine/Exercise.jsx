@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.subheading,
     color: '#0e1111',
-  }, 
+  },
   text: {
     color: '#7e7e7e'
   },
   containerDone: {
-    backgroundColor: '#D0F0C0'
+    backgroundColor: theme.colors.primaryLight
   },
 });
 

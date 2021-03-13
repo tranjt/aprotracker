@@ -65,6 +65,7 @@ const Timer = ({ modalVisible, setModalVisible, timer, setTimerActive, handleTim
               <Button
                 onPress={() => setTimerActive(true)}
                 title='Start'
+                color={theme.colors.primary}
               ></Button>
               <Button
                 onPress={() => addThirtySec()}
@@ -78,6 +79,7 @@ const Timer = ({ modalVisible, setModalVisible, timer, setTimerActive, handleTim
       <Button
         onPress={() => closeTimer()}
         title='Close timer'
+        color={theme.colors.primary}
       />
     </Modal>
   );
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     paddingBottom: 15,
-    color: theme.colors.primary,
+    color: theme.colors.textPrimary,
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.title
   },

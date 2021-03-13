@@ -89,7 +89,7 @@ const RoutineOptions = ({ navigation }) => {
                       (<Pressable
                         onPress={() => onDelete(routine.name)}
                       >
-                        <MaterialIcons name="delete-forever" size={24} color="black" />
+                        <MaterialIcons name='delete-forever' size={24} color='black' />
                       </Pressable>)
                       : null
                   }
@@ -102,7 +102,7 @@ const RoutineOptions = ({ navigation }) => {
       <RoundButton
         size={40}
         name='plus'
-        color='black'
+        color='white'
         onPress={createRoutine}
       />
     </View>

@@ -3,6 +3,7 @@ import { TextInput, Text, View, StyleSheet } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
 import usePreviousStats from '../../hooks/usePreviousStats';
+import theme from '../../theme';
 
 
 const WeightedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExerciseSetDone, exercise }) => {
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   containerDone: {
-    backgroundColor: '#D0F0C0'
+    backgroundColor: theme.colors.primaryLight
   },
   setNumber: {
     marginLeft: 10,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 25,
     textAlign: 'center',
-    color: 'blue'
+    color: '#009faf'
   },
   previous: {
     marginLeft: 10,
@@ -96,8 +97,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   textInputDone: {
-    backgroundColor: '#D0F0C0',
-    fontWeight: 'bold'
+    backgroundColor: theme.colors.primaryLight,
+    fontWeight: theme.fontWeights.bold
   },
   checkbox: {
   },

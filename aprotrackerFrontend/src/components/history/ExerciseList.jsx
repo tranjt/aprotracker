@@ -11,11 +11,11 @@ const ExerciseList = ({ execises }) => {
         style={styles.subheadingStyle}
       >
         Exercises
-              </Text>
+      </Text>
       {
         execises.map((execise, key) => {
           return (
-            <Text 
+            <Text
               key={`execise-${key}`}
               style={styles.text}
             >
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: '#0e1111',
     paddingBottom: 4,
     fontWeight: 'bold'
-    
+
   },
 });
 

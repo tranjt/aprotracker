@@ -5,6 +5,7 @@ import { useLocalData } from '../../state/localDataContext';
 import Exercise from './Exercise';
 import ExerciseSelectorHeader from './ExerciseSelectorHeader';
 import RoundButton from '../RoundButton';
+import theme from '../../theme';
 
 
 const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
@@ -104,14 +105,14 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: theme.fontWeights.bold,
     textAlign: 'center'
   },
   separator: {
     height: 1,
   },
   doneButton: {
-    backgroundColor: 'blue'
+    backgroundColor: theme.colors.primary
   }
 });
 

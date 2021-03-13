@@ -2,6 +2,8 @@ import React from 'react';
 import { Entypo } from '@expo/vector-icons';
 import { StyleSheet, Pressable } from 'react-native';
 
+import theme  from '../theme';
+
 
 const RoundButton = ({ name, style, onPress, size, color }) => {
   const buttonStyle = [
@@ -27,9 +29,9 @@ const styles = StyleSheet.create({
     width: 60,
     position: 'absolute',
     bottom: 65,
-    right: 15,
+    right: 20,
     height: 60,
-    backgroundColor: '#69f0ae',
+    backgroundColor: theme.colors.primary,
     borderRadius: 100,
     shadowColor: '#000',
     shadowOffset: {

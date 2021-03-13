@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import Constants from 'expo-constants';
+
 import useRoutines from '../../hooks/useRoutines';
 import RoutineList from './RoutineList';
 import theme from '../../theme';
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.primary,
   },
   activityIndicator: {
     flex: 1,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     paddingBottom: 15,
-    color: theme.colors.primary,
+    color: 'white',
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.title
   }

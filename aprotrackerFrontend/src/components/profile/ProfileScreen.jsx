@@ -27,7 +27,7 @@ const ProfileScreen = () => {
   const getTrainedDays = (doneRoutines) => {
     const trainedDays = {};
     doneRoutines.forEach(routine => {
-      trainedDays[dateFormatV2(routine.createdAt)] = { selected: true, selectedColor: 'blue' };
+      trainedDays[dateFormatV2(routine.createdAt)] = { selected: true, selectedColor: '#4dd0e1' };
     });
 
     return trainedDays;
@@ -41,7 +41,6 @@ const ProfileScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Profile</Text>
         <View style={styles.bodyContainer}>
-          <View style={styles.divider} />
           <ProfileHeader
             doneRoutinesLen={completedRoutines.length}
             currentUser={currentUser}
@@ -54,7 +53,7 @@ const ProfileScreen = () => {
             <Calendar
               markedDates={getTrainedDays(completedRoutines)}
             />
-          </View>    
+          </View>
         </View>
       </View>
     );
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.primary,
   },
   activityIndicator: {
     flex: 1,
@@ -83,13 +82,14 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     paddingBottom: 15,
-    color: theme.colors.primary,
+    color: 'white',
     fontWeight: theme.fontWeights.bold,
     fontSize: theme.fontSizes.title
   },
   bodyContainer: {
-    flex: 1
-  }, 
+    flex: 1,
+    backgroundColor: 'white'
+  },
   workoutCalendar: {
     marginTop: 40
   },
@@ -97,14 +97,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 10,
     color: '#7e7e7e'
-  },
-  divider: {
-    height: 2,
-    backgroundColor: '#e8eaf6',
-    alignSelf: 'stretch',
-    marginBottom: 20,
-  },
-
+  }
 });
 
 

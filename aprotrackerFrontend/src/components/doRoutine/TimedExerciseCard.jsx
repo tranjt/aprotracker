@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View, ActivityIndicator } from 'react-native';
+import theme from '../../theme';
 
 import Button from '../Button';
 import TimedInput from './TimedInput';
@@ -59,15 +60,16 @@ const styles = StyleSheet.create({
   },
   exerciseName: {
     marginLeft: 20,
-    fontWeight: 'bold',
-    fontSize: 16
+    fontWeight: theme.fontWeights.bold,
+    fontSize: 16,
+    color: theme.colors.textSecondary,
   },
   button: {
     alignSelf: 'flex-start',
     backgroundColor: '#ececec',
   },
   titleStyle: {
-    fontWeight: 'bold',
+    fontWeight: theme.fontWeights.bold,
     fontSize: 12,
     color: '#7e7e7e'
   }

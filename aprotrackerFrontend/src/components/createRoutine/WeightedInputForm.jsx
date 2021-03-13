@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: theme.fontWeights.bold,
     textAlign: 'center',
-    color: theme.colors.primary,
+    color: theme.colors.textSecondary,
     marginBottom: 20,
     marginTop: 10
   },

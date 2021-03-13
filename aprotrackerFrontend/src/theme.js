@@ -2,11 +2,14 @@ import { Platform } from 'react-native';
 
 const theme = {
   colors: {
-    textPrimary: '#24292e',
-    textSecondary: '#586069',
-    primary: '#0366d6',       
+    textPrimary: 'black',
+    textSecondary: '#4dd0e1',
+    textThird: '#009faf',
+    primary: '#4dd0e1',
+    primaryLight: '#e5ffff',
+    primaryDark: '#009faf',
     appBar: '#24292e',
-    error: '#d73a4a',    
+    error: '#d73a4a',
     disabled: '#c0c0c0',
     smallerText: '#989898'
   },
@@ -22,11 +25,11 @@ const theme = {
       ios: 'Arial',
       default: 'System',
     }),
-  },  
+  },
   fontWeights: {
     normal: '400',
     bold: '700',
-  }  
+  }
 };
 
 export default theme;
