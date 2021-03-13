@@ -9,7 +9,7 @@ import DoRoutineScreen from './doRoutine/DoRoutineScreen';
 import RoutineOverviewScreen from './routineOverview/RoutineOverviewScreen';
 import HistoryScreen from './history/HistoryScreen';
 import SignInScreen from './signIn/SignInScreen';
-import SignUpScreen from './signUp/SignUp';
+import SignUpScreen from './signUp/SignUpScreen';
 import ProfileScreen from './profile/ProfileScreen';
 import ExerciseScreen from './exercise/ExerciseScreen';
 import CreateExerciseScreen from './createExercise/CreateExerciseScreen';
@@ -147,14 +147,7 @@ const Main = () => {
           <>
             <RootStack.Screen
               name='SignIn'
-              options={{
-                title: 'Sign in',
-                headerTitleStyle: {
-                  color: theme.colors.textPrimary,
-                  fontFamily: theme.fonts.main,
-                  fontWeight: theme.fontWeights.bold,
-                },
-              }}
+              options={{ headerShown: false }}
               component={SignInScreen}
             />
             <RootStack.Screen
@@ -162,10 +155,17 @@ const Main = () => {
               options={{
                 title: 'Sign up',
                 headerTitleStyle: {
-                  color: theme.colors.textPrimary,
+                  color: theme.colors.primaryDark,
                   fontFamily: theme.fonts.main,
                   fontWeight: theme.fontWeights.bold,
                 },
+                headerStyle: {
+                  elevation: 0,
+                  shadowOpacity: 0,
+                  backgroundColor: theme.colors.primaryDark
+                },
+                
+               
               }}
               component={SignUpScreen}
             />
