@@ -24,8 +24,9 @@ const SignInScreen = ({ navigation }) => {
         <SignIn setNotifiction={setNotifiction} />
         <Button
           onPress={() => navigation.navigate('SignUp')}
-          title='SIGN UP'
+          title='Sign up'
           style={styles.signUpButton}
+          titleStyle={styles.buttonTextStyle}
         />
       </View>
     </View>
@@ -68,7 +69,15 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
   },
   signUpButton: {
-    margin: 10
+    margin: 10,
+    backgroundColor: '#fff',
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+    borderRadius: 100
+  },
+  buttonTextStyle:{
+    color: theme.colors.primary,
+    fontWeight: theme.fontWeights.bold
   }
 });
 

@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import FormikTextInput from '../FormikTextInput';
+import Button from '../Button';
 import theme from '../../theme';
 
 
@@ -25,7 +26,8 @@ const SignInForm = ({ onSubmit, dirty, isValid }) => {
           onPress={onSubmit}
           title="Sign In"
           disabled={!dirty || !isValid}
-          color= {theme.colors.primary}
+          style={styles.buttonSignIn}
+          titleStyle={styles.buttonTextStyle}
         />
       </View>
     </View>
@@ -41,6 +43,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 10,
+  },
+  buttonSignIn: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 100
+  },
+  buttonTextStyle: {
+    color: '#fff',
+    fontWeight: theme.fontWeights.bold
   }
 });
 

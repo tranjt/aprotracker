@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   logoutButton: {
     width: 100,
+    borderRadius: 100
   },
 
 });

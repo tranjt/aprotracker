@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, Button as OgButton, View, StyleSheet, Alert, Pressable } from 'react-native';
+import { ScrollView, Text, Button as OgButton, View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import { Entypo } from '@expo/vector-icons';
 
@@ -233,11 +233,11 @@ const DoRoutineScreen = ({ navigation, route }) => {
           title='Finished'
           color={theme.colors.primary}
         />
-        <Pressable
+        <TouchableOpacity
           onPress={() => setTimerVisible(true)}
         >
           <Entypo name='stopwatch' size={30} color='black' />
-        </Pressable>
+        </TouchableOpacity>
 
       </View>
       <View style={styles.body}>

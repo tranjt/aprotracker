@@ -1,42 +1,45 @@
 import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 
-const Button = ({ title, style, titleStyle, onPress }) => {
+const Button = ({ title, style, titleStyle, onPress, disabled, ...props }) => {
   const buttonStyle = [
-    styles.button,
-    style
+    styles.container,
+    style,
+    disabled && styles.disabled
   ];
 
   const textStyle = [
     styles.text,
-    titleStyle
+    titleStyle,
+    disabled && styles.textDisabled
   ];
 
   return (
-    <Pressable
+    <TouchableOpacity
       style={buttonStyle}
       onPress={onPress}
+      {...props}
     >
       <Text style={textStyle}>{title}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10
-  },
-  button: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10
+    padding: 10,
+  },
+  disabled: {
+    backgroundColor: '#DDDDDD',
   },
   text: {
-
+  },
+  textDisabled: {
+    color: '#A9A9A9'
   }
 });
 

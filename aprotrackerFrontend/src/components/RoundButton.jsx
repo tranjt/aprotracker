@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entypo } from '@expo/vector-icons';
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import theme  from '../theme';
 
@@ -12,12 +12,12 @@ const RoundButton = ({ name, style, onPress, size, color }) => {
   ];
 
   return (
-    <Pressable
+    <TouchableOpacity
       style={buttonStyle}
       onPress={onPress}
     >
       <Entypo name={name} size={size} color={color} />
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

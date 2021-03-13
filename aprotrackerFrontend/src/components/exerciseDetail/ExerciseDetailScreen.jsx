@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalData } from '../../state/localDataContext';
 import exerciseService from '../../service/exercise';
@@ -44,12 +44,12 @@ const ExerciseDetailScreen = ({ navigation, route }) => {
 
   const renderDeleteButton = () => {
     return (
-      <Pressable
+      <TouchableOpacity
         onPress={onDelete}
         style={styles.deleteButton}
       >
         <MaterialIcons name="delete-forever" size={30} color="black" />
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 

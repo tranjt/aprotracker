@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { Text, Button, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useLocalData } from '../../state/localDataContext';
 
 import Info from './Info';
+import Button from '../Button';
 import theme from '../../theme';
 
 
@@ -32,14 +33,14 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
               <Text style={styles.text}>
                 {`${execise.sets.setCount} x ${execise.name} `}
               </Text>
-              <Pressable
+              <TouchableOpacity
                 style={styles.infoButtonStyle}
                 onPress={() => handleModalOpen(idx)}
               >
                 <Text style={styles.infoText}>
                   Info
                 </Text>
-              </Pressable>
+              </TouchableOpacity>
             </View>
           );
         })}
@@ -54,7 +55,8 @@ const RoutineOverviewScreen = ({ navigation, route }) => {
           routineIndex
         })}
         title='Do routine'
-        color={theme.colors.primary}
+        style={styles.doRoutineButton}
+        titleStyle={styles.buttonTextStyle}
       />
     </View>
   );
@@ -90,6 +92,14 @@ const styles = StyleSheet.create({
   text: {
     color: '#7e7e7e'
   },
+  doRoutineButton: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 100
+  },
+  buttonTextStyle: {
+    color: '#fff',
+    fontWeight: theme.fontWeights.bold
+  }
 });
 
 

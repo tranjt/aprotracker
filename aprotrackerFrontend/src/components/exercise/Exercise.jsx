@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
@@ -9,7 +9,7 @@ const Exercise = ({ exercise, exerciseIndex }) => {
   const navigation = useNavigation();
 
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={() => navigation.navigate('ExerciseDetail', { exerciseIndex })}
     >
       <View style={styles.container}>
@@ -23,7 +23,7 @@ const Exercise = ({ exercise, exerciseIndex }) => {
           {`(${exercise.type})`}
         </Text>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Pressable, StyleSheet, ScrollView, Text, Alert } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Text, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import { useLocalData } from '../../state/localDataContext';
@@ -68,29 +68,27 @@ const RoutineOptions = ({ navigation }) => {
             return (
               <View key={`routine-${routineIndex}`} style={styles.card}>
                 {routineIndex === 0 ? (<View style={styles.divider} />) : null}
-                <Pressable
+                <TouchableOpacity
                   style={styles.routineButton}
                   onPress={() => navigation.navigate('RoutineOverview', {
                     routineName: routine.name,
                     routineIndex
                   })}
                 >
-                  <Text
-                    style={styles.subheadingStyle}
-                  >
+                  <Text style={styles.subheadingStyle}>
                     {routine.name}
                   </Text>
                   {renderLatestCompletedRoutine(routine.name)}
                   <ExerciseList exercises={routine.exercises} />
-                </Pressable>
+                </TouchableOpacity>
                 <View style={styles.deleteButton}>
                   {
                     routine.editable ?
-                      (<Pressable
+                      (<TouchableOpacity
                         onPress={() => onDelete(routine.name)}
                       >
                         <MaterialIcons name='delete-forever' size={24} color='black' />
-                      </Pressable>)
+                      </TouchableOpacity>)
                       : null
                   }
                 </View>
