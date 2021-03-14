@@ -21,7 +21,7 @@ Some notes for future use. Data modelling was crucial at the start of the projec
 This project frontend was bootstrapped with Expo SDK template @sdk-40
 
 clone this project and install dependencies
-go to the main backend and frontend run npm install to install all the dependencies.
+go to the main backend and frontend base directories and run npm install to install all the dependencies.
 ```
 npm install
 ```
@@ -35,7 +35,7 @@ PORT //server port
 TOKEN_SECRET //Jwt token used for authentication
 ```
 
-frontend .evn requires
+frontend .env requires
 ```
 APOLLO_URI //adress to the GrahplQL server example http://192.168.1.2:4000/graphql
 ```
@@ -64,7 +64,7 @@ Both frontend and backend runs via
 - Exercise deletion
 - Do routine screen (a dynamic generated form based on selected routine)
 - Do routine form (all exercise input fields in this form can be extended and lessen. Only valid field will be saved)
-- Routine automatic timer (ao routine screen automatically saves execution time for this workout )
+- Routine automatic timer (routine screen automatically saves execution time for this workout )
 - Previous done field (displays the lastest done exercise stats)
 - Timer
 
@@ -171,7 +171,7 @@ User can create personal exercises from here. Name and exercise type must be inc
 <table>
   <tr>
     <td>do routine empty</td>
-     <td>do rouutine filled</td>    
+     <td>do routine filled</td>    
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/do_routine_screen.jpg" width=270 height=555></td>
