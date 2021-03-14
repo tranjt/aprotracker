@@ -51,7 +51,8 @@ const ExerciseSelector = ({ modalVisible, setModalVisible, addExercises }) => {
       return {
         name: exercise.name,
         type: exercise.type,
-        sets: exercise.sets
+        sets: exercise.sets,
+        description: exercise.description
       };
     });
 

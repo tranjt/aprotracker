@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import NumberInputWLabel from '../NumberInputWLabel';
@@ -32,12 +32,12 @@ const TimedInputForm = ({ exercise, exerciseIndex, handleChange, doDelete }) => 
         />
       </View>
       <View>
-        <Pressable
+        <TouchableOpacity
           style={styles.deleteButton}
           onPress={() => doDelete(exerciseIndex)}
         >
           <MaterialCommunityIcons name='delete-forever' size={24} color='#464646' />
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );

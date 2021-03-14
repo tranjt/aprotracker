@@ -5,7 +5,7 @@ const generateRoutineComponentObject = (routine) => {
   const buildTrainingSets = ({ type, sets }) => {
     switch (type) {
       case 'repsOnly':
-        return Array.from(Array(sets.setCount),
+        return Array.from(Array(Number(sets.setCount)),
           () => {
             return {
               reps: '',
@@ -15,7 +15,7 @@ const generateRoutineComponentObject = (routine) => {
             };
           });
       case 'weighted':
-        return Array.from(Array(sets.setCount),
+        return Array.from(Array(Number(sets.setCount)),
           () => {
             return {
               reps: '',
@@ -27,7 +27,7 @@ const generateRoutineComponentObject = (routine) => {
             };
           });
       case 'timed':
-        return Array.from(Array(sets.setCount),
+        return Array.from(Array(Number(sets.setCount)),
           () => {
             return {
               time: '',
