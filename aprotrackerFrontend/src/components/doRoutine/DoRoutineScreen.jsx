@@ -67,13 +67,6 @@ const DoRoutineScreen = ({ navigation, route }) => {
   };
 
   const handleSubmit = async (finishedExercises) => {
-    const testRoutine = { // remove this later
-      name: routineName,
-      duration: count,
-      exercises: finishedExercises
-    };
-    console.log('testRoutine' + JSON.stringify(testRoutine)); // remove this later
-
     try {
       await addRoutine({
         name: routineName,

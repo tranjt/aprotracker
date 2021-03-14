@@ -41,7 +41,6 @@ const SignIn = ({ setNotifiction }) => {
 
   const onSubmit = async (values) => {
     const { username, password } = values;
-    console.log(values);
 
     try {
       await signIn({ username, password });

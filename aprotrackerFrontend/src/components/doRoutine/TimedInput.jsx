@@ -38,7 +38,6 @@ const TimedInput = ({ set, setIndex, exerciseIndex, handleChange, handleExercise
       <Text style={styles.setNumber}>{setIndex + 1}</Text>
       {renderPreviousCompleted(exercise.name)}
       <TextInput
-
         placeholder={set.timedPlaceholder}
         style={repsTextInputStyle}
         onChangeText={value => handleChange({ value, setIndex, exerciseIndex, exerciseType: exercise.type })}

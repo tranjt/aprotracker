@@ -47,7 +47,6 @@ const CreateExercise = ({ navigation, setNotifiction }) => {
       sets: getSets(exerciseType),
       editable: true
     };
-    console.log(JSON.stringify(newExercise));
 
     try {
       await exerciseService.addExercise(newExercise);
