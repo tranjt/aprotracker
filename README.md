@@ -20,13 +20,13 @@ Some notes for future use. Data modelling was crucial at the start of the projec
 
 This project frontend was bootstrapped with Expo SDK template @sdk-40
 
-clone this project and installing dependencies
+clone this project and install dependencies
 go to the main backend and frontend run npm install to install all the dependencies.
 ```
 npm install
 ```
 
-A **.env** file is required for both frontend and backend at the base directory of each side.
+An **.env** file is required for both frontend and backend at the base directory of each side.
 
 backend .env requires
 ```
@@ -73,12 +73,12 @@ Both frontend and backend runs via
 ## Features overview
 
 More indept overview of app features. If you want to see a more active overview
-check out the [user mantual]() which includes gifs. Or watch a short 5 min [youtube video](https://www.youtube.com/watch?v=QY8OPi0G4JE)
+check out the [user instructions](https://github.com/tranjt/aprotracker/blob/main/documentation/userInstructions.md) which includes gifs. Or watch a short 5 min [youtube video](https://www.youtube.com/watch?v=QY8OPi0G4JE)
 of how a new user interaction with the app can look like.
 
 ### Account creation
 
-<img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/sign_up_screen.jpg" width="400">
+<img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/sign_up_screen.jpg" width="270">
 
 Used to sign up for an account. Username must be unique and both password must match.
 
@@ -86,7 +86,8 @@ Used to sign up for an account. Username must be unique and both password must m
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/login_screen.jpg" width="270">
 
-User with an account can login here, if not can go to account creation page.
+User with an account can login here, if not user can go to account creation page.
+
 
 ### Profile
 
@@ -95,26 +96,30 @@ User with an account can login here, if not can go to account creation page.
 Displays info about user. Total amount of workout done and a calendar which shows all days a workout have been done. You can also
 scroll go back and see past month. User logs out from here.
 
+
 ### History
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/history_screen.jpg" width="270">
 
 Displays completed routines. Information displayed which routines have been done which exercises have been done and how many times, date of completion and duration the routine took to complete. The list can be scrolled downwards.
 
+
 ### Workout
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/workout_screen.jpg" width="270">
 
-Displays selection of routines both premade and user made. User made can be distinguished by the trash can on the bottom right corner of the card, a button to delete the routine. Each routine will display lastest completed dates if available. 
+Displays selection of routines both premade and user made. User made can be distinguished by the trash can on the top right corner of the card, a button to delete the routine. Each routine will display lastest completed dates if available. 
 
 All routines cards are pressable and will take to Routine overview screen for more info on the routine and a button there which leads to the do routine screen for the execution of the routine. There is also a plus button on the bottom right corner which takes the user to routine creation page,
 to make your own routine.
+
 
 ### Routine overview
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/routine_overview_screen.jpg" width="270">
 
 Displays user chosen routine. The info text on the right will lead to a view showing information about the exercise and description. 
+
 
 ### Routine creation 
 
@@ -131,17 +136,19 @@ Displays user chosen routine. The info text on the right will lead to a view sho
   </tr>
 </table>
 
-User can create personal routines from here. Name and atleast one exercise must be included for the routine to be valid. The routine name must be unique for validity.
+User can create personal routines from here. Name and at least one exercise must be included for the routine to be valid. The routine name must be unique for validity. An error notice will notify if name already exist.
 
-Selection of exercises can be done via add exercises button which takes the user to the exercise selection screen. The screen displays all available exercises both preexisting and user made exercises. Selection can be made multiple times all selection are stored. User can remove unwanted exercise selections. Once a selection is made user can edit field on the exercises. These are set count, rep count, exercise duration and weight to be used. These stats are meant as goal reference to achieve in a routine, it will be displayed a placeholder in the input field during a routine execution. 
+Selection of exercises can be done via add exercise button which takes the user to the exercise selection screen. The screen displays all available exercises both preexisting and user made exercises. Selection can be made multiple times all selection are stored. User can remove unwanted exercise selections, via the trash can button bottom left of the exercise card. Once a selection is made user can edit field on the exercises. These values are set count, rep count, exercise duration and weight. These values are meant as goal reference to achieve in a routine, it will be displayed a placeholder in the input field during a routine execution. 
 
 When a valid routine have been made it will be added to the top of the routine list on the workout screen. 
+
 
 ### Exercise
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/exercise_screen.jpg" width="270">
 
-User can view all available exercises here, both user made and premade. All exercises are pressable which will take the user to a detail view screen of the exercises. User made exercise will have a trash can on the bottom right corner for deletion. The plus button on bottom right of the exercise screen will take the user to exercise creation screen.
+User can view all available exercises here, both user made and premade. All exercises are pressable which will take the user to a detail view screen of the exercises. User made exercises will have a trash can on the bottom right corner for deletion. The plus button on bottom right of the exercise screen will take the user to the exercise creation screen.
+
 
 ### Exercise creation
 
@@ -156,7 +163,8 @@ User can view all available exercises here, both user made and premade. All exer
   </tr>
 </table>
 
-User can create personal exercises from here. Name and exercise type must be included for the exercise to be valid. The exercise name must be unique for validity.
+User can create personal exercises from here. Name and exercise type must be included for the exercise to be valid. The exercise name must be unique for validity. An error notice will notify if name already exist.
+
 
 ### Routine in progress
 
@@ -172,17 +180,18 @@ User can create personal exercises from here. Name and exercise type must be inc
 </table>
 
 User does the routine and takes notes in here. Placeholder are goal data user entered during the routine creation or if it's a premade exercise default data will be shown.
-Previous field show data from the lastest exercise done. This data is not bound to an routine, if another routine contains it will also the shown there. Data is for the lasted of this type of exercise.
+Previous field shows data from the lastest exercise done. This data is not bound to a routine, if another routine containing the same exercise it will also the shown there. Data is for the latest of this type of exercise.
 
-User must enter valid data into a field for the check mark to be checkable. User can add more sets if required. At least one exercise set must be valid for a routine to be valid. Once the user is done he can press the finished button to complete the routine. Only marked exercise set will be stored. Exercises with empty sets will be discarded. Routine will also automatically save the duration of the routine. 
+User must enter valid data into a field for the check mark to be checkable. User can add more sets if required. At least one exercise set must be valid for a routine to be valid. Once the user is done he can press the finished button to complete the routine. Only marked exercise set will be stored. Exercises with only empty sets will be discarded. Routine will also automatically save the duration of the routine. 
 
 There is also a button on the top right corner for a timer.
+
 
 ### Timer
 
 <img src="https://raw.githubusercontent.com/tranjt/aprotracker/main/documentation/pictures/timer_screen.jpg" width="270">
 
-User can measure time in this page. By default the timer is set at 00:45 seconds. There are two -+30 seconds button for quick editing of the timer value, which can be done even when the timer is in progress. User can also edit the time by directly click in on the time value and enter a chosen time value. Close timer button will take the user back to the do routine screen.
+User can measure time in this page. By default the timer is set at 00:45 seconds. There are two -+30 seconds button for quick editing of the timer value, which can be done even when the timer is in progress. User can also edit the timer by directly click in on the time value and enter a chosen time value. Close timer button will take the user back to the do routine screen.
 
 
 
