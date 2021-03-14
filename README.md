@@ -11,7 +11,7 @@ Overall this project is a success, this project was running from 20.1.2021 - 14.
 
 Data management in this project is a mix of GraqhQL, local data files and async storage. GraqhQL usage was used to save data for user, completed exercises, completed routines and to display in the frontend. GraqhQL data was used both front and backend. Local data files contains premade routines and exercises which is used to build workout routines these cannot be deleted. As an extentions on these existing routines and exercises async storage was used to cover routines and exercises that does not exist. The user can created a more personalize workout routine, these can be deleted. Local and async storage data only exist on frontend side.
 
-Data state management for frontend, GraphQL data was kept separated from local files and async storage. Accessing data from GraphQL was done via hooks graphl mutations and queries. The login token from GraphQL server was stored locally with async storage and used the same data state management as local files and async storage. Initially the token was used for auth via a context hook. But later combined into the same state management as the local files and async storage, the react built-in reducer, context and hooks. 
+Data state management for frontend, GraphQL data was kept separated from local files and async storage. Accessing data from GraphQL was done via hooks with GraphQL Apollo mutations and queries. The login token from GraphQL server was stored locally with async storage and used the same data state management as local files and async storage. Initially the token was used for auth via a context hook. But later combined into the same state management as the local files and async storage, the react built-in reducer, context and hooks. 
 
 Some notes for future use. Data modelling was crucial at the start of the project and not just start building something then throw some data into it. Building the initial app around the data models and data handling made things much easier. It was much easier to see a path to how to progressively build the app as it grows and easier to follow the requirements.
 
@@ -19,6 +19,10 @@ Some notes for future use. Data modelling was crucial at the start of the projec
 ## Usage
 
 This project frontend was bootstrapped with Expo SDK template @sdk-40
+expo-cli command-line interface is needed
+```
+npm install --global expo-cli
+```
 
 clone this project and install dependencies
 go to the main backend and frontend base directories and run npm install to install all the dependencies.
